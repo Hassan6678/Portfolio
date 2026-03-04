@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
+import Specialties from '@/components/Specialties'
 import About from '@/components/About'
 import Work from '@/components/Work'
 import Experience from '@/components/Experience'
@@ -12,6 +13,7 @@ export default function Home() {
     <main className="min-h-screen" style={{ background: 'var(--bg)', color: 'var(--text)' }}>
       <Navbar />
       <Hero />
+      <Specialties />
       <About />
       <Work />
       <Experience />
