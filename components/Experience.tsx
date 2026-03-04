@@ -35,7 +35,7 @@ function TimelineItem({ exp, index, isLast }: { exp: (typeof experiences)[number
 
         <div className="flex flex-wrap gap-2">
           {exp.stack.map((t) => (
-            <span key={t} className="font-mono text-[10px] px-2.5 py-1 rounded-full" style={{ color: 'var(--accent)', background: 'var(--accent-dim)', border: '1px solid rgba(124,92,252,0.25)' }}>
+            <span key={t} className="font-mono text-[10px] px-2.5 py-1 rounded-full" style={{ color: 'var(--accent)', background: 'var(--accent-dim)', border: '1px solid rgba(232,255,71,0.25)' }}>
               {t}
             </span>
           ))}

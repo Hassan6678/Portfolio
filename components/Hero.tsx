@@ -3,12 +3,19 @@
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import TypeWriter from '@/components/ui/TypeWriter'
+import CodeBg from '@/components/ui/CodeBg'
 
 const ROLES = [
   'Machine Learning Engineer',
   'Data Scientist',
   'Geospatial AI Specialist',
   'NLP Engineer',
+]
+
+const socialLinks = [
+  { label: 'GitHub', href: 'https://github.com/Hassan6678' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/hassan-raza-cs' },
+  { label: 'Upwork', href: 'https://upwork.com/freelancers/~012bd9ba4b97d2b072' },
 ]
 
 export default function Hero() {
@@ -22,22 +29,17 @@ export default function Hero() {
   })
 
   return (
-    <section className="relative min-h-[90vh] flex items-center py-20 overflow-hidden">
-      {/* Decorative stars */}
-      <svg className="absolute top-20 right-[15%] w-6 h-6 opacity-40" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-6.26L4 10l5.91-1.74L12 2z" fill="#7c5cfc" /></svg>
-      <svg className="absolute bottom-32 left-[8%] w-10 h-10 opacity-20" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-6.26L4 10l5.91-1.74L12 2z" fill="#38bdf8" /></svg>
-      <svg className="absolute top-40 left-[20%] w-4 h-4 opacity-30" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-6.26L4 10l5.91-1.74L12 2z" fill="#7c5cfc" /></svg>
+    <section className="relative min-h-[90vh] flex items-center pt-24 pb-16 overflow-hidden">
+      {/* Scrolling code background */}
+      <CodeBg />
 
       <div className="relative max-w-7xl mx-auto w-full px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
 
           {/* Left */}
           <div>
-            <p className={`${show} font-inter text-sm mb-4`} style={{ ...d(0), color: 'var(--dimmed)' }}>
-              This is your
-            </p>
-            <p className={`${show} font-inter text-sm mb-2`} style={{ ...d(50), color: 'var(--dimmed)' }}>
-              ML Engineer &amp; Data Scientist
+            <p className={`${show} font-mono text-xs mb-4`} style={{ ...d(0), color: 'var(--accent)' }}>
+              // available for projects
             </p>
 
             <h1
@@ -48,7 +50,7 @@ export default function Hero() {
             </h1>
 
             {/* Typewriter */}
-            <div className={`${show} mb-6 min-h-[2rem]`} style={{ ...d(200), color: 'var(--accent)' }}>
+            <div className={`${show} mb-6 min-h-[2rem] font-mono text-lg`} style={{ ...d(200), color: 'var(--accent)' }}>
               <TypeWriter strings={ROLES} />
             </div>
 
@@ -61,23 +63,39 @@ export default function Hero() {
             </p>
 
             {/* CTAs */}
-            <div className={`${show} flex flex-wrap gap-4`} style={d(400)}>
+            <div className={`${show} flex flex-wrap gap-4 mb-10`} style={d(400)}>
               <a href="#contact" className="btn-primary">
                 Discuss for Projects
               </a>
-              <a href="#work" className="btn-ghost">
-                View Portfolios <span className="text-lg">&rarr;</span>
+              <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="btn-ghost">
+                Download CV <span className="text-lg">&darr;</span>
               </a>
+            </div>
+
+            {/* Social links */}
+            <div className={`${show} flex items-center gap-6`} style={d(500)}>
+              {socialLinks.map((l) => (
+                <a
+                  key={l.label}
+                  href={l.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-xs transition-colors duration-200 hover:text-accent flex items-center gap-1"
+                  style={{ color: 'var(--dimmed)' }}
+                >
+                  {l.label} <span>&#8599;</span>
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Right — photo + badge */}
+          {/* Right — photo + terminal window */}
           <div className={`${show} relative flex justify-center`} style={d(200)}>
             <div className="relative">
-              {/* Photo */}
+              {/* Photo — contained size like purple version */}
               <div
                 className="relative w-[300px] h-[370px] sm:w-[340px] sm:h-[420px] rounded-2xl overflow-hidden"
-                style={{ border: '2px solid var(--border)' }}
+                style={{ border: '1px solid var(--border)' }}
               >
                 <Image
                   src="/images/hassan-photo.png"
@@ -86,37 +104,30 @@ export default function Hero() {
                   className="object-cover"
                   priority
                 />
-                {/* Bottom gradient */}
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, rgba(7,11,24,0.7) 0%, transparent 40%)' }} />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, var(--bg) 0%, transparent 40%)' }} />
               </div>
 
-              {/* Rotating badge */}
-              <div className="absolute -right-6 top-1/3 w-24 h-24 sm:w-28 sm:h-28">
-                <div className="relative w-full h-full">
-                  {/* Rotating text ring */}
-                  <svg className="spin-slow w-full h-full" viewBox="0 0 120 120">
-                    <defs>
-                      <path id="circlePath" d="M 60,60 m -45,0 a 45,45 0 1,1 90,0 a 45,45 0 1,1 -90,0" />
-                    </defs>
-                    <text fill="#7c5cfc" fontSize="10" fontWeight="600" letterSpacing="3">
-                      <textPath href="#circlePath">
-                        SKILLED IN ML &bull; DATA SCIENCE &bull;
-                      </textPath>
-                    </text>
-                  </svg>
-                  {/* Center star */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <svg className="w-7 h-7" viewBox="0 0 24 24" fill="none">
-                      <path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-6.26L4 10l5.91-1.74L12 2z" fill="#7c5cfc" />
-                    </svg>
-                  </div>
+              {/* Terminal window — overlapping bottom */}
+              <div
+                className="absolute -bottom-6 -left-6 right-6 rounded-lg overflow-hidden shadow-2xl"
+                style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}
+              >
+                {/* Title bar */}
+                <div className="flex items-center gap-2 px-4 py-2" style={{ borderBottom: '1px solid var(--border)' }}>
+                  <span className="terminal-dot terminal-dot--red" />
+                  <span className="terminal-dot terminal-dot--yellow" />
+                  <span className="terminal-dot terminal-dot--green" />
+                  <span className="font-mono text-[10px] ml-2" style={{ color: 'var(--muted)' }}>model.py</span>
                 </div>
+                {/* Code */}
+                <pre className="p-3 font-mono text-[11px] leading-5 overflow-x-auto" style={{ color: 'var(--dimmed)' }}>
+                  <code>{`class TerritoryOptimizer:
+    def __init__(self, n_clusters=167):
+        self.model = KMeans(n_clusters)
+    def fit(self, coords, weights):
+        return self.model.fit(coords)`}</code>
+                </pre>
               </div>
-
-              {/* Decorative star bottom-left */}
-              <svg className="absolute -bottom-4 -left-6 w-8 h-8" viewBox="0 0 24 24" fill="none">
-                <path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-6.26L4 10l5.91-1.74L12 2z" fill="#38bdf8" />
-              </svg>
             </div>
           </div>
 

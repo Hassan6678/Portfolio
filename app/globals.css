@@ -3,16 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --bg:         #070b18;
-  --surface:    #0c1228;
-  --surface2:   #111936;
-  --border:     #1a2347;
-  --accent:     #7c5cfc;
-  --accent-dim: rgba(124, 92, 252, 0.12);
-  --accent2:    #38bdf8;
-  --text:       #e2e8f0;
-  --muted:      #64748b;
-  --dimmed:     #94a3b8;
+  --bg:         #080a0c;
+  --surface:    #0f1115;
+  --surface2:   #161b22;
+  --border:     #21262d;
+  --accent:     #e8ff47;
+  --accent-dim: rgba(232, 255, 71, 0.10);
+  --accent2:    #47c8ff;
+  --text:       #e6edf3;
+  --muted:      #6e7681;
+  --dimmed:     #8b949e;
 }
 
 @layer base {
@@ -23,7 +23,7 @@
     -webkit-font-smoothing: antialiased;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  ::selection { background: rgba(124, 92, 252, 0.25); color: #fff; }
+  ::selection { background: rgba(232, 255, 71, 0.2); color: var(--accent); }
   section[id] { scroll-margin-top: 100px; }
 }
 
@@ -61,13 +61,13 @@
 
 /* Buttons */
 .btn-primary {
-  background: var(--accent); color: #fff; font-weight: 600;
-  border-radius: 9999px; padding: 12px 28px; font-size: 14px;
+  background: var(--accent); color: #080a0c; font-weight: 700;
+  border-radius: 6px; padding: 12px 28px; font-size: 14px;
   transition: all 0.25s ease; display: inline-flex; align-items: center; gap: 8px;
 }
-.btn-primary:hover { background: #6a49e6; box-shadow: 0 4px 24px rgba(124,92,252,0.4); }
+.btn-primary:hover { opacity: 0.9; box-shadow: 0 4px 24px rgba(232,255,71,0.25); }
 .btn-ghost {
-  color: var(--text); font-weight: 600; border-radius: 9999px;
+  color: var(--text); font-weight: 700; border-radius: 6px;
   padding: 12px 28px; font-size: 14px; border: 1px solid var(--border);
   transition: all 0.25s ease; display: inline-flex; align-items: center; gap: 8px;
 }
@@ -86,14 +86,19 @@
 
 /* Cards */
 .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-.card-hover:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(124,92,252,0.12); }
+.card-hover:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(232,255,71,0.06); }
 
 .project-card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   overflow: hidden; border-radius: 12px;
 }
-.project-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(124,92,252,0.1); }
+.project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(232,255,71,0.08); }
 
-/* Rotating badge */
-@keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-.spin-slow { animation: spin-slow 12s linear infinite; }
+/* Scrolling code bg */
+@keyframes scrollCode { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+.scroll-code { animation: scrollCode 45s linear infinite; }
+
+/* Terminal dots */
+.dot-red    { background: #ff5f56; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green  { background: #27c93f; }

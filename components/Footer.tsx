@@ -21,7 +21,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <span className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold" style={{ background: 'var(--accent)', color: '#fff' }}>HR</span>
+              <span className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold" style={{ background: 'var(--accent)', color: '#080a0c' }}>HR</span>
               <span className="font-syne font-bold text-base" style={{ color: 'var(--text)' }}>Hassan Raza</span>
             </div>
             <p className="font-inter text-xs leading-relaxed" style={{ color: 'var(--muted)' }}>

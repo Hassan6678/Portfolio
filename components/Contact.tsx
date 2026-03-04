@@ -24,7 +24,7 @@ export default function Contact() {
           style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}
         >
           {/* Decorative */}
-          <svg className="absolute top-6 left-8 w-8 h-8 opacity-30" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-6.26L4 10l5.91-1.74L12 2z" fill="#7c5cfc" /></svg>
+          <svg className="absolute top-6 left-8 w-8 h-8 opacity-30" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-6.26L4 10l5.91-1.74L12 2z" fill="var(--accent)" /></svg>
 
           <h2 className="section-title font-syne mb-4">
             Have any <span>project idea?</span>
@@ -57,7 +57,7 @@ export default function Contact() {
                       rel="noopener noreferrer"
                       className="flex items-center justify-between p-4 rounded-xl group transition-all duration-200"
                       style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}
-                      onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(124,92,252,0.4)' }}
+                      onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(232,255,71,0.4)' }}
                       onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)' }}
                     >
                       <div>
