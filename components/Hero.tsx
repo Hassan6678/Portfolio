@@ -9,7 +9,8 @@ const ROLES = [
   'Machine Learning Engineer',
   'Data Scientist',
   'Geospatial AI Specialist',
-  'NLP Engineer',
+  'NLP & Deep Learning Engineer',
+  'Territory Optimization Expert',
 ]
 
 const socialLinks = [
@@ -33,12 +34,39 @@ export default function Hero() {
       {/* Scrolling code background */}
       <CodeBg />
 
+      {/* === Decorative floating elements === */}
+      {/* A — Sparkle star top-right */}
+      <svg
+        className="sparkle-pulse absolute pointer-events-none z-10"
+        style={{ top: '12%', right: '8%' }}
+        width="22" height="22" viewBox="0 0 24 24" fill="none"
+      >
+        <path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="var(--accent)" opacity="0.9" />
+      </svg>
+
+      {/* B — Dashed circle left-center */}
+      <div
+        className="spin-slow absolute pointer-events-none z-10"
+        style={{ top: '45%', left: '3%', width: 64, height: 64, borderRadius: '50%', border: '2px dashed rgba(232,255,71,0.35)' }}
+      />
+
+      {/* C — Small sparkle near photo area */}
+      <svg
+        className="sparkle-pulse absolute pointer-events-none z-10"
+        style={{ top: '8%', right: '36%', animationDelay: '1.5s' }}
+        width="14" height="14" viewBox="0 0 24 24" fill="none"
+      >
+        <path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="var(--accent-bright)" opacity="0.7" />
+      </svg>
+
       <div className="relative max-w-7xl mx-auto w-full px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
 
           {/* Left */}
           <div>
-            <p className={`${show} font-mono text-xs mb-4`} style={{ ...d(0), color: 'var(--accent)' }}>
+            {/* Eyebrow with pulse dot */}
+            <p className={`${show} font-mono text-xs mb-4 flex items-center gap-2`} style={{ ...d(0), color: 'var(--accent)' }}>
+              <span className="pulse-dot" />
               // available for projects
             </p>
 
@@ -55,11 +83,13 @@ export default function Hero() {
             </div>
 
             <p
-              className={`${show} font-inter text-base leading-relaxed max-w-md mb-8`}
+              className={`${show} font-inter text-base leading-relaxed max-w-lg mb-8`}
               style={{ ...d(300), color: 'var(--dimmed)' }}
             >
-              Building intelligent systems for global enterprises. From territory optimization
-              and satellite-powered market insights to NLP chatbots and deep learning pipelines.
+              4+ years building production ML systems for global enterprises
+              — from territory clustering for BAT UK&apos;s 167-warehouse field force,
+              to satellite-powered market intelligence and LLM chatbots for Nielsen.
+              I turn complex data into measurable business impact.
             </p>
 
             {/* CTAs */}
@@ -72,44 +102,60 @@ export default function Hero() {
               </a>
             </div>
 
-            {/* Social links */}
-            <div className={`${show} flex items-center gap-6`} style={d(500)}>
-              {socialLinks.map((l) => (
-                <a
-                  key={l.label}
-                  href={l.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-mono text-xs transition-colors duration-200 hover:text-accent flex items-center gap-1"
-                  style={{ color: 'var(--dimmed)' }}
-                >
-                  {l.label} <span>&#8599;</span>
-                </a>
+            {/* Social links with dot separators */}
+            <div className={`${show} flex items-center gap-0`} style={d(500)}>
+              {socialLinks.map((l, i) => (
+                <span key={l.label} className="flex items-center">
+                  <a
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-mono text-xs transition-colors duration-200 flex items-center gap-1"
+                    style={{ color: 'var(--muted)' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text)' }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--muted)' }}
+                  >
+                    {l.label} &#8599;
+                  </a>
+                  {i < socialLinks.length - 1 && (
+                    <span className="mx-3 text-xs" style={{ color: 'var(--muted)' }}>&middot;</span>
+                  )}
+                </span>
               ))}
             </div>
           </div>
 
-          {/* Right — photo + terminal window */}
+          {/* Right — floating photo + terminal window */}
           <div className={`${show} relative flex justify-center`} style={d(200)}>
             <div className="relative">
-              {/* Photo — contained size like purple version */}
+              {/* Radial glow behind photo */}
               <div
-                className="relative w-[300px] h-[370px] sm:w-[340px] sm:h-[420px] rounded-2xl overflow-hidden"
-                style={{ border: '1px solid var(--border)' }}
-              >
+                className="absolute inset-0 z-0"
+                style={{
+                  background: 'radial-gradient(ellipse 60% 70% at 50% 40%, rgba(168,85,247,0.18) 0%, transparent 70%)',
+                }}
+              />
+
+              {/* Photo — no box, no border, floating */}
+              <div className="relative w-[340px] h-[440px] sm:w-[420px] sm:h-[530px] z-[1]">
                 <Image
                   src="/images/hassan-photo.png"
                   alt="Hassan Raza"
                   fill
-                  className="object-cover"
+                  className="object-cover object-top"
+                  style={{ mixBlendMode: 'lighten' }}
                   priority
                 />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(to top, var(--bg) 0%, transparent 40%)' }} />
+                {/* Bottom fade into page bg */}
+                <div
+                  className="absolute inset-x-0 bottom-0 h-36 z-[1]"
+                  style={{ background: 'linear-gradient(to top, var(--bg) 0%, transparent 100%)' }}
+                />
               </div>
 
-              {/* Terminal window — overlapping bottom */}
+              {/* Terminal window — overlapping bottom-left, z above photo */}
               <div
-                className="absolute -bottom-6 -left-6 right-6 rounded-lg overflow-hidden shadow-2xl"
+                className="absolute -bottom-4 -left-8 right-8 z-[2] rounded-lg overflow-hidden shadow-2xl"
                 style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}
               >
                 {/* Title bar */}

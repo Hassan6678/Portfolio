@@ -39,13 +39,20 @@ export default function About() {
                 business impact.
               </p>
 
-              {/* Client strip */}
+              {/* Client marquee strip */}
               <div className="pt-6" style={{ borderTop: '1px solid var(--border)' }}>
-                <p className="text-xs uppercase tracking-widest mb-4 font-medium" style={{ color: 'var(--muted)' }}>Trusted By</p>
-                <div className="flex flex-wrap gap-x-6 gap-y-2">
-                  {clients.map((c) => (
-                    <span key={c} className="font-syne font-bold text-sm" style={{ color: 'var(--muted)' }}>{c}</span>
-                  ))}
+                <p className="font-mono text-[11px] text-center uppercase tracking-widest mb-4" style={{ color: 'var(--muted)' }}>
+                  Trusted by global enterprises
+                </p>
+                <div className="marquee-wrapper overflow-hidden">
+                  <div className="marquee-track">
+                    {[...clients, ...clients].map((c, i) => (
+                      <span key={i} className="flex items-center gap-4 shrink-0">
+                        <span className="font-mono text-xs font-medium whitespace-nowrap" style={{ color: 'var(--muted)' }}>{c}</span>
+                        <span className="text-[8px]" style={{ color: 'var(--accent)' }}>&#9670;</span>
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

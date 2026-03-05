@@ -56,8 +56,8 @@ export default function Navbar() {
             ))}
           </ul>
 
-          {/* CTA */}
-          <a href="#contact" className="hidden md:inline-flex btn-primary text-xs font-mono">
+          {/* CTA — pill button */}
+          <a href="#contact" className="hidden md:inline-flex btn-nav-cta">
             Discuss for Projects
           </a>
 
@@ -92,7 +92,7 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-        <a href="#contact" className="btn-primary mt-8 font-mono text-sm" onClick={() => setMenuOpen(false)}>Discuss for Projects</a>
+        <a href="#contact" className="btn-nav-cta mt-8" onClick={() => setMenuOpen(false)}>Discuss for Projects</a>
       </div>
     </>
   )

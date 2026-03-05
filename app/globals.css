@@ -10,6 +10,8 @@
   --accent:     #e8ff47;
   --accent-dim: rgba(232, 255, 71, 0.10);
   --accent2:    #47c8ff;
+  --accent-rgb: 232, 255, 71;
+  --accent-bright: #f0ff7a;
   --text:       #e6edf3;
   --muted:      #6e7681;
   --dimmed:     #8b949e;
@@ -73,6 +75,16 @@
 }
 .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
+/* Navbar CTA — pill */
+.btn-nav-cta {
+  background: var(--accent); color: #000;
+  border-radius: 999px; padding: 10px 22px;
+  font-size: 13px; font-family: var(--font-jetbrains), monospace;
+  font-weight: 500; transition: opacity 0.2s;
+  display: inline-flex; align-items: center;
+}
+.btn-nav-cta:hover { opacity: 0.85; }
+
 /* Section headers */
 .section-label {
   text-transform: uppercase; font-size: 12px; letter-spacing: 3px;
@@ -99,6 +111,49 @@
 .scroll-code { animation: scrollCode 45s linear infinite; }
 
 /* Terminal dots */
+.terminal-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.terminal-dot--red    { background: #ff5f56; }
+.terminal-dot--yellow { background: #ffbd2e; }
+.terminal-dot--green  { background: #27c93f; }
 .dot-red    { background: #ff5f56; }
 .dot-yellow { background: #ffbd2e; }
 .dot-green  { background: #27c93f; }
+
+/* Pulse dot — eyebrow status indicator */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 1; box-shadow: 0 0 4px var(--accent); }
+  50% { opacity: 0.6; box-shadow: 0 0 10px var(--accent); }
+}
+.pulse-dot {
+  display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 8px var(--accent);
+  animation: pulse-glow 2s ease-in-out infinite; flex-shrink: 0;
+}
+
+/* Sparkle pulse — decorative floating elements */
+@keyframes sparkle-pulse {
+  0%, 100% { opacity: 0.6; transform: scale(1) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1.25) rotate(20deg); }
+}
+.sparkle-pulse { animation: sparkle-pulse 3s ease-in-out infinite; }
+
+/* Slow spin — dashed circle */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.spin-slow { animation: spin-slow 18s linear infinite; }
+
+/* Client marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-wrapper { position: relative; }
+.marquee-track {
+  display: flex; gap: 16px; width: max-content;
+  animation: marquee 20s linear infinite;
+}
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}
