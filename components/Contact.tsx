@@ -30,8 +30,9 @@ export default function Contact() {
             Have any <span>project idea?</span>
           </h2>
           <p className="font-inter text-sm max-w-md mx-auto mb-8" style={{ color: 'var(--muted)' }}>
-            Whether you need geospatial ML, NLP chatbots, or data pipelines &mdash;
-            let&apos;s discuss how I can help bring your project to life.
+            Whether you&apos;re solving a geospatial routing problem, need an LLM-powered
+            analytics tool, or want to turn messy data into production-grade intelligence
+            — let&apos;s talk. 100% Job Success Score. Top Rated on Upwork.
           </p>
           <a href="mailto:hassanrazacs@hotmail.com" className="btn-primary">
             Contact Now

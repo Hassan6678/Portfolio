@@ -2,6 +2,7 @@ const quickLinks = [
   { label: 'Home', href: '#' },
   { label: 'Projects', href: '#work' },
   { label: 'About', href: '#about' },
+  { label: 'Testimonials', href: '#testimonials' },
   { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -25,7 +26,7 @@ export default function Footer() {
               <span className="font-syne font-bold text-base" style={{ color: 'var(--text)' }}>Hassan Raza</span>
             </div>
             <p className="font-inter text-xs leading-relaxed" style={{ color: 'var(--muted)' }}>
-              ML Engineer &amp; Data Scientist building intelligent systems for global enterprises.
+              5+ years engineering production ML systems &middot; 100% Job Success on Upwork &middot; Top Rated &middot; Lahore, Pakistan
             </p>
           </div>
 

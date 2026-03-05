@@ -9,14 +9,20 @@ const ROLES = [
   'Machine Learning Engineer',
   'Data Scientist',
   'Geospatial AI Specialist',
-  'NLP & Deep Learning Engineer',
-  'Territory Optimization Expert',
+  'NLP & LLM Engineer',
+  'Time Series & Forecasting Expert',
 ]
 
 const socialLinks = [
   { label: 'GitHub', href: 'https://github.com/Hassan6678' },
   { label: 'LinkedIn', href: 'https://linkedin.com/in/hassan-raza-cs' },
   { label: 'Upwork', href: 'https://upwork.com/freelancers/~012bd9ba4b97d2b072' },
+]
+
+const badges = [
+  { icon: '\u2605', text: '100% Job Success' },
+  { icon: '', text: 'Top Rated on Upwork' },
+  { icon: '', text: '$10K+ Earned' },
 ]
 
 export default function Hero() {
@@ -83,14 +89,34 @@ export default function Hero() {
             </div>
 
             <p
-              className={`${show} font-inter text-base leading-relaxed max-w-lg mb-8`}
+              className={`${show} font-inter text-base leading-relaxed max-w-lg mb-6`}
               style={{ ...d(300), color: 'var(--dimmed)' }}
             >
-              4+ years building production ML systems for global enterprises
-              — from territory clustering for BAT UK&apos;s 167-warehouse field force,
-              to satellite-powered market intelligence and LLM chatbots for Nielsen.
-              I turn complex data into measurable business impact.
+              5+ years engineering production ML systems for global enterprises.
+              Territory optimization for BAT UK, satellite-powered market intelligence
+              for FMCG giants, LLM analytics chatbots for Nielsen — and a 100% Job
+              Success Score on Upwork with Top Rated status. I build things that work.
             </p>
+
+            {/* Social proof badges */}
+            <div className={`${show} flex flex-wrap gap-2 mb-8`} style={d(350)}>
+              {badges.map((b) => (
+                <span
+                  key={b.text}
+                  className="font-mono text-[11px] inline-flex items-center gap-1.5"
+                  style={{
+                    color: 'var(--accent)',
+                    background: 'var(--surface)',
+                    border: '1px solid var(--border)',
+                    padding: '4px 12px',
+                    borderRadius: 4,
+                  }}
+                >
+                  {b.icon && <span>{b.icon}</span>}
+                  {b.text}
+                </span>
+              ))}
+            </div>
 
             {/* CTAs */}
             <div className={`${show} flex flex-wrap gap-4 mb-10`} style={d(400)}>
@@ -127,12 +153,14 @@ export default function Hero() {
 
           {/* Right — floating photo + terminal window */}
           <div className={`${show} relative flex justify-center`} style={d(200)}>
-            <div className="relative">
-              {/* Radial glow behind photo */}
+            <div className="relative" style={{ overflow: 'visible' }}>
+              {/* Blurred accent glow behind photo */}
               <div
-                className="absolute inset-0 z-0"
+                className="absolute pointer-events-none z-0"
                 style={{
-                  background: 'radial-gradient(ellipse 60% 70% at 50% 40%, rgba(168,85,247,0.18) 0%, transparent 70%)',
+                  inset: '-20px',
+                  background: 'radial-gradient(ellipse 80% 90% at 50% 50%, rgba(232,255,71,0.20) 0%, rgba(232,255,71,0.08) 35%, transparent 70%)',
+                  filter: 'blur(24px)',
                 }}
               />
 
@@ -143,19 +171,32 @@ export default function Hero() {
                   alt="Hassan Raza"
                   fill
                   className="object-cover object-top"
-                  style={{ mixBlendMode: 'lighten' }}
+                  style={{
+                    mixBlendMode: 'luminosity',
+                    filter: 'contrast(1.1) brightness(0.95)',
+                  }}
                   priority
                 />
-                {/* Bottom fade into page bg */}
+                {/* Bottom fade */}
                 <div
-                  className="absolute inset-x-0 bottom-0 h-36 z-[1]"
-                  style={{ background: 'linear-gradient(to top, var(--bg) 0%, transparent 100%)' }}
+                  className="absolute inset-x-0 bottom-0 pointer-events-none z-[2]"
+                  style={{ height: '45%', background: 'linear-gradient(to top, #080a0c 0%, rgba(8,10,12,0.6) 40%, transparent 100%)' }}
+                />
+                {/* Left edge fade */}
+                <div
+                  className="absolute top-0 left-0 bottom-0 pointer-events-none z-[2]"
+                  style={{ width: '28%', background: 'linear-gradient(to right, #080a0c, transparent)' }}
+                />
+                {/* Right edge fade */}
+                <div
+                  className="absolute top-0 right-0 bottom-0 pointer-events-none z-[2]"
+                  style={{ width: '28%', background: 'linear-gradient(to left, #080a0c, transparent)' }}
                 />
               </div>
 
               {/* Terminal window — overlapping bottom-left, z above photo */}
               <div
-                className="absolute -bottom-4 -left-8 right-8 z-[2] rounded-lg overflow-hidden shadow-2xl"
+                className="absolute -bottom-4 -left-8 right-8 z-[3] rounded-lg overflow-hidden shadow-2xl"
                 style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}
               >
                 {/* Title bar */}

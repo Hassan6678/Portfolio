@@ -3,10 +3,11 @@
 import { useInView } from '@/hooks/useInView'
 
 const stats = [
-  { value: '4+', label: 'Years Experience' },
+  { value: '5+', label: 'Years Experience' },
   { value: '12+', label: 'Enterprise Clients' },
   { value: '33', label: 'GitHub Repos' },
   { value: '3', label: 'Domains' },
+  { value: '100%', label: 'Job Success Rate' },
 ]
 
 const clients = ['BAT', 'Nielsen', 'EBM', 'P&G', 'Unilever', 'Red Bull', 'Jazz', 'PMI']
@@ -30,13 +31,17 @@ export default function About() {
             <div>
               <p className="font-inter text-base leading-relaxed mb-5" style={{ color: 'var(--dimmed)' }}>
                 I&apos;m a Machine Learning Engineer and Data Scientist based in Lahore,
-                Pakistan with 4+ years of experience delivering intelligent solutions for
-                global clients including BAT, Nielsen, EBM, P&amp;G, Unilever, and Red Bull.
+                Pakistan with 5+ years of hands-on experience building intelligent
+                systems for enterprise clients across the UK, US, and South Asia.
               </p>
               <p className="font-inter text-base leading-relaxed mb-8" style={{ color: 'var(--dimmed)' }}>
-                I specialize in geospatial optimization, NLP, computer vision, and scalable
-                data pipelines &mdash; building systems that turn complex raw data into measurable
-                business impact.
+                My work spans the full ML lifecycle — from architecting geospatial
+                clustering engines that restructured BAT UK&apos;s nationwide field force,
+                to deploying LLM-powered analytics platforms for Nielsen and
+                satellite-driven market intelligence tools for P&amp;G, Unilever, and
+                Red Bull. On Upwork I hold a 100% Job Success Score with Top Rated
+                status — delivering time series forecasting, defect prediction ML
+                models, and data pipelines for international clients across industries.
               </p>
 
               {/* Client marquee strip */}
@@ -57,22 +62,36 @@ export default function About() {
               </div>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 gap-4">
-              {stats.map((s) => (
-                <div
-                  key={s.label}
-                  className="card-hover p-6 rounded-xl text-center"
-                  style={{ background: 'var(--surface2)', border: '1px solid var(--border)' }}
-                >
-                  <div className="font-syne font-extrabold text-4xl mb-1" style={{ color: 'var(--accent)' }}>
-                    {s.value}
+            {/* Stats — 5 items: 2+2+1 layout */}
+            <div>
+              <div className="grid grid-cols-2 gap-4 mb-4">
+                {stats.slice(0, 4).map((s) => (
+                  <div
+                    key={s.label}
+                    className="card-hover p-6 rounded-xl text-center"
+                    style={{ background: 'var(--surface2)', border: '1px solid var(--border)' }}
+                  >
+                    <div className="font-syne font-extrabold text-4xl mb-1" style={{ color: 'var(--accent)' }}>
+                      {s.value}
+                    </div>
+                    <div className="font-inter text-xs" style={{ color: 'var(--muted)' }}>
+                      {s.label}
+                    </div>
                   </div>
-                  <div className="font-inter text-xs" style={{ color: 'var(--muted)' }}>
-                    {s.label}
-                  </div>
+                ))}
+              </div>
+              {/* 5th stat — full width */}
+              <div
+                className="card-hover p-6 rounded-xl text-center"
+                style={{ background: 'var(--surface2)', border: '1px solid var(--border)' }}
+              >
+                <div className="font-syne font-extrabold text-4xl mb-1" style={{ color: 'var(--accent)' }}>
+                  {stats[4].value}
                 </div>
-              ))}
+                <div className="font-inter text-xs" style={{ color: 'var(--muted)' }}>
+                  {stats[4].label}
+                </div>
+              </div>
             </div>
           </div>
         </div>

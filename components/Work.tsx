@@ -75,7 +75,7 @@ export default function Work() {
           <p className="section-label mb-3">Portfolio</p>
           <h2 className="section-title font-syne">My <span>projects</span></h2>
           <p className="font-inter text-sm mt-4 max-w-lg mx-auto" style={{ color: 'var(--muted)' }}>
-            Enterprise ML solutions, research projects, and open-source contributions.
+            Enterprise ML solutions and freelance projects delivering measurable impact.
           </p>
         </div>
 

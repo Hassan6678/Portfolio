@@ -12,7 +12,7 @@ const specialties = [
       </svg>
     ),
     title: 'Machine Learning',
-    desc: 'End-to-end ML pipelines from data collection to production models. Predictive modelling, classification, and regression.',
+    desc: 'Production-grade ML pipelines from raw data to deployed models. Predictive modelling, classification, regression, and ensemble methods -- tuned for real-world business constraints, not just benchmark accuracy.',
   },
   {
     icon: (
@@ -22,7 +22,7 @@ const specialties = [
       </svg>
     ),
     title: 'Computer Vision',
-    desc: 'Image classification, object detection, OCR, and satellite imagery analysis for market intelligence.',
+    desc: 'Satellite imagery analysis, object detection, OCR, and population density estimation -- extracting spatial intelligence from visual data at industrial scale.',
   },
   {
     icon: (
@@ -32,7 +32,7 @@ const specialties = [
       </svg>
     ),
     title: 'NLP & LLM Chatbots',
-    desc: 'Natural language processing, LLM-powered chatbots, text generation, and business insight extraction.',
+    desc: 'LLM-powered analytics chatbots, text classification, NER, and automated insight extraction -- turning unstructured language into structured, queryable business intelligence.',
   },
   {
     icon: (
@@ -42,7 +42,7 @@ const specialties = [
       </svg>
     ),
     title: 'Geospatial AI',
-    desc: 'Territory clustering, route optimization, population density estimation, and location intelligence.',
+    desc: 'Territory clustering, route optimization, and location intelligence systems that restructure how field forces operate -- engineered for operational feasibility, not just geographic compactness.',
   },
 ]
 
@@ -54,12 +54,12 @@ export default function Specialties() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div ref={headRef} className={`fade-up ${headIn ? 'visible' : ''} text-center mb-16`}>
-          <p className="section-label mb-3">Speciality</p>
+          <p className="section-label mb-3">Specialization</p>
           <h2 className="section-title font-syne">
-            My <span>specialities</span>
+            My <span>Specializations</span>
           </h2>
           <p className="font-inter text-sm mt-4 max-w-md mx-auto" style={{ color: 'var(--muted)' }}>
-            Four years of hands-on engineering across the full ML lifecycle.
+            Five years of hands-on engineering across the full ML lifecycle.
           </p>
         </div>
 
