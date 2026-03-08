@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
 import TypeWriter from '@/components/ui/TypeWriter'
 import CodeBg from '@/components/ui/CodeBg'
 
@@ -49,12 +48,6 @@ export default function Hero() {
       >
         <path d="M12 0l3 9 9 3-9 3-3 9-3-9-9-3 9-3z" fill="var(--accent)" opacity="0.9" />
       </svg>
-
-      {/* B — Dashed circle left-center */}
-      <div
-        className="spin-slow absolute pointer-events-none z-10"
-        style={{ top: '45%', left: '3%', width: 64, height: 64, borderRadius: '50%', border: '2px dashed rgba(232,255,71,0.35)' }}
-      />
 
       {/* C — Small sparkle near photo area */}
       <svg
@@ -151,53 +144,33 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right — floating photo + terminal window */}
+          {/* Right — floating photo with CSS background + terminal window */}
           <div className={`${show} relative flex justify-center`} style={d(200)}>
-            <div className="relative" style={{ overflow: 'visible' }}>
-              {/* Blurred accent glow behind photo */}
-              <div
-                className="absolute pointer-events-none z-0"
-                style={{
-                  inset: '-20px',
-                  background: 'radial-gradient(ellipse 80% 90% at 50% 50%, rgba(232,255,71,0.20) 0%, rgba(232,255,71,0.08) 35%, transparent 70%)',
-                  filter: 'blur(24px)',
-                }}
-              />
+            <div className="photo-outer">
+              {/* Glow layer behind everything */}
+              <div className="photo-glow" />
 
-              {/* Photo — no box, no border, floating */}
-              <div className="relative w-[340px] h-[440px] sm:w-[420px] sm:h-[530px] z-[1]">
-                <Image
-                  src="/images/hassan-photo.png"
-                  alt="Hassan Raza"
-                  fill
-                  className="object-cover object-top"
-                  style={{
-                    mixBlendMode: 'luminosity',
-                    filter: 'contrast(1.1) brightness(0.95)',
-                  }}
-                  priority
-                />
-                {/* Bottom fade */}
-                <div
-                  className="absolute inset-x-0 bottom-0 pointer-events-none z-[2]"
-                  style={{ height: '45%', background: 'linear-gradient(to top, #080a0c 0%, rgba(8,10,12,0.6) 40%, transparent 100%)' }}
-                />
-                {/* Left edge fade */}
-                <div
-                  className="absolute top-0 left-0 bottom-0 pointer-events-none z-[2]"
-                  style={{ width: '28%', background: 'linear-gradient(to right, #080a0c, transparent)' }}
-                />
-                {/* Right edge fade */}
-                <div
-                  className="absolute top-0 right-0 bottom-0 pointer-events-none z-[2]"
-                  style={{ width: '28%', background: 'linear-gradient(to left, #080a0c, transparent)' }}
-                />
+              {/* Photo as CSS background */}
+              <div
+                className="photo-bg"
+                style={{ backgroundImage: "url('/images/hassan-photo.png')" }}
+              >
+                <div className="fade-top" />
+                <div className="fade-bottom" />
+                <div className="fade-left" />
+                <div className="fade-right" />
               </div>
 
-              {/* Terminal window — overlapping bottom-left, z above photo */}
+              {/* Terminal window — below photo, floating bottom-left */}
               <div
-                className="absolute -bottom-4 -left-8 right-8 z-[3] rounded-lg overflow-hidden shadow-2xl"
-                style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}
+                className="absolute z-10 rounded-lg overflow-hidden shadow-2xl"
+                style={{
+                  bottom: -24,
+                  left: -32,
+                  maxWidth: 320,
+                  background: 'var(--surface)',
+                  border: '1px solid var(--border)',
+                }}
               >
                 {/* Title bar */}
                 <div className="flex items-center gap-2 px-4 py-2" style={{ borderBottom: '1px solid var(--border)' }}>
