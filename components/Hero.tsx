@@ -26,7 +26,10 @@ const badges = [
 
 export default function Hero() {
   const [mounted, setMounted] = useState(false)
-  useEffect(() => { setTimeout(() => setMounted(true), 60) }, [])
+  useEffect(() => {
+    const timer = window.setTimeout(() => setMounted(true), 60)
+    return () => window.clearTimeout(timer)
+  }, [])
 
   const show = mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
   const d = (ms: number): React.CSSProperties => ({
@@ -144,49 +147,42 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right — floating photo with CSS background + terminal window */}
-          <div className={`${show} relative flex justify-center`} style={d(200)}>
-            <div className="photo-outer">
-              {/* Glow layer behind everything */}
-              <div className="photo-glow" />
+          {/* Right — portrait card + badge */}
+          <div className={`${show} relative flex justify-center lg:justify-end`} style={d(200)}>
+            <div className="hero-portrait-stage">
+              <div className="hero-portrait-offset" />
 
-              {/* Photo as CSS background */}
-              <div
-                className="photo-bg"
-                style={{ backgroundImage: "url('/images/hassan-photo.png')" }}
-              >
-                <div className="fade-top" />
-                <div className="fade-bottom" />
-                <div className="fade-left" />
-                <div className="fade-right" />
+              <div className="hero-portrait-panel">
+                <div className="hero-portrait-grid" />
+                <div className="hero-portrait-halo" />
+
+                <div className="hero-portrait-frame">
+                  <div className="hero-portrait-image-wrap">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/hassan-photo.png"
+                      alt="Hassan Raza"
+                      className="hero-portrait-image"
+                    />
+                  </div>
+                </div>
               </div>
 
-              {/* Terminal window — below photo, floating bottom-left */}
-              <div
-                className="absolute z-10 rounded-lg overflow-hidden shadow-2xl"
-                style={{
-                  bottom: -24,
-                  left: -32,
-                  maxWidth: 320,
-                  background: 'var(--surface)',
-                  border: '1px solid var(--border)',
-                }}
-              >
-                {/* Title bar */}
-                <div className="flex items-center gap-2 px-4 py-2" style={{ borderBottom: '1px solid var(--border)' }}>
-                  <span className="terminal-dot terminal-dot--red" />
-                  <span className="terminal-dot terminal-dot--yellow" />
-                  <span className="terminal-dot terminal-dot--green" />
-                  <span className="font-mono text-[10px] ml-2" style={{ color: 'var(--muted)' }}>model.py</span>
-                </div>
-                {/* Code */}
-                <pre className="p-3 font-mono text-[11px] leading-5 overflow-x-auto" style={{ color: 'var(--dimmed)' }}>
-                  <code>{`class TerritoryOptimizer:
-    def __init__(self, n_clusters=167):
-        self.model = KMeans(n_clusters)
-    def fit(self, coords, weights):
-        return self.model.fit(coords)`}</code>
-                </pre>
+              <div className="hero-accent-orb" aria-hidden="true" />
+
+              <div className="hero-ring-badge" aria-hidden="true">
+                <svg viewBox="0 0 100 100" width="100" height="100" className="spin-badge">
+                  <defs>
+                    <path id="circle-path" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />
+                  </defs>
+                  <text fontSize="9" fill="var(--accent)" letterSpacing="3" fontFamily="monospace">
+                    <textPath href="#circle-path">
+                      100% JOB SUCCESS &bull; TOP RATED &bull; UPWORK &bull;
+                    </textPath>
+                  </text>
+                </svg>
+                <div className="hero-ring-badge__center">{'\u2726'}</div>
+                <div className="hero-ring-badge__inner" />
               </div>
             </div>
           </div>
