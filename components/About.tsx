@@ -4,13 +4,11 @@ import { useInView } from '@/hooks/useInView'
 
 const stats = [
   { value: '5+', label: 'Years Experience' },
-  { value: '12+', label: 'Enterprise Clients' },
-  { value: '33', label: 'GitHub Repos' },
-  { value: '3', label: 'Domains' },
-  { value: '100%', label: 'Job Success Rate' },
+  { value: 'Global', label: 'Client Work' },
+  { value: 'Retail', label: '& FMCG Analytics' },
+  { value: 'NLP', label: '+ Forecasting' },
+  { value: '100%', label: 'Job Success' },
 ]
-
-const clients = ['BAT', 'Nielsen', 'EBM', 'P&G', 'Unilever', 'Red Bull', 'Jazz', 'PMI']
 
 export default function About() {
   const { ref: headRef, inView: headIn } = useInView<HTMLDivElement>()
@@ -30,35 +28,32 @@ export default function About() {
             {/* Bio */}
             <div>
               <p className="font-inter text-base leading-relaxed mb-5" style={{ color: 'var(--dimmed)' }}>
-                I&apos;m a Machine Learning Engineer and Data Scientist based in Lahore,
-                Pakistan with 5+ years of hands-on experience building intelligent
-                systems for enterprise clients across the UK, US, and South Asia.
+                I&apos;m a Machine Learning Engineer and Data Scientist based in Pakistan,
+                with experience building data-driven systems for international clients
+                across retail, FMCG, and analytics-focused products.
               </p>
               <p className="font-inter text-base leading-relaxed mb-8" style={{ color: 'var(--dimmed)' }}>
-                My work spans the full ML lifecycle — from architecting geospatial
-                clustering engines that restructured BAT UK&apos;s nationwide field force,
-                to deploying LLM-powered analytics platforms for Nielsen and
-                satellite-driven market intelligence tools for P&amp;G, Unilever, and
-                Red Bull. On Upwork I hold a 100% Job Success Score with Top Rated
-                status — delivering time series forecasting, defect prediction ML
-                models, and data pipelines for international clients across industries.
+                My work focuses on transforming complex datasets into practical business
+                tools — from forecasting and geospatial modeling to NLP systems and
+                production ETL pipelines. At AiSight.ai, I work on analytics platforms
+                that help organizations understand market share, route performance,
+                sales opportunities, and operational efficiency.
+              </p>
+              <p className="font-inter text-base leading-relaxed mb-8" style={{ color: 'var(--dimmed)' }}>
+                I enjoy building systems that connect machine learning with business
+                value: products that are not only technically strong, but also useful
+                in real decision-making environments.
               </p>
 
-              {/* Client marquee strip */}
+              {/* Project scope strip */}
               <div className="pt-6" style={{ borderTop: '1px solid var(--border)' }}>
                 <p className="font-mono text-[11px] text-center uppercase tracking-widest mb-4" style={{ color: 'var(--muted)' }}>
-                  Trusted by global enterprises
+                  Worked across projects involving
                 </p>
-                <div className="marquee-wrapper overflow-hidden">
-                  <div className="marquee-track">
-                    {[...clients, ...clients].map((c, i) => (
-                      <span key={i} className="flex items-center gap-4 shrink-0">
-                        <span className="font-mono text-xs font-medium whitespace-nowrap" style={{ color: 'var(--muted)' }}>{c}</span>
-                        <span className="text-[8px]" style={{ color: 'var(--accent)' }}>&#9670;</span>
-                      </span>
-                    ))}
-                  </div>
-                </div>
+                <p className="font-inter text-sm text-center max-w-xl mx-auto" style={{ color: 'var(--muted)' }}>
+                  retail intelligence, market analytics, territory planning, forecasting systems,
+                  NLP tools, and production data pipelines.
+                </p>
               </div>
             </div>
 

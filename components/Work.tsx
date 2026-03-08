@@ -5,6 +5,7 @@ import { projects } from '@/data/projects'
 
 function ProjectCard({ project, index }: { project: (typeof projects)[number]; index: number }) {
   const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.08 })
+  const categoryLabel = project.category.replace(/-/g, ' ')
 
   return (
     <div
@@ -12,7 +13,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
       className={`fade-up ${inView ? 'visible' : ''}`}
       style={{ transitionDelay: `${(index % 3) * 100}ms` }}
     >
-      <article className="project-card group" style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}>
+      <article className="project-card group h-full" style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}>
         {/* Image / Placeholder */}
         <div className="relative w-full aspect-[16/10] overflow-hidden">
           <div
@@ -34,27 +35,32 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
         </div>
 
         {/* Body */}
-        <div className="p-5">
-          <div className="flex items-center justify-between mb-3">
-            <span
-              className="text-[10px] font-medium font-mono px-2.5 py-1 rounded-full"
-              style={{ color: project.companyColor, background: `${project.companyColor}15`, border: `1px solid ${project.companyColor}30` }}
-            >
-              {project.company}
-            </span>
+        <div className="p-5 sm:p-6 flex flex-col h-full">
+          <div className="flex items-center justify-between gap-3 mb-4">
+            <div className="flex flex-wrap items-center gap-2">
+              <span
+                className="text-[10px] font-medium font-mono px-2.5 py-1 rounded-full uppercase tracking-wider"
+                style={{ color: project.companyColor, background: `${project.companyColor}15`, border: `1px solid ${project.companyColor}30` }}
+              >
+                {project.company}
+              </span>
+              <span className="text-[10px] font-mono uppercase tracking-wider" style={{ color: 'var(--muted)' }}>
+                {categoryLabel}
+              </span>
+            </div>
             {project.github && (
-              <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-xs font-mono hover:text-accent transition-colors" style={{ color: 'var(--muted)' }}>GitHub &nearr;</a>
+              <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-xs font-mono hover:text-accent transition-colors shrink-0" style={{ color: 'var(--muted)' }}>GitHub &nearr;</a>
             )}
           </div>
-          <h3 className="font-syne font-bold text-[15px] mb-2 group-hover:text-accent transition-colors" style={{ color: 'var(--text)' }}>
+          <h3 className="font-syne font-bold text-[17px] leading-snug mb-3 group-hover:text-accent transition-colors" style={{ color: 'var(--text)' }}>
             {project.title}
           </h3>
-          <p className="font-inter text-xs leading-relaxed mb-4" style={{ color: 'var(--muted)' }}>
+          <p className="font-inter text-sm leading-7 mb-5" style={{ color: 'var(--muted)' }}>
             {project.description}
           </p>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-2 mt-auto">
             {project.tags.map((tag) => (
-              <span key={tag} className="font-mono text-[10px] px-2 py-0.5 rounded" style={{ color: 'var(--dimmed)', background: 'var(--surface2)', border: '1px solid var(--border)' }}>
+              <span key={tag} className="font-mono text-[10px] px-2.5 py-1 rounded-md" style={{ color: 'var(--dimmed)', background: 'var(--surface2)', border: '1px solid var(--border)' }}>
                 {tag}
               </span>
             ))}
@@ -74,12 +80,13 @@ export default function Work() {
         <div ref={headRef} className={`fade-up ${headIn ? 'visible' : ''} text-center mb-16`}>
           <p className="section-label mb-3">Portfolio</p>
           <h2 className="section-title font-syne">My <span>projects</span></h2>
-          <p className="font-inter text-sm mt-4 max-w-lg mx-auto" style={{ color: 'var(--muted)' }}>
-            Enterprise ML solutions and freelance projects delivering measurable impact.
+          <p className="font-inter text-sm mt-4 max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--muted)' }}>
+            Selected work across retail intelligence, forecasting, geospatial analytics, ETL systems,
+            and LLM-enabled business tools.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7 items-stretch">
           {projects.map((p, i) => (
             <ProjectCard key={p.id} project={p} index={i} />
           ))}

@@ -6,7 +6,7 @@ const navLinks = [
   { label: 'Home',         href: '#' },
   { label: 'Projects',     href: '#work' },
   { label: 'About',        href: '#about' },
-  { label: 'Testimonials', href: '#testimonials' },
+  { label: 'Impact',       href: '#impact' },
   { label: 'Experience',   href: '#experience' },
   { label: 'Contact',      href: '#contact' },
 ]
@@ -59,7 +59,7 @@ export default function Navbar() {
 
           {/* CTA — pill button */}
           <a href="#contact" className="hidden md:inline-flex btn-nav-cta">
-            Discuss for Projects
+            Let&apos;s Work Together
           </a>
 
           {/* Hamburger */}
@@ -93,7 +93,7 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
-        <a href="#contact" className="btn-nav-cta mt-8" onClick={() => setMenuOpen(false)}>Discuss for Projects</a>
+        <a href="#contact" className="btn-nav-cta mt-8" onClick={() => setMenuOpen(false)}>Let&apos;s Work Together</a>
       </div>
     </>
   )

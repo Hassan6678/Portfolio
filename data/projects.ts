@@ -24,8 +24,8 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: 1, category: "enterprise", company: "BAT UK", companyColor: "#e8ff47",
-    title: "Territory Clustering Optimization",
-    description: "Engineered a production territory design system restructuring BAT UK's nationwide field force across 167 warehouse hubs serving 506+ retail outlets. The weighted K-means spatial clustering engine balances visit frequency requirements, enforces 8-14 daily call constraints, and generates optimized 4-week route cycles -- cutting manual planning time from days to minutes and improving field coverage consistency.",
+    title: "Territory Planning & Route Optimization",
+    description: "Built a geospatial territory planning system for BAT UK to support retail field operations at scale. The solution combined weighted clustering, route logic, and visit-frequency constraints to produce practical territory maps and more consistent field coverage.",
     image: "/images/projects/bat-territory.png",
     tags: ["Spatial Clustering", "Weighted K-Means", "Route Optimization", "Google Maps API", "Python"],
     github: null, live: null,
@@ -33,8 +33,8 @@ export const projects: Project[] = [
   },
   {
     id: 2, category: "enterprise", company: "EBM", companyColor: "#58a6ff",
-    title: "AI-Powered Sales Intelligence Platform",
-    description: "Built an end-to-end intelligence platform combining deep learning sales pattern detection with satellite imagery analysis. Applied computer vision to identify untapped market opportunities across regions. Integrated real-time demand forecasting alerts that enabled proactive field decisions -- improving forecast accuracy and expanding regional market penetration for one of Pakistan's largest FMCG manufacturers.",
+    title: "Retail Sales Intelligence Platform",
+    description: "Developed a sales intelligence platform that combined forecasting, spatial analysis, and computer vision signals to support regional planning. It helped business teams identify market opportunities, monitor changing demand patterns, and make better territory-level decisions.",
     image: "/images/projects/ebm-dashboard.png",
     tags: ["Computer Vision", "Deep Learning", "Satellite Imagery", "TensorFlow", "Dashboard"],
     github: null, live: null,
@@ -42,8 +42,8 @@ export const projects: Project[] = [
   },
   {
     id: 3, category: "nlp", company: "Nielsen & UK Clients", companyColor: "#ff7b72",
-    title: "LLM Business Insights Chatbot",
-    description: "Designed and shipped an LLM-powered analytics chatbot transforming how Nielsen's clients interrogate market data -- replacing manual reporting with natural language queries. Led a team of 3 engineers through full product lifecycle from prototype to production, delivering on time and measurably reducing analyst workload for one of the world's largest market research firms.",
+    title: "LLM Analytics Assistant",
+    description: "Designed and delivered an LLM-based analytics assistant for market data workflows used by Nielsen and UK clients. The product translated natural language questions into usable business insight, reducing reliance on manual reporting and improving access to analysis.",
     image: "/images/projects/nielsen-chatbot.png",
     tags: ["LLM", "NLP", "Chatbot", "Team Lead", "Python"],
     github: null, live: null,
@@ -51,8 +51,8 @@ export const projects: Project[] = [
   },
   {
     id: 4, category: "enterprise", company: "SurveyAuto", companyColor: "#3fb950",
-    title: "Semi-Supervised Territory Definition",
-    description: "Built a semi-supervised geospatial clustering system optimizing distributor coverage across dense urban retail networks. Embedded hard time-budget constraints directly into the clustering objective -- ensuring every generated route is operationally feasible, not just geographically compact. Paired with a multi-level statistical forecasting engine delivering predictions at product, brand, company, and geospatial granularity.",
+    title: "Territory Definition & Forecasting System",
+    description: "Built a semi-supervised geospatial system for distributor territory design across dense retail networks. It combined operational route constraints with multi-level forecasting so planning teams could align coverage decisions with expected demand.",
     image: "/images/projects/surveyauto.png",
     tags: ["Geospatial ML", "Sales Forecasting", "Semi-Supervised", "Clustering"],
     github: null, live: null,
@@ -60,8 +60,8 @@ export const projects: Project[] = [
   },
   {
     id: 5, category: "enterprise", company: "AiSight.ai", companyColor: "#e8ff47",
-    title: "Retail Footfall & Market Intelligence Engine",
-    description: "Scraped and engineered shop-level intelligence across hundreds of retail locations -- capturing footfall patterns, building dimensions, morning/evening population density, and peak rush-hour signals. Fused these features with explainable AI models to produce actionable market insights that directly guided regional sales strategy and competitive positioning for top FMCG clients.",
+    title: "Retail Footfall Intelligence Engine",
+    description: "Built a shop-level intelligence engine using scraped and geospatial signals such as footfall, building context, and population patterns. The resulting models supported market-share analysis, outlet prioritization, and sales planning for FMCG-focused clients.",
     image: "/images/projects/aisight-footfall.png",
     tags: ["Web Scraping", "Feature Engineering", "Explainable AI", "Geospatial Analysis", "Python", "Scrapy"],
     github: null, live: null,
@@ -69,8 +69,8 @@ export const projects: Project[] = [
   },
   {
     id: 6, category: "enterprise", company: "AiSight.ai", companyColor: "#e8ff47",
-    title: "Scalable ETL Pipeline with Apache Airflow",
-    description: "Architected and deployed fault-tolerant ETL pipelines processing data from 5+ heterogeneous sources for 10+ enterprise clients. Used Apache Airflow orchestration with parallel computing to maximize throughput and minimize latency. Delivered consistent, high-integrity analytics data across the full platform -- replacing fragile manual processes with automated, monitored workflows.",
+    title: "Apache Airflow ETL Platform",
+    description: "Designed and deployed production ETL pipelines in Apache Airflow to move data from multiple sources into a reliable analytics environment. The platform improved data consistency, reduced manual handling, and gave client-facing products a stronger operational backbone.",
     image: "/images/projects/aisight-etl.png",
     tags: ["Apache Airflow", "ETL", "Parallel Computing", "Data Engineering", "Python", "Pipeline Automation"],
     github: null, live: null,
@@ -78,8 +78,8 @@ export const projects: Project[] = [
   },
   {
     id: 7, category: "freelance", company: "Upwork Client", companyColor: "#58a6ff",
-    title: "Time Series Classification & Forecasting System",
-    description: "Delivered a long-engagement forecasting project (195 hours, 5-star rated) building and improving time series classifiers for a demanding international client. Developed robust preprocessing, feature extraction, and model evaluation pipelines -- iterating rapidly through multiple approaches to maximize predictive accuracy on real-world irregular datasets.",
+    title: "Time Series Forecasting Workflow",
+    description: "Built a forecasting workflow for an international client working with irregular time series data. The engagement covered preprocessing, feature engineering, model evaluation, and iterative refinement to support more dependable predictive outputs.",
     image: "/images/projects/upwork-timeseries.png",
     tags: ["Time Series", "Forecasting", "Classification", "Python", "Scikit-learn", "TensorFlow"],
     github: null, live: null,
@@ -89,8 +89,8 @@ export const projects: Project[] = [
   },
   {
     id: 8, category: "freelance", company: "Upwork Client", companyColor: "#3fb950",
-    title: "Defect Prediction in Metal Additive Manufacturing",
-    description: "Engineered an ML-based defect prediction system for metal additive manufacturing -- a high-stakes industrial application where prediction accuracy directly impacts production quality and material costs. Applied supervised learning with domain-specific feature engineering on manufacturing process data to identify defect-prone conditions before they occur.",
+    title: "Manufacturing Defect Prediction System",
+    description: "Developed a machine learning system to identify defect-prone conditions in metal additive manufacturing. The project combined supervised models with domain-specific feature engineering to support earlier intervention and more stable production quality.",
     image: "/images/projects/upwork-defect.png",
     tags: ["Defect Prediction", "Manufacturing ML", "Supervised Learning", "Python", "Feature Engineering"],
     github: null, live: null,

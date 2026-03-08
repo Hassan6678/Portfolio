@@ -7,9 +7,9 @@ import CodeBg from '@/components/ui/CodeBg'
 const ROLES = [
   'Machine Learning Engineer',
   'Data Scientist',
-  'Geospatial AI Specialist',
+  'Geospatial Analytics Engineer',
   'NLP & LLM Engineer',
-  'Time Series & Forecasting Expert',
+  'Time Series & Forecasting Specialist',
 ]
 
 const socialLinks = [
@@ -20,8 +20,8 @@ const socialLinks = [
 
 const badges = [
   { icon: '\u2605', text: '100% Job Success' },
-  { icon: '', text: 'Top Rated on Upwork' },
-  { icon: '', text: '$10K+ Earned' },
+  { icon: '', text: 'Top Rated' },
+  { icon: '', text: '14 Jobs \u2022 653 Hours' },
 ]
 
 export default function Hero() {
@@ -88,10 +88,10 @@ export default function Hero() {
               className={`${show} font-inter text-base leading-relaxed max-w-lg mb-6`}
               style={{ ...d(300), color: 'var(--dimmed)' }}
             >
-              5+ years engineering production ML systems for global enterprises.
-              Territory optimization for BAT UK, satellite-powered market intelligence
-              for FMCG giants, LLM analytics chatbots for Nielsen — and a 100% Job
-              Success Score on Upwork with Top Rated status. I build things that work.
+              I build machine learning and data products that help businesses understand
+              markets, forecast demand, and make better operational decisions. My work
+              spans retail intelligence, geospatial analytics, forecasting, NLP, and
+              scalable data systems for global clients.
             </p>
 
             {/* Social proof badges */}
@@ -117,7 +117,7 @@ export default function Hero() {
             {/* CTAs */}
             <div className={`${show} flex flex-wrap gap-4 mb-10`} style={d(400)}>
               <a href="#contact" className="btn-primary">
-                Discuss for Projects
+                Let&apos;s Work Together
               </a>
               <a href="/cv.pdf" target="_blank" rel="noopener noreferrer" className="btn-ghost">
                 Download CV <span className="text-lg">&darr;</span>

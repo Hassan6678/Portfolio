@@ -20,22 +20,22 @@ export default function Contact() {
         {/* CTA banner */}
         <div
           ref={headRef}
-          className={`fade-up ${headIn ? 'visible' : ''} rounded-2xl p-10 sm:p-14 mb-16 text-center relative overflow-hidden`}
+          className={`fade-up ${headIn ? 'visible' : ''} contact-cta rounded-2xl p-10 sm:p-14 mb-16 text-center relative overflow-hidden`}
           style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}
         >
-          {/* Decorative */}
+          <div className="contact-cta__glow" aria-hidden="true" />
           <svg className="absolute top-6 left-8 w-8 h-8 opacity-30" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.09 6.26L20 10l-5.91 1.74L12 18l-2.09-6.26L4 10l5.91-1.74L12 2z" fill="var(--accent)" /></svg>
 
           <h2 className="section-title font-syne mb-4">
-            Have any <span>project idea?</span>
+            Let&apos;s build something <span>useful with data</span>
           </h2>
-          <p className="font-inter text-sm max-w-md mx-auto mb-8" style={{ color: 'var(--muted)' }}>
-            Whether you&apos;re solving a geospatial routing problem, need an LLM-powered
-            analytics tool, or want to turn messy data into production-grade intelligence
-            — let&apos;s talk. 100% Job Success Score. Top Rated on Upwork.
+          <p className="font-inter text-sm sm:text-[15px] leading-relaxed max-w-2xl mx-auto mb-8" style={{ color: 'var(--muted)' }}>
+            If you&apos;re working on machine learning, analytics, forecasting, geospatial intelligence,
+            or AI-driven business tools, I&apos;d be glad to connect. I&apos;m open to freelance projects,
+            collaborations, and full-time opportunities.
           </p>
           <a href="mailto:hassanrazacs@hotmail.com" className="btn-primary">
-            Contact Now
+            Start a Conversation
           </a>
         </div>
 
@@ -46,8 +46,8 @@ export default function Contact() {
             {/* Left: links */}
             <div>
               <h3 className="font-syne font-bold text-xl mb-6" style={{ color: 'var(--text)' }}>Get In Touch</h3>
-              <p className="font-inter text-sm leading-relaxed mb-8" style={{ color: 'var(--muted)' }}>
-                Open to freelance projects, consulting, and full-time opportunities.
+              <p className="font-inter text-sm leading-relaxed mb-8 max-w-md" style={{ color: 'var(--muted)' }}>
+                For project discussions, consulting work, or full-time roles, you can reach me directly through any of the channels below.
               </p>
               <ul className="space-y-3">
                 {contactLinks.map((l) => (
@@ -75,7 +75,7 @@ export default function Contact() {
             {/* Right: form */}
             <div>
               <h3 className="font-syne font-bold text-xl mb-6" style={{ color: 'var(--text)' }}>Send a Message</h3>
-              <form action="mailto:hassanrazacs@hotmail.com" method="get" encType="text/plain" className="space-y-4">
+              <form action="mailto:hassanrazacs@hotmail.com" method="get" encType="text/plain" className="space-y-4 contact-form-card rounded-2xl p-5 sm:p-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <input
                     name="name" type="text" required placeholder="Your name"

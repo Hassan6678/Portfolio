@@ -106,6 +106,27 @@
 }
 .project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(232,255,71,0.08); }
 
+.contact-cta {
+  background:
+    radial-gradient(circle at top, rgba(232, 255, 71, 0.08), transparent 36%),
+    linear-gradient(180deg, rgba(15, 17, 21, 0.98), rgba(10, 12, 15, 1));
+}
+
+.contact-cta__glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(232, 255, 71, 0.12), transparent 34%),
+    linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.02) 50%, transparent 100%);
+  pointer-events: none;
+}
+
+.contact-form-card {
+  background: rgba(15, 17, 21, 0.72);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+
 /* Scrolling code bg */
 @keyframes scrollCode { from { transform: translateY(0); } to { transform: translateY(-50%); } }
 .scroll-code { animation: scrollCode 45s linear infinite; }
