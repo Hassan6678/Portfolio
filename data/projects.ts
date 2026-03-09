@@ -3,7 +3,7 @@
  * To add a project: copy an entry, increment id, add image to public/images/projects/
  */
 
-export type ProjectCategory = "enterprise" | "nlp" | "computer-vision" | "freelance"
+export type ProjectCategory = "enterprise" | "nlp" | "computer-vision" | "freelance" | "research"
 
 export interface Project {
   id: number
@@ -53,7 +53,7 @@ export const projects: Project[] = [
     id: 4, category: "enterprise", company: "SurveyAuto", companyColor: "#3fb950",
     title: "Territory Definition & Forecasting System",
     description: "Built a semi-supervised geospatial system for distributor territory design across dense retail networks. It combined operational route constraints with multi-level forecasting so planning teams could align coverage decisions with expected demand.",
-    image: "/images/projects/surveyauto.png",
+    image: "/images/projects/surveyauto-forecasting.png",
     tags: ["Geospatial ML", "Sales Forecasting", "Semi-Supervised", "Clustering"],
     github: null, live: null,
     placeholderGradient: "linear-gradient(135deg, #0d1f10 0%, #081208 100%)",
@@ -62,7 +62,7 @@ export const projects: Project[] = [
     id: 5, category: "enterprise", company: "AiSight.ai", companyColor: "#e8ff47",
     title: "Retail Footfall Intelligence Engine",
     description: "Built a shop-level intelligence engine using scraped and geospatial signals such as footfall, building context, and population patterns. The resulting models supported market-share analysis, outlet prioritization, and sales planning for FMCG-focused clients.",
-    image: "/images/projects/aisight-footfall.png",
+    image: "/images/projects/aisight-footfall-map.png",
     tags: ["Web Scraping", "Feature Engineering", "Explainable AI", "Geospatial Analysis", "Python", "Scrapy"],
     github: null, live: null,
     placeholderGradient: "linear-gradient(135deg, #1a1f0d 0%, #0f1208 100%)",
@@ -71,30 +71,51 @@ export const projects: Project[] = [
     id: 6, category: "enterprise", company: "AiSight.ai", companyColor: "#e8ff47",
     title: "Apache Airflow ETL Platform",
     description: "Designed and deployed production ETL pipelines in Apache Airflow to move data from multiple sources into a reliable analytics environment. The platform improved data consistency, reduced manual handling, and gave client-facing products a stronger operational backbone.",
-    image: "/images/projects/aisight-etl.png",
+    image: "/images/projects/aisight-etl-airflow.png",
     tags: ["Apache Airflow", "ETL", "Parallel Computing", "Data Engineering", "Python", "Pipeline Automation"],
     github: null, live: null,
     placeholderGradient: "linear-gradient(135deg, #1a1a0d 0%, #121208 100%)",
   },
+]
+
+export const researchProjects: Project[] = [
   {
-    id: 7, category: "freelance", company: "Upwork Client", companyColor: "#58a6ff",
-    title: "Time Series Forecasting Workflow",
-    description: "Built a forecasting workflow for an international client working with irregular time series data. The engagement covered preprocessing, feature engineering, model evaluation, and iterative refinement to support more dependable predictive outputs.",
-    image: "/images/projects/upwork-timeseries.png",
-    tags: ["Time Series", "Forecasting", "Classification", "Python", "Scikit-learn", "TensorFlow"],
-    github: null, live: null,
-    placeholderGradient: "linear-gradient(135deg, #0d1b2a 0%, #081520 100%)",
-    upworkRating: "5.0",
-    earned: "$4,862",
+    id: 101,
+    category: "research",
+    company: "Upwork Client",
+    companyColor: "#58a6ff",
+    title: "Large-Scale Time Series Classification (Hydra + MultiRocket)",
+    description: "Implemented and optimized state-of-the-art time series classification pipelines using the ROCKET family, including Hydra and MultiRocket, for large benchmark datasets such as UCR109. The work focused on improving classification accuracy while maintaining computational efficiency through feature transformations, kernel-level optimizations, and hybrid modeling strategies.",
+    image: "/images/projects/hydra-multirocket.png",
+    tags: ["Python", "Hydra", "MultiRocket", "Time Series Classification", "NumPy", "Scikit-learn"],
+    github: null,
+    live: null,
+    placeholderGradient: "linear-gradient(135deg, #102133 0%, #0a121b 100%)",
   },
   {
-    id: 8, category: "freelance", company: "Upwork Client", companyColor: "#3fb950",
-    title: "Manufacturing Defect Prediction System",
-    description: "Developed a machine learning system to identify defect-prone conditions in metal additive manufacturing. The project combined supervised models with domain-specific feature engineering to support earlier intervention and more stable production quality.",
-    image: "/images/projects/upwork-defect.png",
-    tags: ["Defect Prediction", "Manufacturing ML", "Supervised Learning", "Python", "Feature Engineering"],
-    github: null, live: null,
-    placeholderGradient: "linear-gradient(135deg, #0d1f14 0%, #081210 100%)",
-    upworkRating: "5.0",
+    id: 102,
+    category: "research",
+    company: "Upwork Client",
+    companyColor: "#8b5cf6",
+    title: "Self-Supervised Mispronunciation Detection (wav2vec2 + CTC-GOP)",
+    description: "Developed a speech AI pipeline for phoneme-level mispronunciation detection using wav2vec2 and CTC-based Goodness of Pronunciation (GOP). Built decoding, alignment, threshold sweep, and evaluation workflows to detect pronunciation errors using metrics such as PER, FAR, FRR, and DER in a research-focused evaluation setup.",
+    image: "/images/projects/wav2vec2-mdd.png",
+    tags: ["wav2vec2", "Speech AI", "CTC-GOP", "PyTorch", "Hugging Face", "Evaluation Pipelines"],
+    github: null,
+    live: null,
+    placeholderGradient: "linear-gradient(135deg, #111827 0%, #1f1338 55%, #0a101c 100%)",
+  },
+  {
+    id: 103,
+    category: "research",
+    company: "Upwork Client",
+    companyColor: "#58a6ff",
+    title: "AI-Assisted Music Composition Engine",
+    description: "Built an experimental AI-assisted composition workflow for music generation and arrangement support. Explored prompt-guided composition, structured musical outputs, and model-assisted creative iteration for composition and editing tasks.",
+    image: "/images/projects/music-composition-engine.png",
+    tags: ["Generative AI", "Music AI", "Composition", "PyTorch", "Sequence Modeling"],
+    github: null,
+    live: null,
+    placeholderGradient: "linear-gradient(135deg, #0d1724 0%, #13263e 48%, #091018 100%)",
   },
 ]

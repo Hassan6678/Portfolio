@@ -1,7 +1,44 @@
 'use client'
 
+import { useState } from 'react'
 import { useInView } from '@/hooks/useInView'
 import { projects } from '@/data/projects'
+
+function ProjectMedia({ project }: { project: (typeof projects)[number] }) {
+  const [hasImageError, setHasImageError] = useState(false)
+
+  return (
+    <div className="relative w-full aspect-[16/10] overflow-hidden">
+      <div
+        className="absolute inset-0 flex items-center justify-center"
+        style={{ background: project.placeholderGradient }}
+      >
+        <div className="text-center px-6">
+          <div className="font-syne font-bold text-lg opacity-30" style={{ color: project.companyColor }}>{project.title}</div>
+        </div>
+      </div>
+      {!hasImageError && (
+        <img
+          src={project.image}
+          alt={project.title}
+          className="absolute inset-0 h-full w-full object-cover"
+          loading="lazy"
+          onError={() => setHasImageError(true)}
+        />
+      )}
+      <div
+        className="absolute inset-0"
+        style={{ background: 'linear-gradient(180deg, rgba(8,10,12,0.06) 0%, rgba(8,10,12,0.38) 100%)' }}
+      />
+      <div
+        className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+        style={{ background: 'rgba(7,11,24,0.75)' }}
+      >
+        <span className="font-syne font-bold text-sm" style={{ color: 'var(--accent)' }}>View Project &rarr;</span>
+      </div>
+    </div>
+  )
+}
 
 function ProjectCard({ project, index }: { project: (typeof projects)[number]; index: number }) {
   const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.08 })
@@ -14,25 +51,7 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
       style={{ transitionDelay: `${(index % 3) * 100}ms` }}
     >
       <article className="project-card group h-full" style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}>
-        {/* Image / Placeholder */}
-        <div className="relative w-full aspect-[16/10] overflow-hidden">
-          <div
-            className="absolute inset-0 flex items-center justify-center"
-            style={{ background: project.placeholderGradient }}
-          >
-            {/* Decorative project icon placeholder */}
-            <div className="text-center px-6">
-              <div className="font-syne font-bold text-lg opacity-30" style={{ color: project.companyColor }}>{project.title}</div>
-            </div>
-          </div>
-          {/* Hover overlay */}
-          <div
-            className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-            style={{ background: 'rgba(7,11,24,0.75)' }}
-          >
-            <span className="font-syne font-bold text-sm" style={{ color: 'var(--accent)' }}>View Project &rarr;</span>
-          </div>
-        </div>
+        <ProjectMedia project={project} />
 
         {/* Body */}
         <div className="p-5 sm:p-6 flex flex-col h-full">
