@@ -10,7 +10,7 @@ const quickLinks = [
 const socialLinks = [
   { label: 'LinkedIn', href: 'https://linkedin.com/in/hassan-raza-cs' },
   { label: 'GitHub', href: 'https://github.com/Hassan6678' },
-  { label: 'Upwork', href: 'https://upwork.com/freelancers/~012bd9ba4b97d2b072' },
+  { label: 'Upwork', href: 'https://www.upwork.com/freelancers/hassanraza535' },
 ]
 
 export default function Footer() {
