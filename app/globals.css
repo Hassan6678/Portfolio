@@ -184,6 +184,7 @@
   position: relative;
   width: min(100%, 520px);
   padding: 40px 24px 32px;
+  overflow: visible;
 }
 
 .hero-portrait-offset {
@@ -280,8 +281,8 @@
 
 .hero-ring-badge {
   position: absolute;
-  right: 8px;
-  top: 58%;
+  right: -32px;
+  top: 54%;
   z-index: 10;
   width: 112px;
   height: 112px;

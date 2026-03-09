@@ -20,8 +20,7 @@ const socialLinks = [
 
 const badges = [
   { icon: '\u2605', text: '100% Job Success' },
-  { icon: '', text: 'Top Rated' },
-  { icon: '', text: '14 Jobs \u2022 653 Hours' },
+  { icon: '', text: 'Upwork Top Rated' },
 ]
 
 export default function Hero() {
@@ -141,14 +140,14 @@ export default function Hero() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-mono text-xs transition-colors duration-200 flex items-center gap-1"
-                    style={{ color: 'var(--muted)' }}
+                    style={{ color: 'var(--accent)' }}
                     onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--text)' }}
-                    onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--muted)' }}
+                    onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--accent)' }}
                   >
                     {l.label} &#8599;
                   </a>
                   {i < socialLinks.length - 1 && (
-                    <span className="mx-3 text-xs" style={{ color: 'var(--muted)' }}>&middot;</span>
+                    <span className="mx-3 text-xs" style={{ color: 'var(--accent)', opacity: 0.5 }}>&middot;</span>
                   )}
                 </span>
               ))}
