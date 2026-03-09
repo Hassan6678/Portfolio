@@ -3,10 +3,10 @@
 import { useInView } from '@/hooks/useInView'
 
 const contactLinks = [
-  { label: 'Email', value: 'hassanrazacs@hotmail.com', href: 'mailto:hassanrazacs@hotmail.com' },
-  { label: 'LinkedIn', value: 'linkedin.com/in/hassan-raza-cs', href: 'https://linkedin.com/in/hassan-raza-cs' },
-  { label: 'GitHub', value: 'github.com/Hassan6678', href: 'https://github.com/Hassan6678' },
-  { label: 'Upwork', value: 'upwork.com/freelancers/~012bd9ba4b97d2b072', href: 'https://upwork.com/freelancers/~012bd9ba4b97d2b072' },
+  { label: 'Email', value: 'hassanrazacs@hotmail.com', href: 'mailto:hassanrazacs@hotmail.com', color: '#d8ea35' },
+  { label: 'LinkedIn', value: 'linkedin.com/in/hassan-raza-cs', href: 'https://linkedin.com/in/hassan-raza-cs', color: '#0a66c2' },
+  { label: 'GitHub', value: 'github.com/Hassan6678', href: 'https://github.com/Hassan6678', color: '#c9d1d9' },
+  { label: 'Upwork', value: 'upwork.com/freelancers/hassanraza535', href: 'https://upwork.com/freelancers/hassanraza535', color: '#14a800' },
 ]
 
 export default function Contact() {
@@ -58,14 +58,17 @@ export default function Contact() {
                       rel="noopener noreferrer"
                       className="flex items-center justify-between p-4 rounded-xl group transition-all duration-200"
                       style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}
-                      onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(232,255,71,0.4)' }}
+                      onMouseEnter={(e) => { e.currentTarget.style.borderColor = `${l.color}55` }}
                       onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--border)' }}
                     >
                       <div>
-                        <div className="text-[10px] uppercase tracking-widest mb-1 font-medium" style={{ color: 'var(--muted)' }}>{l.label}</div>
-                        <div className="font-mono text-xs group-hover:text-accent transition-colors break-all" style={{ color: 'var(--dimmed)' }}>{l.value}</div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="inline-block w-2 h-2 rounded-full" style={{ background: l.color }} />
+                          <div className="text-[10px] uppercase tracking-widest font-medium" style={{ color: l.color }}>{l.label}</div>
+                        </div>
+                        <div className="font-mono text-xs transition-opacity break-all opacity-90 group-hover:opacity-100" style={{ color: l.color }}>{l.value}</div>
                       </div>
-                      <span className="text-lg group-hover:text-accent group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" style={{ color: 'var(--muted)' }}>&nearr;</span>
+                      <span className="text-lg group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-all" style={{ color: l.color }}>{'\u2197'}</span>
                     </a>
                   </li>
                 ))}
