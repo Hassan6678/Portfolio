@@ -86,7 +86,6 @@ export default function Testimonials() {
           <div className="flex flex-wrap items-center justify-center gap-2 mt-6">
             <MetricChip value="100%" label="Job Success" />
             <MetricChip value="Top Rated" label="Upwork" />
-            <MetricChip value="14 Jobs" label="653 Hours" />
           </div>
         </div>
 
