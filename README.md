@@ -1,127 +1,147 @@
-# Hassan Raza — Portfolio v2
+# Hassan Raza Portfolio
 
-Personal portfolio website for Hassan Raza, ML Engineer & Data Scientist.
+A premium one-page portfolio for Hassan Raza, focused on machine learning, data science, retail intelligence, geospatial analytics, forecasting, and AI-driven business tools.
 
-**Stack:** Next.js 14 (App Router) · TypeScript · Tailwind CSS · Vercel
-**Design:** GitHub Dark aesthetic with IDE/terminal elements, typewriter effect, scrolling code background.
+## Stack
 
----
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- Vercel
+
+## Highlights
+
+- Premium dark visual system with custom CSS variables
+- Animated hero with rotating role list and portrait panel
+- Curated project section covering retail intelligence, forecasting, ETL, NLP, and geospatial analytics
+- Selected impact, experience timeline, skill groups, and premium contact section
+- Mobile-responsive single-page layout
 
 ## Local Development
 
-**Prerequisites:** Node.js 18+ and npm
+Prerequisites: Node.js 18+ and npm
 
 ```bash
-# 1. Install dependencies
 npm install
-
-# 2. Start dev server
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open `http://localhost:3000`.
 
----
+If the dev server starts serving stale `/_next/static/...` files after a restart, clear the cache and start again:
+
+```powershell
+Remove-Item -Recurse -Force .next
+npm run dev
+```
+
+## Build
+
+```bash
+npm run build
+```
 
 ## Project Structure
 
-```
+```text
 .
 ├── app/
-│   ├── layout.tsx        # Root layout — Syne, JetBrains Mono, Inter via next/font
-│   ├── page.tsx          # Single-page composition of all sections
-│   └── globals.css       # CSS variables, animations, fade-up, scrolling code, blink
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
 ├── components/
-│   ├── Navbar.tsx        # Fixed nav, hide-on-scroll, fullscreen mobile menu overlay
-│   ├── Hero.tsx          # Two-column: typewriter + bio / photo + floating terminal
-│   ├── About.tsx         # Bio + 2x2 stats grid + client logo strip
-│   ├── Work.tsx          # Filter tabs + 2-col project card grid + placeholders
-│   ├── Experience.tsx    # Vertical timeline with tech stack pill badges
-│   ├── Skills.tsx        # 3-column skill chip groups with // comment labels
-│   ├── Contact.tsx       # 4 contact link cards + mailto form
-│   ├── Footer.tsx        # Single-line footer
+│   ├── About.tsx
+│   ├── Contact.tsx
+│   ├── Experience.tsx
+│   ├── Footer.tsx
+│   ├── Hero.tsx
+│   ├── Navbar.tsx
+│   ├── Skills.tsx
+│   ├── Specialties.tsx
+│   ├── Testimonials.tsx
+│   ├── Work.tsx
 │   └── ui/
-│       ├── TypeWriter.tsx  # Typewriter cycling component
-│       └── CodeBg.tsx      # Scrolling code background animation
+│       ├── CodeBg.tsx
+│       └── TypeWriter.tsx
 ├── data/
-│   ├── projects.ts       # 7 projects — see file for instructions to add more
-│   ├── experience.ts     # 3 work experience entries with stack arrays
-│   └── skills.ts         # 3 skill groups with // comment labels
+│   ├── experience.ts
+│   ├── projects.ts
+│   └── skills.ts
 ├── hooks/
-│   ├── useInView.ts      # IntersectionObserver → fade-up "visible" class
-│   └── useTypewriter.ts  # Typewriter effect hook (char-by-char, delete, cycle)
+│   ├── useInView.ts
+│   └── useTypewriter.ts
 ├── public/
 │   └── images/
-│       ├── hassan-photo.jpg         ← ADD YOUR PHOTO HERE
+│       ├── hassan-photo.png
 │       └── projects/
-│           ├── bat-territory.png    ← ADD PROJECT SCREENSHOTS HERE
-│           ├── ebm-dashboard.png
-│           ├── nielsen-chatbot.png
-│           ├── surveyauto.png
-│           ├── vlc-gesture.png
-│           ├── urdu-asr.png
-│           └── urdu-ocr.png
-├── tailwind.config.ts
 ├── next.config.js
+├── package.json
+├── postcss.config.js
+├── tailwind.config.ts
 └── tsconfig.json
 ```
 
----
+## Main Sections
 
-## Adding Your Photo
+- `Navbar`: fixed navigation with mobile menu
+- `Hero`: positioning, credibility badges, CTA, social links, portrait composition
+- `Specialties`: high-level capability cards
+- `About`: profile summary and stats
+- `Work`: selected projects and tags
+- `Testimonials.tsx`: currently used as the `Impact` section
+- `Experience`: timeline of roles and tech stack
+- `Skills`: grouped capabilities
+- `Contact`: CTA, direct contact cards, and mailto form
+- `Footer`: minimal closing section
 
-1. Place your photo at `public/images/hassan-photo.jpg`
-2. Open [components/Hero.tsx](components/Hero.tsx) and find the `PHOTO PLACEHOLDER` comment block
-3. Remove the placeholder `<div>` and uncomment the `<Image>` component
+## Content Editing Guide
 
-## Adding Project Screenshots
+Update these files to keep the portfolio current:
 
-1. Export screenshots (recommended: 1280×720 or 1920×1080) as PNG
-2. Save them to `public/images/projects/` matching the filename in `data/projects.ts`
-3. The card will automatically use the image instead of the gradient placeholder
+| Content | File |
+|---|---|
+| Hero roles, badges, social links | `components/Hero.tsx` |
+| About copy and stats | `components/About.tsx` |
+| Project cards | `data/projects.ts` |
+| Experience timeline | `data/experience.ts` |
+| Skill groups | `data/skills.ts` |
+| Contact links | `components/Contact.tsx` |
+| Colors, spacing, animations | `app/globals.css` |
+| Page composition | `app/page.tsx` |
 
----
+## Assets
 
-## Deploy to Vercel
+- Hero portrait: `public/images/hassan-photo.png`
+- Project visuals: `public/images/projects/`
 
-### Option A — Vercel CLI
+Match project image filenames with the `image` field in `data/projects.ts`.
+
+## Deployment
+
+### GitHub + Vercel
+
+1. Push changes to the production branch, usually `main`
+2. Vercel detects the new commit automatically
+3. A new production deployment is built and published if the build succeeds
+
+### Vercel CLI
 
 ```bash
 npm install -g vercel
 vercel
 ```
 
-### Option B — GitHub + Vercel Dashboard
+No environment variables are currently required.
 
-1. Push to GitHub
-2. Go to [vercel.com/new](https://vercel.com/new) → import repository
-3. Vercel auto-detects Next.js — click **Deploy**
+## Contact Form Note
 
-No environment variables are required.
+The form currently uses a `mailto:` action, which opens the user’s email client.
 
----
+If you want to upgrade it later, common options are:
 
-## Customisation Quick Reference
-
-| What | File |
-|------|------|
-| Projects | `data/projects.ts` |
-| Work experience | `data/experience.ts` |
-| Skill groups | `data/skills.ts` |
-| Color palette | `app/globals.css` → `:root {}` |
-| Fonts | `app/layout.tsx` |
-| Typewriter roles | `components/Hero.tsx` → `ROLES` array |
-| Contact links | `components/Contact.tsx` → `contactLinks` |
-| SEO metadata | `app/layout.tsx` → `metadata` export |
-
-## Contact Form
-
-The form uses a `mailto:` action (opens email client). To upgrade:
-
-- **Formspree**: set `action="https://formspree.io/f/YOUR_ID"` and `method="POST"`
-- **API route**: create `app/api/contact/route.ts` with Resend/SendGrid
-
----
+- Formspree
+- Resend via a Next.js API route
+- SendGrid via a server action or API route
 
 ## License
 
