@@ -94,6 +94,14 @@ export default function Hero() {
               scalable data systems for global clients.
             </p>
 
+            <p
+              className={`${show} font-inter text-sm leading-relaxed max-w-lg mb-7`}
+              style={{ ...d(325), color: 'var(--muted)' }}
+            >
+              Specializing in machine learning systems, geospatial analytics,
+              time series modeling, and AI-driven products.
+            </p>
+
             {/* Social proof badges */}
             <div className={`${show} flex flex-wrap gap-2 mb-8`} style={d(350)}>
               {badges.map((b) => (
