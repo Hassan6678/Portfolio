@@ -114,10 +114,10 @@ export default function Hero() {
               className={`${show} font-inter text-base leading-relaxed max-w-lg mb-6`}
               style={{ ...d(300), color: 'var(--dimmed)' }}
             >
-              I build machine learning and data products that help businesses understand
-              markets, forecast demand, and make better operational decisions. My work
-              spans retail intelligence, geospatial analytics, forecasting, NLP, and
-              scalable data systems for global clients.
+              I built the territory scheduling engine BAT UK uses to plan 131
+              field-force routes. I run a live FMCG analytics platform across
+              5 markets. I&apos;ve scored 55,000+ retail outlets for global enterprise
+              clients. I don&apos;t describe ML — I ship it.
             </p>
 
             <p

@@ -1,6 +1,7 @@
 'use client'
 
 import { useInView } from '@/hooks/useInView'
+import AnimateOnScroll from '@/components/AnimateOnScroll'
 
 const specialties = [
   {
@@ -75,14 +76,8 @@ export default function Specialties() {
 }
 
 function SpecialtyCard({ item, index }: { item: typeof specialties[number]; index: number }) {
-  const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.1 })
-
   return (
-    <div
-      ref={ref}
-      className={`fade-up ${inView ? 'visible' : ''}`}
-      style={{ transitionDelay: `${index * 100}ms` }}
-    >
+    <AnimateOnScroll delay={index * 0.07} className="h-full">
       <div
         className="card-hover p-8 rounded-xl text-center h-full"
         style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}
@@ -97,6 +92,6 @@ function SpecialtyCard({ item, index }: { item: typeof specialties[number]; inde
           {item.desc}
         </p>
       </div>
-    </div>
+    </AnimateOnScroll>
   )
 }

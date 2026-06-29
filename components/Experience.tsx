@@ -2,12 +2,11 @@
 
 import { useInView } from '@/hooks/useInView'
 import { experiences } from '@/data/experience'
+import AnimateOnScroll from '@/components/AnimateOnScroll'
 
 function TimelineItem({ exp, index, isLast }: { exp: (typeof experiences)[number]; index: number; isLast: boolean }) {
-  const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.1 })
-
   return (
-    <div ref={ref} className={`fade-up ${inView ? 'visible' : ''} relative pl-10`} style={{ transitionDelay: `${index * 100}ms` }}>
+    <AnimateOnScroll delay={index * 0.1} className="relative pl-10">
       {/* Dot */}
       <div className="absolute left-0 top-2 w-4 h-4 rounded-full" style={{ background: 'var(--accent)', boxShadow: '0 0 0 4px var(--accent-dim)' }} />
       {/* Line */}
@@ -41,7 +40,7 @@ function TimelineItem({ exp, index, isLast }: { exp: (typeof experiences)[number
           ))}
         </div>
       </div>
-    </div>
+    </AnimateOnScroll>
   )
 }
 

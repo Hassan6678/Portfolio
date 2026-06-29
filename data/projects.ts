@@ -5,29 +5,60 @@
 
 export type ProjectCategory = "enterprise" | "nlp" | "computer-vision" | "freelance" | "research"
 
+export interface ProjectMetric {
+  value: string
+  label: string
+}
+
 export interface Project {
   id: number
   category: ProjectCategory
   company: string
   companyColor: string
   title: string
+  subtitle?: string
   description: string
   image: string
   tags: string[]
+  metrics?: ProjectMetric[]
   github: string | null
   live: string | null
   placeholderGradient: string
+  featured?: boolean
   upworkRating?: string
   earned?: string
 }
 
 export const projects: Project[] = [
   {
+    id: 0, category: "enterprise", company: "AiSight.ai", companyColor: "#e8ff47",
+    featured: true,
+    title: "RTM Analytics Platform",
+    subtitle: "Multi-Tenant FMCG Intelligence Platform",
+    description: "Architected and deployed a production-grade, multi-tenant internal analytics platform serving field operations teams across 5 FMCG markets. Built on FastAPI + HTMX with 20+ geospatial and data processing tools — including HDBSCAN clustering, Voronoi tessellation, BFS region-growing, and LandScan TIF raster population analysis. Async background job execution with SQLite WAL-mode persistence ensures reliability under concurrent enterprise usage. Used daily by operations teams across Pakistan, India, Bangladesh, Sri Lanka, and Nepal.",
+    image: "/images/projects/rtm-platform.png",
+    tags: ["FastAPI", "HTMX", "Python", "HDBSCAN", "Voronoi Tessellation", "Geospatial AI", "SQLite WAL", "AWS S3", "Docker", "Multi-Tenant"],
+    metrics: [
+      { value: "20+", label: "Geospatial Tools" },
+      { value: "5", label: "FMCG Markets" },
+      { value: "Daily", label: "Production Usage" },
+      { value: "142+", label: "Jobs Processed" },
+    ],
+    github: null, live: null,
+    placeholderGradient: "linear-gradient(135deg, #0f1f0f 0%, #1a2f1a 40%, #0f1a0f 100%)",
+  },
+  {
     id: 1, category: "enterprise", company: "BAT UK", companyColor: "#e8ff47",
     title: "Territory Planning & Route Optimization",
-    description: "Built a geospatial territory planning system for BAT UK to support retail field operations at scale. The solution combined weighted clustering, route logic, and visit-frequency constraints to produce practical territory maps and more consistent field coverage.",
+    description: "Built a geospatial territory planning system for BAT UK to support retail field operations at scale. The solution combined weighted clustering, route logic, and visit-frequency constraints to produce practical territory maps and more consistent field coverage. 131 territories · 12-week quarter scheduling · 8–14 daily call constraints · multi-constraint route optimization across 506+ outlet locations.",
     image: "/images/projects/bat-territory.png",
     tags: ["Spatial Clustering", "Weighted K-Means", "Route Optimization", "Google Maps API", "Python"],
+    metrics: [
+      { value: "131", label: "Territories" },
+      { value: "506+", label: "Outlets" },
+      { value: "12wk", label: "Quarter Cycles" },
+      { value: "8–14", label: "Daily Calls" },
+    ],
     github: null, live: null,
     placeholderGradient: "linear-gradient(135deg, #1a2614 0%, #0f1a0a 100%)",
   },
@@ -43,7 +74,7 @@ export const projects: Project[] = [
   {
     id: 3, category: "nlp", company: "Nielsen & UK Clients", companyColor: "#ff7b72",
     title: "LLM Analytics Assistant",
-    description: "Designed and delivered an LLM-based analytics assistant for market data workflows used by Nielsen and UK clients. The product translated natural language questions into usable business insight, reducing reliance on manual reporting and improving access to analysis.",
+    description: "Designed and delivered an LLM-based analytics assistant for market data workflows used by Nielsen and UK clients. The product translated natural language questions into usable business insight, reducing reliance on manual reporting and improving access to analysis. Delivered to 3 enterprise clients · team of 3 engineers · production deployed.",
     image: "/images/projects/nielsen-chatbot.png",
     tags: ["LLM", "NLP", "Chatbot", "Team Lead", "Python"],
     github: null, live: null,
@@ -52,7 +83,7 @@ export const projects: Project[] = [
   {
     id: 4, category: "enterprise", company: "SurveyAuto", companyColor: "#3fb950",
     title: "Territory Definition & Forecasting System",
-    description: "Built a semi-supervised geospatial system for distributor territory design across dense retail networks. It combined operational route constraints with multi-level forecasting so planning teams could align coverage decisions with expected demand.",
+    description: "Built a semi-supervised geospatial system for distributor territory design across dense retail networks. It combined operational route constraints with multi-level forecasting so planning teams could align coverage decisions with expected demand. Multi-level forecasting at product, brand, company and geospatial granularity across urban retail networks.",
     image: "/images/projects/surveyauto-forecasting.png",
     tags: ["Geospatial ML", "Sales Forecasting", "Semi-Supervised", "Clustering"],
     github: null, live: null,

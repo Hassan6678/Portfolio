@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { researchProjects } from '@/data/projects'
 import { useInView } from '@/hooks/useInView'
+import AnimateOnScroll from '@/components/AnimateOnScroll'
 
 function ResearchMedia({ project }: { project: (typeof researchProjects)[number] }) {
   const [hasImageError, setHasImageError] = useState(false)
@@ -49,15 +50,10 @@ function ResearchCard({
   project: (typeof researchProjects)[number]
   index: number
 }) {
-  const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.08 })
   const categoryLabel = project.category.replace(/-/g, ' ')
 
   return (
-    <div
-      ref={ref}
-      className={`fade-up ${inView ? 'visible' : ''}`}
-      style={{ transitionDelay: `${(index % 3) * 100}ms` }}
-    >
+    <AnimateOnScroll delay={index * 0.08} className="h-full">
       <article className="project-card group h-full" style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}>
         <ResearchMedia project={project} />
 
@@ -74,6 +70,22 @@ function ResearchCard({
                 {categoryLabel}
               </span>
             </div>
+          </div>
+
+          <div
+            className="font-mono"
+            style={{
+              fontSize: 9,
+              color: '#3fb950',
+              border: '0.5px solid rgba(63,185,80,0.3)',
+              padding: '2px 8px',
+              borderRadius: 3,
+              display: 'inline-block',
+              marginBottom: 8,
+              alignSelf: 'flex-start',
+            }}
+          >
+            Upwork Contract &middot; 5&#9733; Rated
           </div>
 
           <h3 className="font-syne font-bold text-[17px] leading-snug mb-3 group-hover:text-accent transition-colors" style={{ color: 'var(--text)' }}>
@@ -93,7 +105,7 @@ function ResearchCard({
           </div>
         </div>
       </article>
-    </div>
+    </AnimateOnScroll>
   )
 }
 
@@ -107,7 +119,7 @@ export default function ResearchProjects() {
           <p className="section-label mb-3">Research</p>
           <h2 className="section-title font-syne">Research &amp; <span>Advanced AI Projects</span></h2>
           <p className="font-inter text-sm mt-4 max-w-2xl mx-auto leading-relaxed" style={{ color: 'var(--muted)' }}>
-            Experimental and research-oriented systems delivered for international Upwork clients, spanning speech AI, time-series learning, and generative models.
+            Contracted research engagements delivered for international Upwork clients — spanning speech AI, time-series classification, and generative systems.
           </p>
         </div>
 

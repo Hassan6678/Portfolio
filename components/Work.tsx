@@ -2,7 +2,30 @@
 
 import { useState } from 'react'
 import { useInView } from '@/hooks/useInView'
-import { projects } from '@/data/projects'
+import { projects, type ProjectMetric } from '@/data/projects'
+import AnimateOnScroll from '@/components/AnimateOnScroll'
+import CountingNumber from '@/components/CountingNumber'
+
+function MetricValue({ value }: { value: string }) {
+  const match = value.match(/^(\d+)(\+?)$/)
+  if (match) {
+    return <CountingNumber target={parseInt(match[1], 10)} suffix={match[2]} />
+  }
+  return <>{value}</>
+}
+
+function ProjectMetrics({ metrics }: { metrics: ProjectMetric[] }) {
+  return (
+    <div className="project-metrics">
+      {metrics.map((m) => (
+        <div key={m.label} className="metric-pill">
+          <span className="metric-value"><MetricValue value={m.value} /></span>
+          <span className="metric-label">{m.label}</span>
+        </div>
+      ))}
+    </div>
+  )
+}
 
 function ProjectMedia({ project }: { project: (typeof projects)[number] }) {
   const [hasImageError, setHasImageError] = useState(false)
@@ -41,15 +64,10 @@ function ProjectMedia({ project }: { project: (typeof projects)[number] }) {
 }
 
 function ProjectCard({ project, index }: { project: (typeof projects)[number]; index: number }) {
-  const { ref, inView } = useInView<HTMLDivElement>({ threshold: 0.08 })
   const categoryLabel = project.category.replace(/-/g, ' ')
 
   return (
-    <div
-      ref={ref}
-      className={`fade-up ${inView ? 'visible' : ''}`}
-      style={{ transitionDelay: `${(index % 3) * 100}ms` }}
-    >
+    <AnimateOnScroll delay={index * 0.08} className="h-full">
       <article className="project-card group h-full" style={{ background: 'var(--surface)', border: '1px solid var(--border)' }}>
         <ProjectMedia project={project} />
 
@@ -71,22 +89,32 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
               <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-xs font-mono hover:text-accent transition-colors shrink-0" style={{ color: 'var(--muted)' }}>GitHub &nearr;</a>
             )}
           </div>
-          <h3 className="font-syne font-bold text-[17px] leading-snug mb-3 group-hover:text-accent transition-colors" style={{ color: 'var(--text)' }}>
+          <h3 className="font-syne font-bold text-[17px] leading-snug mb-2 group-hover:text-accent transition-colors" style={{ color: 'var(--text)' }}>
             {project.title}
           </h3>
+          {project.subtitle && (
+            <p className="font-mono text-[11px] mb-3" style={{ color: 'var(--accent)' }}>
+              {project.subtitle}
+            </p>
+          )}
           <p className="font-inter text-sm leading-7 mb-5" style={{ color: 'var(--muted)' }}>
             {project.description}
           </p>
-          <div className="flex flex-wrap gap-2 mt-auto">
-            {project.tags.map((tag) => (
-              <span key={tag} className="font-mono text-[10px] px-2.5 py-1 rounded-md" style={{ color: 'var(--dimmed)', background: 'var(--surface2)', border: '1px solid var(--border)' }}>
-                {tag}
-              </span>
-            ))}
+          <div className="mt-auto">
+            {project.metrics && project.metrics.length > 0 && (
+              <ProjectMetrics metrics={project.metrics} />
+            )}
+            <div className="flex flex-wrap gap-2 mt-5">
+              {project.tags.map((tag) => (
+                <span key={tag} className="font-mono text-[10px] px-2.5 py-1 rounded-md" style={{ color: 'var(--dimmed)', background: 'var(--surface2)', border: '1px solid var(--border)' }}>
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </article>
-    </div>
+    </AnimateOnScroll>
   )
 }
 

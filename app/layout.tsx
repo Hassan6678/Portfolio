@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Syne, JetBrains_Mono, Inter } from 'next/font/google'
 import './globals.css'
+import SmoothScroll from '@/components/SmoothScroll'
+import CustomCursor from '@/components/CustomCursor'
 
 const syne = Syne({
   subsets: ['latin'],
@@ -49,7 +51,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en"
       className={`${syne.variable} ${jetbrainsMono.variable} ${inter.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <CustomCursor />
+        <SmoothScroll>
+          {children}
+        </SmoothScroll>
+      </body>
     </html>
   )
 }

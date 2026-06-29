@@ -1,6 +1,8 @@
 'use client'
 
 import { useInView } from '@/hooks/useInView'
+import AnimateOnScroll from '@/components/AnimateOnScroll'
+import CountingNumber from '@/components/CountingNumber'
 
 const stats = [
   { value: '5+', label: 'Years Experience' },
@@ -9,6 +11,14 @@ const stats = [
   { value: 'NLP', label: '+ Forecasting' },
   { value: '100%', label: 'Job Success' },
 ]
+
+function StatValue({ value }: { value: string }) {
+  const match = value.match(/^(\d+)([%+]?)$/)
+  if (match) {
+    return <CountingNumber target={parseInt(match[1], 10)} suffix={match[2]} />
+  }
+  return <>{value}</>
+}
 
 export default function About() {
   const { ref: headRef, inView: headIn } = useInView<HTMLDivElement>()
@@ -26,7 +36,7 @@ export default function About() {
         <div ref={bodyRef} className={`fade-up ${bodyIn ? 'visible' : ''}`}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Bio */}
-            <div>
+            <AnimateOnScroll delay={0.15}>
               <p className="font-inter text-base leading-relaxed mb-5" style={{ color: 'var(--dimmed)' }}>
                 I&apos;m a Machine Learning Engineer and Data Scientist based in Pakistan,
                 with experience building data-driven systems for international clients
@@ -55,10 +65,10 @@ export default function About() {
                   NLP tools, and production data pipelines.
                 </p>
               </div>
-            </div>
+            </AnimateOnScroll>
 
             {/* Stats — 5 items: 2+2+1 layout */}
-            <div>
+            <AnimateOnScroll delay={0.2}>
               <div className="grid grid-cols-2 gap-4 mb-4">
                 {stats.slice(0, 4).map((s) => (
                   <div
@@ -67,7 +77,7 @@ export default function About() {
                     style={{ background: 'var(--surface2)', border: '1px solid var(--border)' }}
                   >
                     <div className="font-syne font-extrabold text-4xl mb-1" style={{ color: 'var(--accent)' }}>
-                      {s.value}
+                      <StatValue value={s.value} />
                     </div>
                     <div className="font-inter text-xs" style={{ color: 'var(--muted)' }}>
                       {s.label}
@@ -81,13 +91,13 @@ export default function About() {
                 style={{ background: 'var(--surface2)', border: '1px solid var(--border)' }}
               >
                 <div className="font-syne font-extrabold text-4xl mb-1" style={{ color: 'var(--accent)' }}>
-                  {stats[4].value}
+                  <StatValue value={stats[4].value} />
                 </div>
                 <div className="font-inter text-xs" style={{ color: 'var(--muted)' }}>
                   {stats[4].label}
                 </div>
               </div>
-            </div>
+            </AnimateOnScroll>
           </div>
         </div>
       </div>
