@@ -35,7 +35,7 @@ export const projects: Project[] = [
     featured: true,
     title: "RTM Analytics Platform",
     subtitle: "Multi-Tenant FMCG Intelligence Platform",
-    description: "Architected and deployed a production-grade, multi-tenant internal analytics platform serving field operations teams across 5 FMCG markets. Built on FastAPI + HTMX with 20+ geospatial and data processing tools — including HDBSCAN clustering, Voronoi tessellation, BFS region-growing, and LandScan TIF raster population analysis. Async background job execution with SQLite WAL-mode persistence ensures reliability under concurrent enterprise usage. Used daily by operations teams across Pakistan, India, Bangladesh, Sri Lanka, and Nepal.",
+    description: "Architected and deployed a production-grade, multi-tenant analytics platform serving field operations across 5 FMCG markets (PAK, IND, BGD, LKA, NPL). Built on FastAPI + HTMX with 20+ geospatial tools — HDBSCAN, Voronoi tessellation, BFS region-growing, LandScan raster analysis — backed by async jobs on SQLite WAL-mode for reliability under concurrent enterprise load.",
     image: "/images/projects/rtm-platform.png",
     tags: ["FastAPI", "HTMX", "Python", "HDBSCAN", "Voronoi Tessellation", "Geospatial AI", "SQLite WAL", "AWS S3", "Docker", "Multi-Tenant"],
     metrics: [

@@ -16,12 +16,13 @@ function MetricValue({ value }: { value: string }) {
 
 function ProjectMetrics({ metrics }: { metrics: ProjectMetric[] }) {
   return (
-    <div className="project-metrics">
-      {metrics.map((m) => (
-        <div key={m.label} className="metric-pill">
-          <span className="metric-value"><MetricValue value={m.value} /></span>
-          <span className="metric-label">{m.label}</span>
-        </div>
+    <div className="project-metrics font-mono text-[11px] flex flex-wrap items-baseline gap-x-2 gap-y-1">
+      {metrics.map((m, i) => (
+        <span key={m.label} className="inline-flex items-baseline">
+          {i > 0 && <span className="mr-2" style={{ color: 'var(--border)' }}>&middot;</span>}
+          <span className="font-bold" style={{ color: 'var(--accent)' }}><MetricValue value={m.value} /></span>
+          <span className="ml-1" style={{ color: 'var(--muted)' }}>{m.label}</span>
+        </span>
       ))}
     </div>
   )
@@ -105,11 +106,16 @@ function ProjectCard({ project, index }: { project: (typeof projects)[number]; i
               <ProjectMetrics metrics={project.metrics} />
             )}
             <div className="flex flex-wrap gap-2 mt-5">
-              {project.tags.map((tag) => (
+              {project.tags.slice(0, 6).map((tag) => (
                 <span key={tag} className="font-mono text-[10px] px-2.5 py-1 rounded-md" style={{ color: 'var(--dimmed)', background: 'var(--surface2)', border: '1px solid var(--border)' }}>
                   {tag}
                 </span>
               ))}
+              {project.tags.length > 6 && (
+                <span className="font-mono text-[10px] px-2.5 py-1 rounded-md" style={{ color: 'var(--muted)', background: 'var(--surface2)', border: '1px solid var(--border)' }}>
+                  +{project.tags.length - 6}
+                </span>
+              )}
             </div>
           </div>
         </div>

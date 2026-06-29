@@ -12,11 +12,12 @@ export const experiences: Experience[] = [
     role: "ML Scientist",
     period: "Jan 2023 - Present",
     bullets: [
+      "Architected and deployed the RTM Analytics Platform — a multi-tenant FastAPI + HTMX system with 20+ geospatial tools (HDBSCAN, Voronoi tessellation, LandScan raster analysis) used daily by field operations across 5 FMCG markets.",
       "Built an LLM and NLP analytics chatbot for Nielsen and UK clients, making market data easier to explore through natural-language workflows.",
       "Developed shop-level intelligence pipelines that combined retail signals, market-share inputs, and spatial context to support commercial decision-making.",
       "Designed Apache Airflow ETL pipelines to move multi-source data into production analytics systems with stronger reliability and traceability.",
     ],
-    stack: ["Python", "TensorFlow", "Apache Airflow", "NLP", "LLM", "Scrapy"],
+    stack: ["Python", "FastAPI", "Geospatial AI", "TensorFlow", "Apache Airflow", "NLP", "LLM", "Scrapy"],
   },
   {
     company: "SurveyAuto Inc",

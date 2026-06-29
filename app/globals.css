@@ -110,24 +110,10 @@
 }
 .project-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(232,255,71,0.08); }
 
-/* Project metric pills */
-.project-metrics { display: flex; flex-wrap: wrap; }
-.metric-pill {
-  display: inline-flex; flex-direction: column; align-items: center;
-  padding: 8px 14px;
-  border: 0.5px solid rgba(232, 255, 71, 0.2);
-  border-radius: 4px;
-  background: rgba(232, 255, 71, 0.04);
-  margin-right: 6px; margin-top: 10px;
-}
-.metric-value {
-  font-family: var(--font-mono), monospace; font-size: 16px;
-  font-weight: 700; color: var(--accent); line-height: 1;
-}
-.metric-label {
-  font-family: var(--font-mono), monospace; font-size: 9px;
-  color: var(--muted); letter-spacing: 0.08em;
-  text-transform: uppercase; margin-top: 2px;
+/* Project metrics — compact inline stat line */
+.project-metrics {
+  padding-top: 2px;
+  letter-spacing: 0.01em;
 }
 
 .contact-cta {
