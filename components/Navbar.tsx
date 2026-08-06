@@ -36,7 +36,7 @@ export default function Navbar() {
           visible ? 'translate-y-0' : '-translate-y-full'
         }`}
         style={{
-          background: scrolled || menuOpen ? 'rgba(246, 243, 236, 0.92)' : 'transparent',
+          background: scrolled || menuOpen ? 'rgba(241, 239, 231, 0.92)' : 'transparent',
           backdropFilter: scrolled || menuOpen ? 'blur(12px)' : undefined,
           borderBottom: scrolled || menuOpen ? '1px solid var(--line)' : '1px solid transparent',
         }}
@@ -44,10 +44,11 @@ export default function Navbar() {
         <nav className="container-page flex h-16 items-center justify-between gap-4" aria-label="Primary">
           <a
             href="#"
-            className="font-display text-sm font-bold tracking-tight text-ink"
+            className="flex items-center gap-3 font-display text-sm font-bold tracking-tight text-ink"
             onClick={closeMenu}
           >
-            {profile.name}
+            <span className="flex h-7 w-7 items-center justify-center bg-ink font-mono text-[9px] text-[var(--accent)]">{profile.mark}</span>
+            {profile.name} <span className="hidden font-mono text-[8px] font-normal uppercase tracking-widest text-dimmed sm:inline">ML / Data</span>
           </a>
 
           <ul className="hidden items-center gap-7 md:flex">

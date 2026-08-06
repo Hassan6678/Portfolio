@@ -3,19 +3,18 @@ import { contactContent, socialLinks } from '@/data/site'
 
 export default function Contact() {
   return (
-    <section id="contact" className="border-t border-[var(--line)] py-20 sm:py-24">
-      <div className="container-page">
+    <section id="contact" className="contact-section">
+      <div className="container-page relative">
         <Reveal>
-          <div className="ambient-cta relative overflow-hidden rounded-[1.25rem] px-6 py-12 text-[var(--panel)] sm:px-10 sm:py-16">
-            <p className="section-label !text-white/55 before:!text-[var(--accent)] before:!opacity-90">
+          <div className="contact-inner">
+            <p className="section-label !text-white/55">
               {contactContent.label}
             </p>
-            <h2 className="section-title mt-3 max-w-2xl !text-[var(--panel)]">
-              {contactContent.titleBefore}
-              <em className="!text-[var(--accent)]">{contactContent.titleEmphasis}</em>
-              {contactContent.titleAfter}
+            <h2>
+              Have a hard data problem?
+              <em> Let&apos;s make it operational.</em>
             </h2>
-            <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/65 sm:text-[0.95rem]">
+            <p className="mt-6 max-w-xl text-sm leading-relaxed text-white/60 sm:text-[0.95rem]">
               {contactContent.description}
             </p>
 
@@ -29,14 +28,14 @@ export default function Contact() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center rounded-full border border-white/20 px-4 py-2.5 text-sm font-medium text-white/85 transition-colors hover:border-white/40 hover:text-white"
+                  className="inline-flex items-center border border-white/20 px-4 py-2.5 text-sm font-medium text-white/85 transition-colors hover:border-white/50 hover:text-white"
                 >
                   {s.label}
                 </a>
               ))}
             </div>
 
-            <ul className="mt-10 grid grid-cols-1 gap-3 border-t border-white/10 pt-8 sm:grid-cols-2 lg:grid-cols-4">
+            <ul className="contact-links">
               {contactContent.links.map((link) => (
                 <li key={link.label}>
                   <a
