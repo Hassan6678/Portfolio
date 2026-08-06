@@ -1,32 +1,30 @@
 import Reveal from '@/components/ui/Reveal'
-import SectionHeader from '@/components/ui/SectionHeader'
 import { impactMetrics } from '@/data/site'
 
 export default function Impact() {
   return (
-    <section id="impact" className="border-t border-[var(--line)] bg-[var(--panel)]/50 py-20 sm:py-24">
+    <section id="impact" className="impact-band">
       <div className="container-page">
-        <Reveal>
-          <SectionHeader
-            label="Impact"
-            title={
-              <>
-                Numbers that don&apos;t need a <em>footnote</em>
-              </>
-            }
-            description="Outcomes from production ML systems — markets covered, territories planned, outlets scored, and delivery reliability."
-          />
-        </Reveal>
-
-        <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="impact-top">
+          <Reveal>
+            <p className="section-label section-label--dark">System output / verified scope</p>
+            <h2>Evidence over<br /><em>adjectives.</em></h2>
+          </Reveal>
+          <Reveal delayMs={80}>
+            <div className="impact-signal" aria-label="Operational signal active">
+              <span>Operational signal</span><strong>ACTIVE</strong><i />
+            </div>
+          </Reveal>
+        </div>
+        <div className="impact-grid">
           {impactMetrics.map((metric, i) => (
             <Reveal key={metric.label} delayMs={i * 70}>
-              <div className="panel h-full p-6">
-                <p className="font-display text-4xl font-extrabold tracking-tight text-ink sm:text-[2.75rem]">
-                  {metric.value}
-                </p>
-                <p className="mt-2 font-display text-sm font-semibold text-ink">{metric.label}</p>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{metric.detail}</p>
+              <div className="impact-metric">
+                <span>0{i + 1}</span>
+                <strong>{metric.value}</strong>
+                <h3>{metric.label}</h3>
+                <p>{metric.detail}</p>
+                <div className="metric-rule"><i style={{ width: `${48 + i * 13}%` }} /></div>
               </div>
             </Reveal>
           ))}

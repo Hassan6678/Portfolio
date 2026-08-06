@@ -1,43 +1,25 @@
 import Reveal from '@/components/ui/Reveal'
-import SectionHeader from '@/components/ui/SectionHeader'
 import { experiences } from '@/data/experience'
 
 export default function Experience() {
   return (
-    <section id="experience" className="border-t border-[var(--line)] bg-[var(--panel)]/40 py-20 sm:py-24">
+    <section id="experience" className="experience-section py-24 sm:py-32">
       <div className="container-page">
-        <Reveal>
-          <SectionHeader
-            label="Experience"
-            title={
-              <>
-                Roles where the work <em>shipped</em>
-              </>
-            }
-            description="A compact timeline of production ML, geospatial systems, and platform engineering."
-          />
-        </Reveal>
-
-        <ol className="mt-12 max-w-3xl space-y-0">
+        <div className="experience-layout">
+          <Reveal className="experience-intro">
+            <p className="section-label">Experience / trajectory</p>
+            <h2>Building at the edge of<br /><em>models and operations.</em></h2>
+            <p>Production ML, geospatial systems, and platform engineering across commercial teams.</p>
+          </Reveal>
+        <ol className="experience-list">
           {experiences.map((exp, i) => {
             const isLast = i === experiences.length - 1
             return (
-              <Reveal key={exp.company} delayMs={i * 80} as="li" className="relative pl-8">
-                <span
-                  className="absolute left-0 top-1.5 h-2.5 w-2.5 rounded-full border-2 border-ink bg-[var(--accent)]"
-                  aria-hidden="true"
-                />
-                {!isLast ? (
-                  <span
-                    className="absolute bottom-0 left-[4px] top-4 w-px bg-[var(--line-strong)]"
-                    aria-hidden="true"
-                  />
-                ) : null}
-
-                <div className={`pb-10 ${isLast ? 'pb-0' : ''}`}>
+              <Reveal key={exp.company} delayMs={i * 80} as="li">
+                <div className={isLast ? '' : 'pb-10'}>
                   <div className="flex flex-wrap items-baseline justify-between gap-2">
                     <div>
-                      <h3 className="font-display text-lg font-bold tracking-tight text-ink">
+                      <h3 className="font-display text-xl font-bold tracking-tight text-ink">
                         {exp.role}
                       </h3>
                       <p className="text-sm font-medium text-muted">{exp.company}</p>
@@ -65,6 +47,7 @@ export default function Experience() {
             )
           })}
         </ol>
+        </div>
       </div>
     </section>
   )
