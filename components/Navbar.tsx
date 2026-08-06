@@ -1,24 +1,18 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
-
-const navLinks = [
-  { label: 'Home',         href: '#' },
-  { label: 'Projects',     href: '#work' },
-  { label: 'About',        href: '#about' },
-  { label: 'Impact',       href: '#impact' },
-  { label: 'Experience',   href: '#experience' },
-  { label: 'Contact',      href: '#contact' },
-]
+import { navLinks, profile, socialLinks } from '@/data/site'
 
 export default function Navbar() {
   const [visible, setVisible] = useState(true)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const lastY = useRef(0)
 
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY
+      setScrolled(y > 12)
       setVisible(y < lastY.current || y < 80)
       lastY.current = y
     }
@@ -28,72 +22,141 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    return () => {
+      document.body.style.overflow = ''
+    }
   }, [menuOpen])
+
+  const closeMenu = () => setMenuOpen(false)
 
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-transform duration-300 ${visible ? 'translate-y-0' : '-translate-y-full'}`}
-        style={{ background: 'rgba(8,10,12,0.88)', backdropFilter: 'blur(12px)', borderBottom: '1px solid var(--border)' }}
+        className={`fixed inset-x-0 top-0 z-50 transition-transform duration-300 ${
+          visible ? 'translate-y-0' : '-translate-y-full'
+        }`}
+        style={{
+          background: scrolled || menuOpen ? 'rgba(246, 243, 236, 0.92)' : 'transparent',
+          backdropFilter: scrolled || menuOpen ? 'blur(12px)' : undefined,
+          borderBottom: scrolled || menuOpen ? '1px solid var(--line)' : '1px solid transparent',
+        }}
       >
-        <nav className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          {/* Logo — terminal style */}
-          <a href="#" className="font-mono text-sm font-medium flex items-center gap-0.5 hover:opacity-80 transition-opacity" style={{ color: 'var(--accent)' }}>
-            <span style={{ color: 'var(--muted)' }}>hassan</span>
-            <span style={{ color: 'var(--dimmed)' }}>@portfolio</span>
-            <span style={{ color: 'var(--muted)' }}>:~$</span>
-            <span className="cursor-blink ml-1" />
+        <nav className="container-page flex h-16 items-center justify-between gap-4" aria-label="Primary">
+          <a
+            href="#"
+            className="font-display text-sm font-bold tracking-tight text-ink"
+            onClick={closeMenu}
+          >
+            {profile.name}
           </a>
 
-          {/* Desktop links */}
-          <ul className="hidden md:flex items-center gap-8">
-            {navLinks.map((l) => (
-              <li key={l.label}>
-                <a href={l.href} className="font-mono text-xs tracking-wide transition-colors duration-200 hover:text-accent" style={{ color: 'var(--dimmed)' }}>
-                  {l.label}
+          <ul className="hidden items-center gap-7 md:flex">
+            {navLinks.map((link) => (
+              <li key={link.label}>
+                <a
+                  href={link.href}
+                  className="text-[0.8125rem] font-medium text-muted transition-colors hover:text-ink"
+                >
+                  {link.label}
                 </a>
               </li>
             ))}
           </ul>
 
-          {/* CTA — pill button */}
-          <a href="#contact" className="hidden md:inline-flex btn-nav-cta">
-            Let&apos;s Work Together
-          </a>
+          <div className="hidden items-center gap-3 md:flex">
+            <a
+              href={profile.cvHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[0.8125rem] font-medium text-muted transition-colors hover:text-ink"
+            >
+              CV
+            </a>
+            <a href="#contact" className="btn-accent">
+              Hire me
+            </a>
+          </div>
 
-          {/* Hamburger */}
-          <button className="md:hidden flex flex-col gap-[5px] p-2" onClick={() => setMenuOpen((o) => !o)} aria-label="Toggle menu">
-            {[0, 1, 2].map((i) => (
+          <button
+            type="button"
+            className="relative z-50 flex h-10 w-10 items-center justify-center md:hidden"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
+            onClick={() => setMenuOpen((o) => !o)}
+          >
+            <span className="sr-only">{menuOpen ? 'Close' : 'Menu'}</span>
+            <span className="flex w-5 flex-col gap-[5px]" aria-hidden="true">
               <span
-                key={i}
-                className="block w-5 h-[2px] rounded-full transition-all duration-250"
+                className="block h-[1.5px] w-full bg-ink transition-transform duration-200"
                 style={{
-                  background: 'var(--text)',
-                  transform: menuOpen && i === 0 ? 'rotate(45deg) translateY(7px)' : menuOpen && i === 2 ? 'rotate(-45deg) translateY(-7px)' : 'none',
-                  opacity: menuOpen && i === 1 ? 0 : 1,
+                  transform: menuOpen ? 'translateY(6.5px) rotate(45deg)' : undefined,
                 }}
               />
-            ))}
+              <span
+                className="block h-[1.5px] w-full bg-ink transition-opacity duration-200"
+                style={{ opacity: menuOpen ? 0 : 1 }}
+              />
+              <span
+                className="block h-[1.5px] w-full bg-ink transition-transform duration-200"
+                style={{
+                  transform: menuOpen ? 'translateY(-6.5px) rotate(-45deg)' : undefined,
+                }}
+              />
+            </span>
           </button>
         </nav>
       </header>
 
-      {/* Mobile overlay */}
       <div
-        className={`fixed inset-0 z-40 flex flex-col items-center justify-center md:hidden transition-all duration-300 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
-        style={{ background: 'rgba(8,10,12,0.97)' }}
+        id="mobile-nav"
+        className={`fixed inset-0 z-40 flex flex-col bg-[var(--bg)] px-6 pb-10 pt-24 transition-opacity duration-300 md:hidden ${
+          menuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+        }`}
+        hidden={!menuOpen}
+        aria-hidden={!menuOpen}
       >
-        <ul className="flex flex-col items-center gap-6">
-          {navLinks.map((l, i) => (
-            <li key={l.label} style={{ transitionDelay: menuOpen ? `${i * 50}ms` : '0ms', opacity: menuOpen ? 1 : 0, transform: menuOpen ? 'none' : 'translateY(12px)', transition: 'all 0.3s ease' }}>
-              <a href={l.href} className="font-syne font-bold text-2xl hover:text-accent transition-colors" style={{ color: 'var(--text)' }} onClick={() => setMenuOpen(false)}>
-                {l.label}
+        <ul className="flex flex-col gap-5">
+          {navLinks.map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                className="font-display text-2xl font-bold tracking-tight text-ink"
+                onClick={closeMenu}
+              >
+                {link.label}
               </a>
             </li>
           ))}
         </ul>
-        <a href="#contact" className="btn-nav-cta mt-8" onClick={() => setMenuOpen(false)}>Let&apos;s Work Together</a>
+        <div className="mt-10 flex flex-col gap-3">
+          <a href="#contact" className="btn-primary w-full" onClick={closeMenu}>
+            Hire me
+          </a>
+          <a
+            href={profile.cvHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary w-full"
+            onClick={closeMenu}
+          >
+            Download CV
+          </a>
+        </div>
+        <div className="mt-auto flex gap-5 pt-10">
+          {socialLinks.map((s) => (
+            <a
+              key={s.label}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-muted hover:text-ink"
+              onClick={closeMenu}
+            >
+              {s.label}
+            </a>
+          ))}
+        </div>
       </div>
     </>
   )

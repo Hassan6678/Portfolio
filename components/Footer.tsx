@@ -1,76 +1,75 @@
-const quickLinks = [
-  { label: 'Home', href: '#' },
-  { label: 'Projects', href: '#work' },
-  { label: 'About', href: '#about' },
-  { label: 'Impact', href: '#impact' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Contact', href: '#contact' },
-]
-
-const socialLinks = [
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/hassan-raza-cs' },
-  { label: 'GitHub', href: 'https://github.com/Hassan6678' },
-  { label: 'Upwork', href: 'https://www.upwork.com/freelancers/hassanraza535' },
-]
+import { footerContent, navLinks, profile, socialLinks } from '@/data/site'
 
 export default function Footer() {
   return (
-    <footer style={{ background: 'var(--surface)', borderTop: '1px solid var(--border)' }}>
-      <div className="max-w-7xl mx-auto px-6 py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_0.7fr_0.9fr] gap-10 items-start">
-
-          {/* Brand */}
+    <footer className="border-t border-[var(--line)] bg-[var(--panel)]/70">
+      <div className="container-page py-12 sm:py-14">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.7fr_0.9fr]">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <span className="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold" style={{ background: 'var(--accent)', color: '#080a0c' }}>HR</span>
-              <span className="font-syne font-bold text-base" style={{ color: 'var(--text)' }}>Hassan Raza</span>
+            <div className="flex items-center gap-2.5">
+              <span
+                className="flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold"
+                style={{ background: 'var(--accent)', color: 'var(--accent-ink)' }}
+              >
+                {profile.mark}
+              </span>
+              <span className="font-display text-sm font-bold tracking-tight text-ink">
+                {profile.name}
+              </span>
             </div>
-            <p className="font-inter text-sm leading-relaxed max-w-md" style={{ color: 'var(--muted)' }}>
-              Machine Learning Engineer and Data Scientist building practical systems for retail intelligence, forecasting, geospatial analytics, and AI-enabled decision support.
+            <p className="mt-4 max-w-md text-sm leading-relaxed text-muted">
+              {footerContent.blurb}
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
-            <h4 className="font-syne font-bold text-sm mb-4" style={{ color: 'var(--text)' }}>Navigate</h4>
-            <ul className="space-y-2.5">
-              {quickLinks.map((l) => (
+            <h2 className="font-display text-sm font-semibold text-ink">Navigate</h2>
+            <ul className="mt-4 space-y-2.5">
+              {navLinks.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} className="font-inter text-xs hover:text-accent transition-colors" style={{ color: 'var(--muted)' }}>{l.label}</a>
+                  <a href={l.href} className="text-sm text-muted transition-colors hover:text-ink">
+                    {l.label}
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Connect */}
           <div>
-            <h4 className="font-syne font-bold text-sm mb-4" style={{ color: 'var(--text)' }}>Connect</h4>
-            <ul className="space-y-2.5 mb-5">
+            <h2 className="font-display text-sm font-semibold text-ink">Connect</h2>
+            <ul className="mt-4 space-y-2.5">
               {socialLinks.map((l) => (
                 <li key={l.label}>
-                  <a href={l.href} target="_blank" rel="noopener noreferrer" className="font-inter text-xs hover:text-accent transition-colors" style={{ color: 'var(--muted)' }}>{l.label}</a>
+                  <a
+                    href={l.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-muted transition-colors hover:text-ink"
+                  >
+                    {l.label}
+                  </a>
                 </li>
               ))}
             </ul>
-            <ul className="space-y-2 font-inter text-xs" style={{ color: 'var(--muted)' }}>
-              <li className="flex items-start gap-2">
-                <span style={{ color: 'var(--accent)' }}>&#9993;</span>
-                hassanrazacs@hotmail.com
+            <ul className="mt-5 space-y-2 text-sm text-muted">
+              <li>
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="transition-colors hover:text-ink"
+                >
+                  {profile.email}
+                </a>
               </li>
-              <li className="flex items-start gap-2">
-                <span style={{ color: 'var(--accent)' }}>&#9906;</span>
-                Lahore, Pakistan
-              </li>
+              <li>{profile.location}</li>
             </ul>
           </div>
         </div>
       </div>
 
-      {/* Bottom bar */}
-      <div className="px-6 py-4" style={{ borderTop: '1px solid var(--border)' }}>
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="font-inter text-xs" style={{ color: 'var(--muted)' }}>&copy; 2026 Hassan Raza</p>
-          <p className="font-inter text-xs" style={{ color: 'var(--muted)' }}>Machine Learning Engineer &amp; Data Scientist</p>
+      <div className="border-t border-[var(--line)]">
+        <div className="container-page flex flex-col items-start justify-between gap-2 py-4 sm:flex-row sm:items-center">
+          <p className="text-xs text-dimmed">{footerContent.copyright}</p>
+          <p className="text-xs text-dimmed">{profile.role}</p>
         </div>
       </div>
     </footer>
