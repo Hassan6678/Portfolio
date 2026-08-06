@@ -7,38 +7,33 @@ export default function Hero() {
   const session = getSession('territory-plan')!
 
   return (
-    <section className="ambient-hero relative overflow-hidden pb-16 pt-28 sm:pb-20 sm:pt-32">
+    <section className="hero-field relative overflow-hidden pb-20 pt-28 sm:pb-28 sm:pt-36">
+      <div className="hero-grid" aria-hidden="true" />
       <div className="container-page">
-        <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+        <div className="grid items-center gap-16 lg:grid-cols-[1.02fr_0.98fr] lg:gap-10">
           <Reveal>
-            <p className="section-label mb-5">{hero.eyebrow}</p>
-            <p className="mb-3 font-display text-sm font-semibold tracking-wide text-muted">
-              <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-[var(--accent)] align-middle" />
-              {profile.availability}
-            </p>
-            <h1 className="font-display text-[clamp(2.75rem,8vw,4.75rem)] font-extrabold leading-[0.95] tracking-[-0.045em] text-ink">
-              {profile.name}
+            <div className="mb-7 flex flex-wrap items-center gap-x-5 gap-y-2">
+              <p className="section-label">{hero.eyebrow}</p>
+              <p className="status-line">
+                <span aria-hidden="true" />
+                {profile.availability}
+              </p>
+            </div>
+            <h1 className="max-w-[760px] font-display text-[clamp(3.35rem,8.4vw,7rem)] font-extrabold leading-[0.86] tracking-[-0.068em] text-ink">
+              ML systems
+              <span className="block text-outline">built to move</span>
+              <span className="block">operations.</span>
             </h1>
-            <p className="mt-5 max-w-lg text-xl font-medium leading-snug tracking-tight text-ink sm:text-2xl">
-              {hero.headline.before}
-              <em className="font-serif italic font-normal">{hero.headline.emphasis}</em>
-              {hero.headline.after}
+            <p className="mt-7 max-w-xl text-lg font-medium leading-relaxed tracking-[-0.015em] text-ink/80 sm:text-xl">
+              Senior machine learning engineer building geospatial, forecasting, and language systems for enterprise teams.
             </p>
-            <p className="mt-4 max-w-md text-[0.95rem] leading-relaxed text-muted">
+            <p className="mt-4 max-w-lg text-[0.95rem] leading-relaxed text-muted">
               {hero.support}
             </p>
 
-            <div className="mt-5 flex flex-wrap gap-2">
-              {hero.badges.map((b) => (
-                <span key={b} className="pill">
-                  {b}
-                </span>
-              ))}
-            </div>
-
             <div className="mt-8 flex flex-wrap gap-3">
               <a href={hero.primaryCta.href} className="btn-primary">
-                {hero.primaryCta.label}
+                Start a conversation <span aria-hidden="true">↗</span>
               </a>
               <a
                 href={hero.secondaryCta.href}
@@ -50,14 +45,15 @@ export default function Hero() {
               </a>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-4">
+            <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-[var(--line)] pt-5">
+              {hero.badges.map((b) => <span key={b} className="proof-label">✓ {b}</span>)}
               {socialLinks.map((l) => (
                 <a
                   key={l.label}
                   href={l.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-medium text-muted transition-colors hover:text-ink"
+                  className="proof-link"
                 >
                   {l.label}
                 </a>
@@ -65,12 +61,23 @@ export default function Hero() {
             </div>
           </Reveal>
 
-          <Reveal delayMs={120} className="relative">
-            <div className="absolute -inset-6 -z-10 rounded-[24px] bg-[radial-gradient(ellipse_at_center,var(--wash-blue),transparent_65%)]" />
-            <CodeSession session={session} />
-            <p className="mt-3 font-mono text-[11px] text-dimmed">
-              Proof of work · territory planning session
-            </p>
+          <Reveal delayMs={120} className="console-scene">
+            <div className="scene-orbit" aria-hidden="true" />
+            <div className="scene-index" aria-hidden="true">01 / FIELD INTELLIGENCE</div>
+            <div className="metric-float metric-float--top">
+              <span>Route feasibility</span><strong>98.4%</strong>
+              <i><b /></i>
+            </div>
+            <CodeSession session={session} className="scene-code" />
+            <div className="metric-float metric-float--bottom">
+              <span>Territory engine</span>
+              <strong>131 <small>zones</small></strong>
+              <div className="sparkline" aria-hidden="true"><i /><i /><i /><i /><i /><i /></div>
+            </div>
+            <div className="scene-caption">
+              <span>Live artifact</span>
+              Territory planning system · operational constraints included
+            </div>
           </Reveal>
         </div>
       </div>
