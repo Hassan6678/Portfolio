@@ -37,22 +37,11 @@ export const codeSessions: CodeSessionData[] = [
           '    return assign_quarter(routes, weeks=12)',
         ],
       },
-      {
-        name: 'constraints.yaml',
-        language: 'YAML',
-        lines: [
-          'markets: [UK]',
-          'territories: 131',
-          'outlets: 506+',
-          'daily_calls: [8, 14]',
-        ],
-      },
     ],
     terminal: [
       '$ python territory_plan.py --quarter Q3',
       'Clustering 506 outlets → 131 territories…',
       'Route feasibility 98.4%  ·  mean daily calls 11.2',
-      'Wrote territories_q3.geojson',
     ],
     statusBar: {
       branch: 'main',

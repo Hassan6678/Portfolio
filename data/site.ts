@@ -64,15 +64,23 @@ export const socialLinks: SocialLink[] = [
 export const hero = {
   eyebrow: 'ML systems · geospatial · NLP',
   headline: {
-    before: 'I ship machine learning that ',
-    emphasis: 'moves operations',
-    after: '.',
+    lead: 'ML systems built to move',
+    outlined: 'operations.',
   },
+  lead: 'Senior machine learning engineer building geospatial, forecasting, and language systems for enterprise teams.',
   support:
     'Territory engines, FMCG analytics platforms, and NLP tools used by enterprise teams — not demos.',
   primaryCta: { label: "Let's work together", href: '#contact' },
   secondaryCta: { label: 'Download CV', href: '/cv.pdf' },
   badges: ['100% Job Success', 'Upwork Top Rated'],
+  artifact: {
+    photo: '/images/hassan-photo.png',
+    photoAlt: 'Hassan Raza portrait',
+    kicker: 'Live artifact / 01',
+    caption: 'Territory planning system for BAT UK — operational constraints included.',
+    metricLabel: 'Route feasibility',
+    metricValue: '98.4%',
+  },
 } as const
 
 export const credibility: CredibilityItem[] = [
