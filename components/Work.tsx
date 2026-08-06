@@ -20,7 +20,7 @@ export default function Work() {
         <div className="case-stack">
           {stories.map((project, i) => (
             <Reveal key={project.id} delayMs={i * 60}>
-              <article className={`case-study ${i % 2 ? 'case-study--reverse' : ''}`}>
+              <article className="case-study">
                 <div className="case-media">
                   <ProjectMedia project={project} priority={i === 0} />
                   <span className="case-number">0{i + 1}</span>

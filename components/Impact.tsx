@@ -1,6 +1,9 @@
 import Reveal from '@/components/ui/Reveal'
 import { impactMetrics } from '@/data/site'
 
+/** Rule fill per metric — hand-tuned so the band reads as a rising sequence. */
+const metricWidths = ['48%', '61%', '74%', '100%']
+
 export default function Impact() {
   return (
     <section id="impact" className="impact-band">
@@ -24,7 +27,7 @@ export default function Impact() {
                 <strong>{metric.value}</strong>
                 <h3>{metric.label}</h3>
                 <p>{metric.detail}</p>
-                <div className="metric-rule"><i style={{ width: `${48 + i * 13}%` }} /></div>
+                <div className="metric-rule"><i style={{ width: metricWidths[i] ?? '100%' }} /></div>
               </div>
             </Reveal>
           ))}
