@@ -1,77 +1,70 @@
-'use client'
-
-import { useMemo, useState } from 'react'
-import ProjectCard from '@/components/ui/ProjectCard'
+import ProjectMedia from '@/components/ui/ProjectMedia'
 import Reveal from '@/components/ui/Reveal'
-import SectionHeader from '@/components/ui/SectionHeader'
 import { projects } from '@/data/projects'
-import { projectCategories, workIntro } from '@/data/site'
-
-type FilterId = (typeof projectCategories)[number]['id']
 
 export default function Work() {
-  const [filter, setFilter] = useState<FilterId>('all')
-
-  const featured = projects.find((p) => p.featured) ?? projects[0]
-  const rest = useMemo(() => {
-    const withoutFeatured = projects.filter((p) => p.id !== featured.id)
-    if (filter === 'all') return withoutFeatured
-    return withoutFeatured.filter((p) => p.kind === filter)
-  }, [featured.id, filter])
-
-  const showFeatured = filter === 'all' || featured.kind === filter
+  const stories = projects.slice(0, 3)
+  const archive = projects.slice(3)
 
   return (
-    <section id="work" className="border-t border-[var(--line)] py-20 sm:py-24">
+    <section id="work" className="work-section py-24 sm:py-32">
       <div className="container-page">
         <Reveal>
-          <SectionHeader
-            label={workIntro.label}
-            title={
-              <>
-                {workIntro.titleBefore}
-                <em>{workIntro.titleEmphasis}</em>
-                {workIntro.titleAfter}
-              </>
-            }
-            description={workIntro.description}
-          />
-        </Reveal>
-
-        <Reveal delayMs={80} className="mt-8">
-          <div
-            className="inline-flex flex-wrap gap-1 rounded-full border border-[var(--line)] bg-[var(--panel)] p-1"
-            role="tablist"
-            aria-label="Filter projects"
-          >
-            {projectCategories.map((cat) => {
-              const active = filter === cat.id
-              return (
-                <button
-                  key={cat.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={active}
-                  className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition-colors ${
-                    active
-                      ? 'bg-ink text-[var(--panel)]'
-                      : 'text-muted hover:text-ink'
-                  }`}
-                  onClick={() => setFilter(cat.id)}
-                >
-                  {cat.label}
-                </button>
-              )
-            })}
+          <div className="editorial-heading">
+            <p className="section-label">Selected systems / 2021—now</p>
+            <h2>From messy signals<br />to <em>operational leverage.</em></h2>
+            <p>Three production stories across market intelligence, field planning, and retail decision systems.</p>
           </div>
         </Reveal>
 
-        <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {showFeatured ? <ProjectCard project={featured} featured index={0} /> : null}
-          {rest.map((project, i) => (
-            <ProjectCard key={project.id} project={project} index={i + 1} />
+        <div className="case-stack">
+          {stories.map((project, i) => (
+            <Reveal key={project.id} delayMs={i * 60}>
+              <article className={`case-study ${i % 2 ? 'case-study--reverse' : ''}`}>
+                <div className="case-media">
+                  <ProjectMedia project={project} priority={i === 0} />
+                  <span className="case-number">0{i + 1}</span>
+                </div>
+                <div className="case-copy">
+                  <p className="case-company">{project.company} · {project.kind}</p>
+                  <h3>{project.title}</h3>
+                  <div className="case-flow">
+                    <div><span>Problem</span><p>{project.description.split('.')[0]}.</p></div>
+                    <div><span>System</span><p>{project.tags.slice(0, 4).join(' · ')}</p></div>
+                  </div>
+                  {project.metrics ? (
+                    <dl className="case-metrics">
+                      {project.metrics.slice(0, 3).map((metric) => (
+                        <div key={metric.label}><dt>{metric.label}</dt><dd>{metric.value}</dd></div>
+                      ))}
+                    </dl>
+                  ) : (
+                    <p className="case-outcome">Built for territory-level commercial decision making.</p>
+                  )}
+                </div>
+              </article>
+            </Reveal>
           ))}
         </div>
+
+        <Reveal>
+          <div className="archive">
+            <div className="archive-heading">
+              <p className="section-label">Project archive</p>
+              <p>Additional commercial and research engagements.</p>
+            </div>
+            <ol>
+              {archive.map((project, i) => (
+                <li key={project.id}>
+                  <span>{String(i + 4).padStart(2, '0')}</span>
+                  <strong>{project.title}</strong>
+                  <small>{project.company}</small>
+                  <em>{project.tags.slice(0, 2).join(' / ')}</em>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </Reveal>
       </div>
     </section>
   )

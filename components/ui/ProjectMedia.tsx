@@ -13,24 +13,27 @@ export default function ProjectMedia({ project, priority = false }: ProjectMedia
   const [failed, setFailed] = useState(false)
 
   return (
-    <div className="relative aspect-[16/10] w-full overflow-hidden bg-[var(--bg)]">
+    <div className="project-media relative aspect-[16/10] w-full overflow-hidden">
       <div
-        className="absolute inset-0 flex items-center justify-center px-6"
-        style={{ background: project.placeholderGradient }}
+        className="project-fallback absolute inset-0"
         aria-hidden={failed ? undefined : true}
       >
-        <p className="font-display text-center text-base font-semibold text-ink/25">
-          {project.title}
-        </p>
+        <div className="fallback-grid" />
+        <div className="fallback-map"><i /><i /><i /><i /><i /></div>
+        <span className="fallback-kicker">{project.company} / SYSTEM VIEW</span>
+        <p>{project.title}</p>
+        <div className="fallback-data">
+          {project.metrics?.slice(0, 2).map((m) => <span key={m.label}>{m.value}<small>{m.label}</small></span>)}
+        </div>
       </div>
 
       {!failed ? (
         <Image
           src={project.image}
-          alt=""
+          alt={`${project.title} project interface`}
           fill
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover"
+          className="object-cover transition-transform duration-700"
           priority={priority}
           onError={() => setFailed(true)}
           unoptimized

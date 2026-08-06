@@ -93,12 +93,6 @@ export const workIntro = {
     'Commercial platforms and research engagements across retail intelligence, geospatial optimization, forecasting, speech AI, and production data pipelines.',
 } as const
 
-export const projectCategories = [
-  { id: 'all', label: 'All' },
-  { id: 'commercial', label: 'Commercial' },
-  { id: 'research', label: 'Research' },
-] as const
-
 export const impactMetrics: ImpactMetric[] = [
   {
     value: '5',
