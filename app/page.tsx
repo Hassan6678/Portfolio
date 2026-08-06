@@ -1,27 +1,25 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
-import Specialties from '@/components/Specialties'
-import About from '@/components/About'
-import ResearchProjects from '@/components/ResearchProjects'
+import Credibility from '@/components/Credibility'
 import Work from '@/components/Work'
-import Testimonials from '@/components/Testimonials'
+import Impact from '@/components/Impact'
+import Expertise from '@/components/Expertise'
 import Experience from '@/components/Experience'
-import Skills from '@/components/Skills'
+import About from '@/components/About'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className="min-h-screen" style={{ background: 'var(--bg)', color: 'var(--text)' }}>
+    <main className="min-h-screen bg-bg text-ink">
       <Navbar />
       <Hero />
-      <Specialties />
-      <About />
-      <ResearchProjects />
+      <Credibility />
       <Work />
-      <Testimonials />
+      <Impact />
+      <Expertise />
       <Experience />
-      <Skills />
+      <About />
       <Contact />
       <Footer />
     </main>

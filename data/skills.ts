@@ -1,13 +1,11 @@
 export interface SkillGroup {
   label: string
-  comment: string
   skills: string[]
 }
 
 export const skillGroups: SkillGroup[] = [
   {
     label: 'Machine Learning & AI',
-    comment: '// Machine Learning & AI',
     skills: [
       'Machine Learning',
       'Deep Learning',
@@ -21,7 +19,6 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     label: 'Geospatial & Optimization',
-    comment: '// Geospatial & Optimization',
     skills: [
       'Geospatial Analysis',
       'Territory Clustering',
@@ -33,7 +30,6 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     label: 'Engineering & Tools',
-    comment: '// Engineering & Tools',
     skills: [
       'Python3',
       'Pandas',

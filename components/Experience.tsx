@@ -1,65 +1,70 @@
-'use client'
-
-import { useInView } from '@/hooks/useInView'
+import Reveal from '@/components/ui/Reveal'
+import SectionHeader from '@/components/ui/SectionHeader'
 import { experiences } from '@/data/experience'
-import AnimateOnScroll from '@/components/AnimateOnScroll'
-
-function TimelineItem({ exp, index, isLast }: { exp: (typeof experiences)[number]; index: number; isLast: boolean }) {
-  return (
-    <AnimateOnScroll delay={index * 0.1} className="relative pl-10">
-      {/* Dot */}
-      <div className="absolute left-0 top-2 w-4 h-4 rounded-full" style={{ background: 'var(--accent)', boxShadow: '0 0 0 4px var(--accent-dim)' }} />
-      {/* Line */}
-      {!isLast && <div className="absolute left-[7px] top-6 bottom-0 w-[2px]" style={{ background: 'var(--border)' }} />}
-
-      <div className="pb-12">
-        <div className="flex flex-wrap items-start justify-between gap-2 mb-3">
-          <div>
-            <h3 className="font-syne font-bold text-lg" style={{ color: 'var(--text)' }}>{exp.role}</h3>
-            <span className="font-mono text-xs" style={{ color: 'var(--accent)' }}>{exp.company}</span>
-          </div>
-          <span className="font-mono text-xs px-3 py-1 rounded-full" style={{ background: 'var(--surface2)', border: '1px solid var(--border)', color: 'var(--muted)' }}>
-            {exp.period}
-          </span>
-        </div>
-
-        <ul className="space-y-2 mb-4">
-          {exp.bullets.map((b, i) => (
-            <li key={i} className="flex gap-3 font-inter text-sm leading-relaxed" style={{ color: 'var(--dimmed)' }}>
-              <span className="mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: 'var(--accent)' }} />
-              {b}
-            </li>
-          ))}
-        </ul>
-
-        <div className="flex flex-wrap gap-2">
-          {exp.stack.map((t) => (
-            <span key={t} className="font-mono text-[10px] px-2.5 py-1 rounded-full" style={{ color: 'var(--accent)', background: 'var(--accent-dim)', border: '1px solid rgba(232,255,71,0.25)' }}>
-              {t}
-            </span>
-          ))}
-        </div>
-      </div>
-    </AnimateOnScroll>
-  )
-}
 
 export default function Experience() {
-  const { ref: headRef, inView: headIn } = useInView<HTMLDivElement>()
-
   return (
-    <section id="experience" className="py-24 px-6" style={{ borderTop: '1px solid var(--border)' }}>
-      <div className="max-w-7xl mx-auto">
-        <div ref={headRef} className={`fade-up ${headIn ? 'visible' : ''} text-center mb-16`}>
-          <p className="section-label mb-3">Career</p>
-          <h2 className="section-title font-syne">My <span>experience</span></h2>
-        </div>
+    <section id="experience" className="border-t border-[var(--line)] bg-[var(--panel)]/40 py-20 sm:py-24">
+      <div className="container-page">
+        <Reveal>
+          <SectionHeader
+            label="Experience"
+            title={
+              <>
+                Roles where the work <em>shipped</em>
+              </>
+            }
+            description="A compact timeline of production ML, geospatial systems, and platform engineering."
+          />
+        </Reveal>
 
-        <div className="max-w-2xl mx-auto">
-          {experiences.map((exp, i) => (
-            <TimelineItem key={exp.company} exp={exp} index={i} isLast={i === experiences.length - 1} />
-          ))}
-        </div>
+        <ol className="mt-12 max-w-3xl space-y-0">
+          {experiences.map((exp, i) => {
+            const isLast = i === experiences.length - 1
+            return (
+              <Reveal key={exp.company} delayMs={i * 80} as="li" className="relative pl-8">
+                <span
+                  className="absolute left-0 top-1.5 h-2.5 w-2.5 rounded-full border-2 border-ink bg-[var(--accent)]"
+                  aria-hidden="true"
+                />
+                {!isLast ? (
+                  <span
+                    className="absolute bottom-0 left-[4px] top-4 w-px bg-[var(--line-strong)]"
+                    aria-hidden="true"
+                  />
+                ) : null}
+
+                <div className={`pb-10 ${isLast ? 'pb-0' : ''}`}>
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <div>
+                      <h3 className="font-display text-lg font-bold tracking-tight text-ink">
+                        {exp.role}
+                      </h3>
+                      <p className="text-sm font-medium text-muted">{exp.company}</p>
+                    </div>
+                    <p className="font-mono text-[11px] text-dimmed">{exp.period}</p>
+                  </div>
+
+                  <ul className="mt-4 space-y-2">
+                    {exp.bullets.map((bullet) => (
+                      <li key={bullet} className="text-sm leading-relaxed text-muted">
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <ul className="mt-4 flex flex-wrap gap-1.5">
+                    {exp.stack.map((t) => (
+                      <li key={t}>
+                        <span className="pill">{t}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            )
+          })}
+        </ol>
       </div>
     </section>
   )
