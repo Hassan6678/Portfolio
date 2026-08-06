@@ -11,11 +11,11 @@ A premium one-page portfolio for Hassan Raza, focused on machine learning, data 
 
 ## Highlights
 
-- Premium dark visual system with custom CSS variables
-- Animated hero with rotating role list and portrait panel
-- Curated project section covering retail intelligence, forecasting, ETL, NLP, and geospatial analytics
-- Selected impact, experience timeline, skill groups, and premium contact section
-- Mobile-responsive single-page layout
+- Light editorial visual system with restrained lime accents
+- Proof-of-work code sessions styled after a real development environment
+- Unified commercial and research project showcase with filters
+- Impact, expertise, experience, about, and focused contact sections
+- Accessible responsive navigation and reduced-motion support
 
 ## Local Development
 
@@ -52,24 +52,26 @@ npm run build
 ├── components/
 │   ├── About.tsx
 │   ├── Contact.tsx
+│   ├── Credibility.tsx
+│   ├── Expertise.tsx
 │   ├── Experience.tsx
 │   ├── Footer.tsx
 │   ├── Hero.tsx
+│   ├── Impact.tsx
 │   ├── Navbar.tsx
-│   ├── Skills.tsx
-│   ├── Specialties.tsx
-│   ├── Testimonials.tsx
 │   ├── Work.tsx
 │   └── ui/
-│       ├── CodeBg.tsx
-│       └── TypeWriter.tsx
+│       ├── CodeSession.tsx
+│       ├── ProjectCard.tsx
+│       ├── ProjectMedia.tsx
+│       ├── Reveal.tsx
+│       └── SectionHeader.tsx
 ├── data/
 │   ├── experience.ts
 │   ├── projects.ts
+│   ├── sessions.ts
+│   ├── site.ts
 │   └── skills.ts
-├── hooks/
-│   ├── useInView.ts
-│   └── useTypewriter.ts
 ├── public/
 │   └── images/
 │       ├── hassan-photo.png
@@ -83,16 +85,16 @@ npm run build
 
 ## Main Sections
 
-- `Navbar`: fixed navigation with mobile menu
-- `Hero`: positioning, credibility badges, CTA, social links, portrait composition
-- `Specialties`: high-level capability cards
-- `About`: profile summary and stats
-- `Work`: selected projects and tags
-- `Testimonials.tsx`: currently used as the `Impact` section
-- `Experience`: timeline of roles and tech stack
-- `Skills`: grouped capabilities
-- `Contact`: CTA, direct contact cards, and mailto form
-- `Footer`: minimal closing section
+- `Navbar`: fixed responsive navigation
+- `Hero`: positioning, CTAs, social links, and code-session proof
+- `Credibility`: selected client and engagement strip
+- `Work`: unified commercial and research project showcase
+- `Impact`: measurable delivery outcomes
+- `Expertise`: focused capability areas
+- `Experience`: career history and technology stack
+- `About`: profile narrative and scope
+- `Contact`: direct mailto CTA and profile links
+- `Footer`: closing navigation and profile information
 
 ## Content Editing Guide
 
@@ -100,12 +102,11 @@ Update these files to keep the portfolio current:
 
 | Content | File |
 |---|---|
-| Hero roles, badges, social links | `components/Hero.tsx` |
-| About copy and stats | `components/About.tsx` |
+| Profile, navigation, hero, metrics, and contact copy | `data/site.ts` |
+| Code-session visuals | `data/sessions.ts` |
 | Project cards | `data/projects.ts` |
 | Experience timeline | `data/experience.ts` |
 | Skill groups | `data/skills.ts` |
-| Contact links | `components/Contact.tsx` |
 | Colors, spacing, animations | `app/globals.css` |
 | Page composition | `app/page.tsx` |
 
