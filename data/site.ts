@@ -73,13 +73,13 @@ export const hero = {
   primaryCta: { label: "Let's work together", href: '#contact' },
   secondaryCta: { label: 'Download CV', href: '/cv.pdf' },
   badges: ['100% Job Success', 'Upwork Top Rated'],
+  portrait: {
+    src: '/images/hassan-portrait.png',
+    alt: 'Hassan Raza',
+  },
   artifact: {
-    photo: '/images/hassan-photo.png',
-    photoAlt: 'Hassan Raza portrait',
     kicker: 'Live artifact / 01',
-    caption: 'Territory planning system for BAT UK — operational constraints included.',
-    metricLabel: 'Route feasibility',
-    metricValue: '98.4%',
+    caption: 'Territory planning — BAT UK',
   },
 } as const
 

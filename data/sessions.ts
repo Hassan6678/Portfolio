@@ -28,12 +28,13 @@ export const codeSessions: CodeSessionData[] = [
         name: 'territory_plan.py',
         language: 'Python',
         active: true,
+        // Kept under ~46 columns so the panel never truncates mid-expression.
         lines: [
-          'def plan_territories(outlets, n=131, calls=(8, 14)):',
-          '    """Weighted clustering + visit-frequency constraints."""',
-          '    weights = outlets.sales * outlets.priority',
-          '    seeds = weighted_kmeans(outlets.coords, n, weights)',
-          '    routes = optimize_routes(seeds, min_c=calls[0], max_c=calls[1])',
+          'def plan_territories(outlets, n=131):',
+          '    """Weighted clustering + visit limits."""',
+          '    w = outlets.sales * outlets.priority',
+          '    seeds = weighted_kmeans(outlets.xy, n, w)',
+          '    routes = optimize(seeds, calls=(8, 14))',
           '    return assign_quarter(routes, weeks=12)',
         ],
       },
@@ -41,7 +42,7 @@ export const codeSessions: CodeSessionData[] = [
     terminal: [
       '$ python territory_plan.py --quarter Q3',
       'Clustering 506 outlets → 131 territories…',
-      'Route feasibility 98.4%  ·  mean daily calls 11.2',
+      'Route feasibility 98.4% · calls/day 11.2',
     ],
     statusBar: {
       branch: 'main',

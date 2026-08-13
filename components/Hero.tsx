@@ -2,17 +2,17 @@ import Image from 'next/image'
 import CodeSession from '@/components/ui/CodeSession'
 import Reveal from '@/components/ui/Reveal'
 import { getSession } from '@/data/sessions'
-import { hero, profile, socialLinks } from '@/data/site'
+import { hero, impactMetrics, profile, socialLinks } from '@/data/site'
 
 export default function Hero() {
   const session = getSession('territory-plan')
 
   return (
-    <section className="hero-field relative overflow-hidden pb-20 pt-28 sm:pb-24 sm:pt-32">
+    <section className="hero-field hero-stage pb-14 pt-28 sm:pt-32">
       <div className="hero-grid" aria-hidden="true" />
       <div className="container-page">
-        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
-          <Reveal>
+        <div className="hero-layout">
+          <Reveal className="hero-copy">
             <div className="mb-6 flex flex-wrap items-center gap-x-5 gap-y-2">
               <p className="section-label">{hero.eyebrow}</p>
               <p className="status-line">
@@ -20,17 +20,15 @@ export default function Hero() {
                 {profile.availability}
               </p>
             </div>
-            <h1 className="max-w-[720px] font-display text-[clamp(2.75rem,7vw,5.6rem)] font-extrabold leading-[0.98] tracking-[-0.03em] text-ink">
+
+            <h1>
               {hero.headline.lead}
               <br />
               <span className="text-outline">{hero.headline.outlined}</span>
             </h1>
-            <p className="mt-6 max-w-xl text-lg font-medium leading-snug tracking-[-0.01em] text-ink/80 sm:text-[1.1875rem]">
-              {hero.lead}
-            </p>
-            <p className="mt-3.5 max-w-lg text-[0.9375rem] leading-relaxed text-muted">
-              {hero.support}
-            </p>
+
+            <p className="hero-lead">{hero.lead}</p>
+            <p className="hero-support">{hero.support}</p>
 
             <div className="mt-8 flex flex-wrap gap-3">
               <a href={hero.primaryCta.href} className="btn-primary">
@@ -64,36 +62,41 @@ export default function Hero() {
                 </a>
               ))}
             </div>
+
+            {session ? (
+              <div className="hero-code">
+                <p className="hero-code__label">
+                  <span>{hero.artifact.kicker}</span>
+                  {hero.artifact.caption}
+                </p>
+                <CodeSession session={session} />
+              </div>
+            ) : null}
           </Reveal>
 
-          <Reveal delayMs={120} className="console-scene">
-            <div className="hero-artifact">
-              <figure>
-                <Image
-                  src={hero.artifact.photo}
-                  alt={hero.artifact.photoAlt}
-                  fill
-                  sizes="104px"
-                  priority
-                />
-              </figure>
-              <div>
-                <span>{hero.artifact.kicker}</span>
-                <p>{hero.artifact.caption}</p>
-              </div>
-            </div>
-
-            {session ? <CodeSession session={session} className="scene-code" /> : null}
-
-            <div className="metric-float metric-float--bottom">
-              <span>{hero.artifact.metricLabel}</span>
-              <strong>{hero.artifact.metricValue}</strong>
-              <i>
-                <b style={{ width: hero.artifact.metricValue }} />
-              </i>
-            </div>
+          <Reveal delayMs={120} className="hero-figure">
+            <figure className="hero-portrait">
+              <Image
+                src={hero.portrait.src}
+                alt={hero.portrait.alt}
+                fill
+                sizes="(max-width: 767px) 70vw, (max-width: 1023px) 45vw, 460px"
+                priority
+              />
+            </figure>
           </Reveal>
         </div>
+
+        <Reveal delayMs={200}>
+          <dl className="hero-stats">
+            {impactMetrics.map((metric) => (
+              <div key={metric.label}>
+                <dt>{metric.value}</dt>
+                <dd>{metric.label}</dd>
+              </div>
+            ))}
+          </dl>
+        </Reveal>
       </div>
     </section>
   )
