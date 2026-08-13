@@ -31,11 +31,20 @@ const mono = JetBrains_Mono({
   display: 'swap',
 })
 
+/**
+ * Resolve the canonical origin. NEXT_PUBLIC_SITE_URL wins when set; otherwise fall
+ * back to the deployment Vercel builds against, then to localhost for `next dev`.
+ */
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000')
+
 export const metadata: Metadata = {
   title: 'Hassan Raza — ML Engineer & Data Scientist',
   description:
     'Portfolio of Hassan Raza, Machine Learning Engineer and Data Scientist specializing in geospatial optimization, NLP, computer vision, and scalable data pipelines.',
-  metadataBase: new URL('https://hassanraza.vercel.app'),
+  metadataBase: new URL(siteUrl),
+  alternates: { canonical: '/' },
   openGraph: {
     title: 'Hassan Raza — ML Engineer & Data Scientist',
     description:
