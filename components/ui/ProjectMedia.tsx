@@ -36,7 +36,6 @@ export default function ProjectMedia({ project, priority = false }: ProjectMedia
           className="object-cover transition-transform duration-700"
           priority={priority}
           onError={() => setFailed(true)}
-          unoptimized
         />
       ) : null}
     </div>
