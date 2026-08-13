@@ -92,15 +92,6 @@ export const credibility: CredibilityItem[] = [
   { label: 'Upwork', detail: 'Top Rated · 100%' },
 ]
 
-export const workIntro = {
-  label: 'Selected work',
-  titleBefore: 'Projects that ',
-  titleEmphasis: 'shipped',
-  titleAfter: '',
-  description:
-    'Commercial platforms and research engagements across retail intelligence, geospatial optimization, forecasting, speech AI, and production data pipelines.',
-} as const
-
 export const impactMetrics: ImpactMetric[] = [
   {
     value: '5',
@@ -126,9 +117,6 @@ export const impactMetrics: ImpactMetric[] = [
 
 export const expertiseIntro = {
   label: 'Expertise',
-  titleBefore: 'Where depth meets ',
-  titleEmphasis: 'delivery',
-  titleAfter: '',
   description:
     'Production ML across geospatial systems, language models, computer vision, and reliable data infrastructure.',
 } as const

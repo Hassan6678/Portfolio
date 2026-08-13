@@ -50,48 +50,6 @@ export const codeSessions: CodeSessionData[] = [
       position: 'Ln 4, Col 28',
     },
   },
-  {
-    id: 'rtm-pipeline',
-    title: 'RTM geospatial tools',
-    files: [
-      {
-        name: 'voronoi_regions.py',
-        language: 'Python',
-        active: true,
-        lines: [
-          'async def build_regions(job_id: str, market: str):',
-          '    points = await load_outlets(market)',
-          '    tess = voronoi_tessellation(points)',
-          '    clusters = hdbscan_labels(points, min_size=12)',
-          '    await store_job(job_id, tess, clusters)  # SQLite WAL',
-          '    return {"status": "ready", "regions": len(tess)}',
-        ],
-      },
-      {
-        name: 'job_142.json',
-        language: 'JSON',
-        lines: [
-          '{',
-          '  "job_id": 142,',
-          '  "market": "PAK",',
-          '  "tools": ["hdbscan", "voronoi", "landscan"],',
-          '  "status": "200 OK"',
-          '}',
-        ],
-      },
-    ],
-    terminal: [
-      'INFO  job=142 market=PAK tools=20+',
-      'INFO  wal checkpoint ok · tenants=5',
-      'READY regions=84  elapsed=2.1s',
-    ],
-    statusBar: {
-      branch: 'feat/rtm-tools',
-      language: 'Python 3.11',
-      encoding: 'UTF-8',
-      position: 'Ln 6, Col 41',
-    },
-  },
 ]
 
 export function getSession(id: string): CodeSessionData | undefined {

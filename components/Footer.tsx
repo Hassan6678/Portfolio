@@ -23,7 +23,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h2 className="font-display text-sm font-semibold text-ink">Navigate</h2>
+            <h3 className="font-display text-sm font-semibold text-ink">Navigate</h3>
             <ul className="mt-4 space-y-2.5">
               {navLinks.map((l) => (
                 <li key={l.label}>
@@ -36,7 +36,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h2 className="font-display text-sm font-semibold text-ink">Connect</h2>
+            <h3 className="font-display text-sm font-semibold text-ink">Connect</h3>
             <ul className="mt-4 space-y-2.5">
               {socialLinks.map((l) => (
                 <li key={l.label}>

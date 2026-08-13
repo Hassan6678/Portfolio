@@ -89,7 +89,7 @@ export default function Hero() {
               <span>{hero.artifact.metricLabel}</span>
               <strong>{hero.artifact.metricValue}</strong>
               <i>
-                <b />
+                <b style={{ width: hero.artifact.metricValue }} />
               </i>
             </div>
           </Reveal>

@@ -33,7 +33,6 @@ export interface Project {
   live: string | null
   placeholderGradient: string
   featured?: boolean
-  sessionId?: string
   upworkRating?: string
   earned?: string
 }
@@ -46,7 +45,6 @@ export const projects: Project[] = [
     company: 'AiSight.ai',
     companyColor: '#5a7a1a',
     featured: true,
-    sessionId: 'rtm-pipeline',
     title: 'RTM Analytics Platform',
     subtitle: 'Multi-Tenant FMCG Intelligence Platform',
     description:
@@ -81,7 +79,6 @@ export const projects: Project[] = [
     category: 'enterprise',
     company: 'BAT UK',
     companyColor: '#5a7a1a',
-    sessionId: 'territory-plan',
     title: 'Territory Planning & Route Optimization',
     description:
       'Built a geospatial territory planning system for BAT UK to support retail field operations at scale. The solution combined weighted clustering, route logic, and visit-frequency constraints to produce practical territory maps and more consistent field coverage. 131 territories · 12-week quarter scheduling · 8–14 daily call constraints · multi-constraint route optimization across 506+ outlet locations.',
