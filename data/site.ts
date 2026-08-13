@@ -163,9 +163,10 @@ export const expertise: ExpertiseItem[] = [
 
 export const aboutContent = {
   label: 'About',
-  titleBefore: 'Background that ',
-  titleEmphasis: 'compounds',
-  titleAfter: '',
+  headline: {
+    lead: 'Background that',
+    emphasis: 'compounds.',
+  },
   paragraphs: [
     "I'm a Machine Learning Engineer and Data Scientist based in Pakistan, building data-driven systems for international clients across retail, FMCG, and analytics products.",
     'My work turns complex datasets into practical tools — forecasting, geospatial modeling, NLP systems, and production ETL. At AiSight.ai I ship analytics platforms that help teams understand market share, route performance, and operational efficiency.',
@@ -174,6 +175,8 @@ export const aboutContent = {
   scopeLabel: 'Worked across projects involving',
   scope:
     'retail intelligence, market analytics, territory planning, forecasting systems, NLP tools, and production data pipelines.',
+  basis:
+    'Based in Pakistan. Collaborating with international clients across retail, FMCG, research contracts, and analytics products.',
 } as const
 
 export const contactContent = {
