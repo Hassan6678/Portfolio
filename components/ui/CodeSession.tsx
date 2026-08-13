@@ -116,11 +116,7 @@ export default function CodeSession({
   return (
     <div className={`code-session ${className}`} role="img" aria-label={session.title}>
       <div className="code-session__titlebar">
-        <div className="code-session__traffic" aria-hidden="true">
-          <span className="red" />
-          <span className="yellow" />
-          <span className="green" />
-        </div>
+        <span className="code-session__dot" aria-hidden="true" />
         <div className="code-session__tabs">
           {session.files.map((file) => (
             <div
@@ -128,10 +124,13 @@ export default function CodeSession({
               className={`code-session__tab ${file === active ? 'is-active' : ''}`}
             >
               {file.name}
-              {file.unsaved ? ' ●' : ''}
+              {file.unsaved ? ' •' : ''}
             </div>
           ))}
         </div>
+        {active?.language ? (
+          <span className="code-session__lang">{active.language}</span>
+        ) : null}
       </div>
 
       <div className="code-session__body">

@@ -17,16 +17,19 @@
   --accent-ink: #0b1420;
   --accent-soft: rgba(200, 241, 53, 0.22);
   --blue: #4b9cd3;
-  --code-bg: #101922;
-  --code-fg: #d4d4d4;
-  --code-muted: #858585;
-  --code-gutter: #333333;
-  --code-tab: #2d2d2d;
-  --code-green: #89d185;
-  --code-blue: #569cd6;
-  --code-orange: #ce9178;
-  --code-purple: #c586c0;
-  --code-yellow: #dcdcaa;
+  /* Editor palette derived from the site's own ink/blue/accent rather than the
+     stock VS Code Dark+ hues, which were the only saturated colours on the page. */
+  --code-bg: #0e1720;
+  --code-head: #131f2a;
+  --code-term: #0a1219;
+  --code-fg: #ccd5de;
+  --code-muted: #63707c;
+  --code-line: rgba(255, 255, 255, 0.07);
+  --code-kw: #6fa8d6;
+  --code-fn: #c8f135;
+  --code-str: #ddcfae;
+  --code-cm: #4d5b68;
+  --code-num: #9ec9b4;
   --shadow-soft: 0 20px 60px rgba(11, 20, 32, 0.12);
   --radius: 4px;
 }
@@ -200,27 +203,28 @@
 .code-session__titlebar {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.55rem 0.75rem;
-  background: #323233;
-  border-bottom: 1px solid #1e1e1e;
+  gap: 0.6rem;
+  padding: 0.7rem 0.85rem;
+  background: var(--code-head);
+  border-bottom: 1px solid var(--code-line);
 }
 
-.code-session__traffic {
-  display: flex;
-  gap: 6px;
+.code-session__dot {
+  width: 6px;
+  height: 6px;
   flex-shrink: 0;
-}
-
-.code-session__traffic span {
-  width: 10px;
-  height: 10px;
   border-radius: 50%;
+  background: var(--code-fn);
 }
 
-.code-session__traffic .red { background: #ff5f57; }
-.code-session__traffic .yellow { background: #febc2e; }
-.code-session__traffic .green { background: #28c840; }
+.code-session__lang {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 0.5625rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--code-muted);
+}
 
 .code-session__tabs {
   display: flex;
@@ -235,15 +239,14 @@
 }
 
 .code-session__tab {
-  padding: 0.25rem 0.65rem;
+  padding: 0 0.5rem 0 0;
   font-size: 0.6875rem;
+  letter-spacing: 0.02em;
   color: var(--code-muted);
-  border-radius: 4px 4px 0 0;
   white-space: nowrap;
 }
 
 .code-session__tab.is-active {
-  background: var(--code-bg);
   color: var(--code-fg);
 }
 
@@ -257,12 +260,12 @@
 }
 
 .code-session__gutter {
-  padding: 0.85rem 0.4rem;
+  padding: 0.9rem 0.55rem;
   text-align: right;
-  color: var(--code-muted);
-  background: #1e1e1e;
+  color: var(--code-cm);
+  background: transparent;
   user-select: none;
-  border-right: 1px solid #2a2a2a;
+  border-right: 1px solid var(--code-line);
 }
 
 .code-session__code {
@@ -271,38 +274,51 @@
   white-space: pre;
 }
 
-.code-session__code .tok-kw { color: var(--code-blue); }
-.code-session__code .tok-fn { color: var(--code-yellow); }
-.code-session__code .tok-str { color: var(--code-orange); }
-.code-session__code .tok-cm { color: #6a9955; }
-.code-session__code .tok-num { color: #b5cea8; }
-.code-session__code .tok-op { color: var(--code-purple); }
+.code-session__code .tok-kw { color: var(--code-kw); }
+.code-session__code .tok-fn { color: var(--code-fn); }
+.code-session__code .tok-str { color: var(--code-str); }
+.code-session__code .tok-cm { color: var(--code-cm); font-style: italic; }
+.code-session__code .tok-num { color: var(--code-num); }
+.code-session__code .tok-op { color: var(--code-kw); }
 
 .code-session__terminal {
-  border-top: 1px solid #2a2a2a;
-  background: #181818;
-  padding: 0.65rem 1rem 0.85rem;
+  border-top: 1px solid var(--code-line);
+  background: var(--code-term);
+  padding: 0.8rem 1rem 0.9rem;
   font-size: 0.6875rem;
-  line-height: 1.6;
-  color: var(--code-green);
+  line-height: 1.7;
+  color: #93a2b0;
+}
+
+/* Only the result line is accented, so the terminal reads as one signal
+   rather than a wall of green. */
+.code-session__terminal div:last-child {
+  color: var(--code-fn);
 }
 
 .code-session__terminal-label {
-  color: var(--code-muted);
-  margin-bottom: 0.35rem;
-  font-size: 0.625rem;
-  letter-spacing: 0.06em;
+  color: var(--code-cm);
+  margin-bottom: 0.5rem;
+  font-size: 0.5625rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .code-session__statusbar {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  padding: 0.3rem 0.75rem;
-  background: #007acc;
-  color: #fff;
-  font-size: 0.625rem;
+  gap: 1.1rem;
+  padding: 0.55rem 0.85rem;
+  background: var(--code-head);
+  border-top: 1px solid var(--code-line);
+  color: var(--code-muted);
+  font-size: 0.5625rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.code-session__statusbar span:first-child {
+  color: var(--code-kw);
 }
 
 .code-session__caret {
@@ -394,7 +410,7 @@
 .hero-stats { position:relative; z-index:3; display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--line-strong); }
 .hero-stats dt { font:700 clamp(1.65rem,2.7vw,2.4rem)/1 var(--font-display); letter-spacing:-.035em; color:var(--ink); }
 .hero-stats dd { margin-top:.45rem; font:500 10px var(--font-mono); letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
-.code-session { border-radius:4px; }.code-session__statusbar{background:#17658f}.code-session__titlebar{background:#18232d}
+.code-session { border-radius:4px; }
 
 .work-section { background:var(--panel); border-top:1px solid var(--line); }
 .editorial-heading { display:grid; grid-template-columns:1fr 2fr; gap:1.5rem; align-items:end; padding-bottom:3.5rem; border-bottom:1px solid var(--line-strong); }
