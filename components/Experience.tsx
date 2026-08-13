@@ -27,7 +27,7 @@ export default function Experience() {
                     <p className="font-mono text-[11px] text-dimmed">{exp.period}</p>
                   </div>
 
-                  <ul className="mt-4 space-y-2">
+                  <ul className="experience-bullets mt-4 space-y-2">
                     {exp.bullets.map((bullet) => (
                       <li key={bullet} className="text-sm leading-relaxed text-muted">
                         {bullet}
