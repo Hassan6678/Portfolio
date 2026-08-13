@@ -5,6 +5,9 @@
 :root {
   --bg: #f1efe7;
   --panel: #faf9f4;
+  /* Pre-mixed panel tints: Tailwind v3 cannot apply `/opacity` to a var() value. */
+  --panel-soft: rgba(250, 249, 244, 0.6);
+  --panel-strong: rgba(250, 249, 244, 0.7);
   --ink: #0b1420;
   --muted: #5e6871;
   --dimmed: #7c858c;

@@ -2,7 +2,7 @@ import { footerContent, navLinks, profile, socialLinks } from '@/data/site'
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--line)] bg-[var(--panel)]/70">
+    <footer className="border-t border-[var(--line)] bg-[var(--panel-strong)]">
       <div className="container-page py-12 sm:py-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-[1.4fr_0.7fr_0.9fr]">
           <div>
