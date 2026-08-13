@@ -20,8 +20,10 @@ export default function Expertise() {
               <Reveal key={item.title} delayMs={i * 45}>
                 <article>
                   <span>0{i + 1}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                  </div>
                 </article>
               </Reveal>
             ))}
