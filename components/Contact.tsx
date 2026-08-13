@@ -5,7 +5,7 @@ export default function Contact() {
   return (
     <section id="contact" className="contact-section">
       <div className="container-page relative">
-        <Reveal>
+        <Reveal className="card-rise">
           <div className="contact-inner">
             <p className="section-label section-label--dark">
               {contactContent.label}
