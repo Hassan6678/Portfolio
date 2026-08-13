@@ -413,10 +413,15 @@
 .code-session { border-radius:4px; }
 
 .work-section { background:var(--panel); border-top:1px solid var(--line); }
-.editorial-heading { display:grid; grid-template-columns:1fr 2fr; gap:1.5rem; align-items:end; padding-bottom:3.5rem; border-bottom:1px solid var(--line-strong); }
+/* Label and heading travel together in column one; the support line sits bottom
+   right against the rule. Three loose children in a two-column grid put the
+   heading in column two and wrapped the support line onto a second row, which
+   left the whole masthead hanging off-centre with dead space above the label. */
+.editorial-heading { display:grid; grid-template-columns:1.45fr .55fr; gap:2.5rem; align-items:end; padding-bottom:3.5rem; border-bottom:1px solid var(--line-strong); }
+.editorial-heading h2 { margin-top:1.125rem; }
 .editorial-heading h2,.capability-intro h2,.impact-top h2 { font:700 clamp(2.2rem,4.6vw,3.6rem)/1 var(--font-display); letter-spacing:-.035em; }
 .editorial-heading h2 em,.capability-intro h2 em,.impact-top h2 em { font-family:var(--font-serif); font-weight:400; }
-.editorial-heading>p:last-child { font-size:.9rem; line-height:1.7; color:var(--muted); max-width:340px; }
+.editorial-heading>p:last-child { justify-self:end; max-width:320px; padding-bottom:.4rem; font-size:.9rem; line-height:1.7; color:var(--muted); }
 .case-study { display:grid; grid-template-columns:1.2fr .8fr; border-bottom:1px solid var(--line); padding:3.5rem 0; gap:2.25rem; align-items:center; }
 .case-media { position:relative; border:1px solid var(--line); box-shadow:0 20px 55px rgba(11,20,32,.1); overflow:hidden; }
 .case-media:hover img { transform:scale(1.025); }
@@ -451,7 +456,7 @@
 .toolkit li:hover{color:var(--ink);padding-left:.4rem}
 
 @media(max-width:1023px){.hero-layout{grid-template-columns:minmax(0,1fr);gap:2.5rem}.hero-copy h1{width:100%}.hero-figure{justify-self:center;width:min(100%,400px)}.hero-code{position:static;width:100%;margin-top:1.5rem}.hero-stats{grid-template-columns:repeat(2,1fr);gap:1.75rem}.editorial-heading{grid-template-columns:1fr}.case-study{grid-template-columns:1fr;gap:2.25rem}.impact-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:767px){.text-outline{-webkit-text-stroke:1px var(--ink)}.impact-band{padding:2.5rem 1.4rem;border-radius:10px}.contact-inner{padding:2.75rem 1.4rem 2.5rem;border-radius:10px}.impact-section{padding:3rem 0}.contact-section{padding:1rem 0 3.5rem}.hero-copy h1 .text-outline{font-size:1.45em}.hero-portrait{min-height:0;height:auto;width:min(100%,300px)}.hero-stats{gap:1.25rem}.hero-stats dd{font-size:9px}.editorial-heading{display:block;padding-bottom:2.5rem}.editorial-heading h2{margin-top:1rem}.editorial-heading>p:last-child{margin-top:1.25rem}.case-study{padding:2.5rem 0}.case-flow{grid-template-columns:1fr}.archive ol li{grid-template-columns:28px 1fr}.archive li small,.archive li em{grid-column:2}.impact-top{display:block}.impact-signal{margin-top:2rem}.impact-grid{grid-template-columns:1fr}.impact-grid>div:not(:first-child) .impact-metric{padding-left:0}.impact-metric{min-height:auto;padding-bottom:2rem;border-right:0}.capability-layout{grid-template-columns:1fr}.capability-intro{position:static}.capability-list article{grid-template-columns:38px 1fr;gap:1rem;padding:1.75rem 0}.capability-list h3{font-size:1.15rem}.toolkit{grid-template-columns:1fr;gap:2.5rem;margin-top:4rem}.fallback-data{display:none}.project-fallback p{max-width:70%}}
+@media(max-width:767px){.text-outline{-webkit-text-stroke:1px var(--ink)}.impact-band{padding:2.5rem 1.4rem;border-radius:10px}.contact-inner{padding:2.75rem 1.4rem 2.5rem;border-radius:10px}.impact-section{padding:3rem 0}.contact-section{padding:1rem 0 3.5rem}.hero-copy h1 .text-outline{font-size:1.45em}.hero-portrait{min-height:0;height:auto;width:min(100%,300px)}.hero-stats{gap:1.25rem}.hero-stats dd{font-size:9px}.editorial-heading{display:block;padding-bottom:2.5rem}.editorial-heading h2{margin-top:1rem}.editorial-heading>p:last-child{justify-self:start;max-width:none;margin-top:1.25rem;padding-bottom:0}.case-study{padding:2.5rem 0}.case-flow{grid-template-columns:1fr}.archive ol li{grid-template-columns:28px 1fr}.archive li small,.archive li em{grid-column:2}.impact-top{display:block}.impact-signal{margin-top:2rem}.impact-grid{grid-template-columns:1fr}.impact-grid>div:not(:first-child) .impact-metric{padding-left:0}.impact-metric{min-height:auto;padding-bottom:2rem;border-right:0}.capability-layout{grid-template-columns:1fr}.capability-intro{position:static}.capability-list article{grid-template-columns:38px 1fr;gap:1rem;padding:1.75rem 0}.capability-list h3{font-size:1.15rem}.toolkit{grid-template-columns:1fr;gap:2.5rem;margin-top:4rem}.fallback-data{display:none}.project-fallback p{max-width:70%}}
 @media(max-width:420px){.code-session__body{font-size:.58rem;grid-template-columns:28px 1fr}.code-session__code{padding:.7rem}.case-metrics{grid-template-columns:repeat(2,1fr)}}
 @media(prefers-reduced-motion:no-preference){.case-media,.btn-primary,.btn-secondary{transition:transform .3s ease,box-shadow .3s ease}.case-media:hover{box-shadow:0 28px 70px rgba(11,20,32,.16)}.btn-primary:hover,.btn-secondary:hover{transform:translateY(-2px)}}
 

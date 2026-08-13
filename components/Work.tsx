@@ -11,8 +11,10 @@ export default function Work() {
       <div className="container-page">
         <Reveal>
           <div className="editorial-heading">
-            <p className="section-label">Selected systems / 2021—now</p>
-            <h2>From messy signals<br />to <em>operational leverage.</em></h2>
+            <div>
+              <p className="section-label">Selected systems / 2021—now</p>
+              <h2>From messy signals<br />to <em>operational leverage.</em></h2>
+            </div>
             <p>Three production stories across market intelligence, field planning, and retail decision systems.</p>
           </div>
         </Reveal>
