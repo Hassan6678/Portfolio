@@ -178,9 +178,10 @@ export const aboutContent = {
 
 export const contactContent = {
   label: 'Contact',
-  titleBefore: "Let's build something ",
-  titleEmphasis: 'useful',
-  titleAfter: ' with data.',
+  headline: {
+    lead: 'Have a hard data problem?',
+    emphasis: " Let's make it operational.",
+  },
   description:
     "Open to freelance projects, collaborations, and full-time roles in machine learning, geospatial intelligence, forecasting, and AI-driven products.",
   primaryCta: {

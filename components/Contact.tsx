@@ -7,12 +7,12 @@ export default function Contact() {
       <div className="container-page relative">
         <Reveal>
           <div className="contact-inner">
-            <p className="section-label !text-white/55">
+            <p className="section-label section-label--dark">
               {contactContent.label}
             </p>
             <h2>
-              Have a hard data problem?
-              <em> Let&apos;s make it operational.</em>
+              {contactContent.headline.lead}
+              <em>{contactContent.headline.emphasis}</em>
             </h2>
             <p className="mt-6 max-w-xl text-sm leading-relaxed text-white/60 sm:text-[0.95rem]">
               {contactContent.description}
