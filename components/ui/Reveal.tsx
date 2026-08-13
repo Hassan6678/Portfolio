@@ -35,7 +35,10 @@ export default function Reveal({
           observer.disconnect()
         }
       },
-      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+      // Fire as soon as the top edge crosses 88% of the viewport. Requiring 12%
+      // of the element to be visible made tall blocks sit blank well into view
+      // and then appear all at once.
+      { threshold: 0, rootMargin: '0px 0px -12% 0px' }
     )
 
     observer.observe(el)

@@ -8,14 +8,40 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const lastY = useRef(0)
+  const ticking = useRef(false)
 
   useEffect(() => {
-    const onScroll = () => {
+    lastY.current = window.scrollY
+
+    const update = () => {
+      ticking.current = false
       const y = window.scrollY
       setScrolled(y > 12)
-      setVisible(y < lastY.current || y < 80)
+
+      // Near the top the bar always shows, and the baseline tracks the page so
+      // the first real scroll down is measured from here.
+      if (y < 140) {
+        setVisible(true)
+        lastY.current = y
+        return
+      }
+
+      // Only react once movement clears a threshold. Updating the baseline on
+      // every event meant one sub-pixel or momentum-bounce frame where y dipped
+      // read as "scrolling up" and snapped the bar back mid-scroll.
+      const delta = y - lastY.current
+      if (Math.abs(delta) < 12) return
+      setVisible(delta < 0)
       lastY.current = y
     }
+
+    // Coalesce to one update per frame rather than one per scroll event.
+    const onScroll = () => {
+      if (ticking.current) return
+      ticking.current = true
+      window.requestAnimationFrame(update)
+    }
+
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
