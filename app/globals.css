@@ -423,4 +423,29 @@
 .experience-section{background:#e8e7df;border-top:1px solid var(--line)}.experience-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem}.experience-intro h2{margin-top:1rem;font:700 clamp(2.1rem,4vw,3rem)/1.05 var(--font-display);letter-spacing:-.035em}.experience-intro h2 em{font-family:var(--font-serif);font-weight:400}.experience-intro>p:last-child{margin-top:1.25rem;max-width:380px;color:var(--muted);line-height:1.65}.experience-list>li>div{border-top:1px solid var(--line-strong);padding-top:1.75rem}.experience-bullets li{position:relative;padding-left:1rem}.experience-bullets li::before{content:"";position:absolute;left:0;top:.65rem;width:4px;height:4px;background:var(--blue)}
 .about-section{border-top:1px solid var(--line)}.about-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem}.about-intro{position:sticky;top:7rem;align-self:start}.about-intro h2{margin-top:1rem;font:700 clamp(2.1rem,4vw,3rem)/1.05 var(--font-display);letter-spacing:-.035em}.about-intro h2 em{font-family:var(--font-serif);font-weight:400}.about-body>p{font-size:.95rem;line-height:1.75;color:var(--muted)}.about-body>p+p{margin-top:1.25rem}.about-scope{margin-top:2.75rem;border-top:2px solid var(--ink);padding-top:1.5rem}.about-scope>span{font:500 10px var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:var(--blue)}.about-scope h3{margin-top:.875rem;max-width:34rem;font:600 1.15rem/1.5 var(--font-display);letter-spacing:-.02em;color:var(--ink)}.about-scope>p{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--line);max-width:34rem;font-size:.845rem;line-height:1.7;color:var(--muted)}
 .contact-section{background:var(--ink);color:white;padding:6.25rem 0 0;overflow:hidden}.contact-inner{position:relative;padding-bottom:5rem}.contact-inner h2{position:relative;z-index:1;margin-top:1.125rem;max-width:900px;font:700 clamp(2.6rem,7vw,5.2rem)/.98 var(--font-display);letter-spacing:-.04em}.contact-inner h2 em{display:block;color:var(--accent);font-family:var(--font-serif);font-weight:400}.contact-links{position:relative;z-index:1;margin-top:3.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;border-top:1px solid rgba(255,255,255,.14);padding-top:1.5rem}
+/* Contact CTAs carry a 5rem headline, so they need more weight than the navbar pair. */
+.contact-cta .btn-accent{padding:.95rem 1.75rem;font-size:.9rem;letter-spacing:-.005em}
+.contact-cta__ghost{display:inline-flex;align-items:center;padding:.95rem 1.6rem;border:1px solid rgba(255,255,255,.22);font-size:.9rem;font-weight:500;color:rgba(255,255,255,.85);transition:border-color .35s ease,color .35s ease,background .35s ease}
+.contact-cta__ghost:hover{border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.04);color:#fff}
+
+/* Interaction polish — slow easing, hairline emphasis, accent used sparingly. */
+@media(prefers-reduced-motion:no-preference){
+  .btn-primary span,.btn-accent span{display:inline-block;transition:transform .35s cubic-bezier(.22,1,.36,1)}
+  .btn-primary:hover span,.btn-accent:hover span{transform:translate(3px,-3px)}
+  .case-number{transition:transform .45s cubic-bezier(.22,1,.36,1)}
+  .case-study:hover .case-number{transform:translateY(-3px)}
+  .metric-rule i{transition:width .9s cubic-bezier(.22,1,.36,1)}
+  .archive ol li{transition:padding-left .4s ease,border-color .4s ease}
+  .archive ol li:hover{padding-left:.5rem}
+}
+.archive ol li:hover{border-color:var(--line-strong)}
+.archive li span,.archive li strong{transition:color .35s ease}
+.archive ol li:hover span{color:var(--blue)}
+.impact-metric{transition:background .55s ease}
+.impact-grid>div:hover .impact-metric{background:rgba(255,255,255,.022)}
+.credibility-list li span:first-child{transition:color .35s ease}
+.credibility-list li:hover span:first-child{color:var(--blue)}
+.contact-links a{transition:opacity .35s ease}
+.contact-links li:hover a{opacity:1}
+
 @media(max-width:767px){.experience-layout,.about-layout{grid-template-columns:1fr}.about-intro{position:static}.about-body{margin-top:.5rem}.experience-list{margin-top:1rem}.contact-links{grid-template-columns:1fr 1fr}.hero-artifact{gap:.875rem}.hero-artifact figure{width:84px;height:84px}}

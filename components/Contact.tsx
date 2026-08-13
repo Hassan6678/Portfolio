@@ -18,9 +18,9 @@ export default function Contact() {
               {contactContent.description}
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="contact-cta mt-10 flex flex-wrap gap-3">
               <a href={contactContent.primaryCta.href} className="btn-accent">
-                {contactContent.primaryCta.label}
+                {contactContent.primaryCta.label} <span aria-hidden="true">↗</span>
               </a>
               {socialLinks.slice(0, 2).map((s) => (
                 <a
@@ -28,7 +28,7 @@ export default function Contact() {
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center border border-white/20 px-4 py-2.5 text-sm font-medium text-white/85 transition-colors hover:border-white/50 hover:text-white"
+                  className="contact-cta__ghost"
                 >
                   {s.label}
                 </a>

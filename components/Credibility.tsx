@@ -7,7 +7,7 @@ export default function Credibility() {
         <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.14em] text-dimmed">
           Trusted across markets
         </p>
-        <ul className="flex flex-wrap items-center gap-x-8 gap-y-4 sm:gap-x-10">
+        <ul className="credibility-list flex flex-wrap items-center gap-x-8 gap-y-4 sm:gap-x-10">
           {credibility.map((item) => (
             <li key={item.label} className="min-w-0">
               <span className="font-display text-sm font-semibold tracking-tight text-ink sm:text-base">
