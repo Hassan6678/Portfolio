@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import Credibility from '@/components/Credibility'
 import Work from '@/components/Work'
+import Research from '@/components/Research'
 import Impact from '@/components/Impact'
 import Expertise from '@/components/Expertise'
 import Experience from '@/components/Experience'
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero />
       <Credibility />
       <Work />
+      <Research />
       <Impact />
       <Expertise />
       <Experience />

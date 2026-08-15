@@ -1,10 +1,12 @@
 import ProjectMedia from '@/components/ui/ProjectMedia'
 import Reveal from '@/components/ui/Reveal'
-import { projects } from '@/data/projects'
+import { commercialProjects } from '@/data/projects'
 
 export default function Work() {
-  const stories = projects.slice(0, 3)
-  const archive = projects.slice(3)
+  // Commercial only — the research engagements get their own band below, so
+  // sourcing the archive from the full list listed them twice.
+  const stories = commercialProjects.slice(0, 3)
+  const archive = commercialProjects.slice(3)
 
   return (
     <section id="work" className="work-section py-24 sm:py-32">
@@ -53,7 +55,7 @@ export default function Work() {
           <div className="archive">
             <div className="archive-heading">
               <p className="section-label">Project archive</p>
-              <p>Additional commercial and research engagements.</p>
+              <p>Additional production systems shipped for enterprise clients.</p>
             </div>
             <ol>
               {archive.map((project, i) => (

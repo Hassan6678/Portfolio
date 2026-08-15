@@ -440,6 +440,29 @@
 .fallback-kicker { position:relative;font:600 9px var(--font-mono);letter-spacing:.1em;color:var(--blue); }.project-fallback p{position:absolute;left:2rem;bottom:2rem;max-width:45%;font:700 clamp(1.2rem,2.5vw,2.2rem)/1.05 var(--font-display);letter-spacing:-.04em}.fallback-data{position:absolute;right:2rem;bottom:2rem;display:flex;gap:1.5rem}.fallback-data span{font:700 1.25rem var(--font-display)}.fallback-data small{display:block;font:500 7px var(--font-mono);text-transform:uppercase;color:var(--muted)}
 .archive { margin-top:4rem; border-top:2px solid var(--ink); padding-top:1.75rem; display:grid;grid-template-columns:1fr;gap:2rem; }.archive-heading>p:last-child{margin-top:.625rem;max-width:260px;font-size:.845rem;color:var(--muted)}.archive ol li{display:grid;grid-template-columns:32px 1.6fr .8fr 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);align-items:center}.archive li span,.archive li em{font:500 9px var(--font-mono);color:var(--dimmed);text-transform:uppercase}.archive li strong{font:650 .9rem var(--font-display)}.archive li small{color:var(--muted)}
 
+/* Research band. Sits on --bg so it separates from the Work panel above without
+   another border, and the cards read as figure plates rather than case studies. */
+.research-section{border-top:1px solid var(--line)}
+.research-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.5rem;margin-top:3.5rem}
+.research-grid>.reveal{display:flex}
+.research-card{flex:1;display:flex;flex-direction:column;min-width:0}
+/* Contained, not cropped: these are method diagrams on white grounds, so the
+   plate supplies the ground and the padding keeps them off the hairline.
+   The padding lives on the image, not the plate: `fill` resolves inset:0 against
+   the plate's padding box, so padding there would push the caption off the corner
+   as well. */
+/* White, not --panel: the diagrams carry their own white ground, and any other
+   plate colour shows it as a lighter rectangle floating inside the frame. */
+.research-plate{position:relative;aspect-ratio:16/10;background:#fff;border:1px solid var(--line)}
+.research-plate img{padding:1.25rem 1.25rem 1.9rem}
+.research-plate figcaption{position:absolute;left:0;bottom:0;padding:.45rem .7rem;background:var(--ink);color:var(--accent);font:600 9px var(--font-mono);letter-spacing:.1em}
+.research-kicker{display:flex;align-items:center;gap:.625rem;margin-top:1.5rem;font:500 10px var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:var(--blue)}
+.research-kicker em{font-style:normal;padding:.15rem .4rem;background:var(--accent-soft);color:var(--ink);letter-spacing:.05em}
+.research-card h3{margin-top:.75rem;font:700 1.25rem/1.25 var(--font-display);letter-spacing:-.025em;color:var(--ink)}
+.research-body{margin-top:.875rem;font-size:.845rem;line-height:1.7;color:var(--muted)}
+.research-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:auto;padding-top:1.5rem}
+.research-tags li{padding:.3rem .55rem;border:1px solid var(--line);font:500 9px var(--font-mono);text-transform:uppercase;letter-spacing:.08em;color:var(--dimmed)}
+
 .impact-section{padding:5rem 0}
 .impact-band { color:white;padding:4.25rem 3rem;position:relative;overflow:hidden; }.impact-band::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px);background-size:100% 52px;pointer-events:none}.impact-top{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:end}.impact-top h2{margin-top:1rem;color:white}.impact-top h2 em{color:var(--accent)}.section-label--dark{color:rgba(255,255,255,.48)}.section-label--dark::before{color:var(--accent)}.impact-signal{width:200px;padding:.875rem;border:1px solid rgba(255,255,255,.16);font:500 9px var(--font-mono);text-transform:uppercase;color:rgba(255,255,255,.45)}.impact-signal strong{float:right;color:var(--accent)}.impact-signal i{display:block;clear:both;height:2px;background:var(--accent);margin-top:10px}.impact-grid{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);margin-top:3.25rem;border-top:1px solid rgba(255,255,255,.2)}.impact-metric{padding:1.75rem 1.25rem 1.75rem 0;border-right:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);min-height:230px}.impact-grid>div:not(:first-child) .impact-metric{padding-left:1.25rem}.impact-grid>div:last-child .impact-metric{border-right:0}.impact-metric>span{font:500 9px var(--font-mono);color:var(--blue)}.impact-metric strong{display:block;margin-top:1.375rem;font:700 clamp(2.6rem,5vw,4.4rem)/1 var(--font-display);letter-spacing:-.04em}.impact-metric h3{margin-top:.75rem;font:600 .875rem var(--font-display)}.impact-metric p{margin-top:.625rem;max-width:210px;font-size:.78rem;line-height:1.55;color:rgba(255,255,255,.5)}.metric-rule{height:2px;background:rgba(255,255,255,.1);margin-top:1.25rem}.metric-rule i{display:block;height:100%;background:var(--blue)}
 
@@ -455,8 +478,8 @@
 .toolkit li{padding:.6rem 0;border-bottom:1px solid var(--line);font-size:.855rem;color:var(--muted);transition:color .35s ease,padding-left .35s ease}
 .toolkit li:hover{color:var(--ink);padding-left:.4rem}
 
-@media(max-width:1023px){.hero-layout{grid-template-columns:minmax(0,1fr);gap:2.5rem}.hero-copy h1{width:100%}.hero-figure{justify-self:center;width:min(100%,400px)}.hero-code{position:static;width:100%;margin-top:1.5rem}.hero-stats{grid-template-columns:repeat(2,1fr);gap:1.75rem}.editorial-heading{grid-template-columns:1fr}.case-study{grid-template-columns:1fr;gap:2.25rem}.impact-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:767px){.text-outline{-webkit-text-stroke:1px var(--ink)}.impact-band{padding:2.5rem 1.4rem;border-radius:10px}.contact-inner{padding:2.75rem 1.4rem 2.5rem;border-radius:10px}.impact-section{padding:3rem 0}.contact-section{padding:1rem 0 3.5rem}.hero-copy h1 .text-outline{font-size:1.45em}.hero-portrait{min-height:0;height:auto;width:min(100%,300px)}.hero-stats{gap:1.25rem}.hero-stats dd{font-size:9px}.editorial-heading{display:block;padding-bottom:2.5rem}.editorial-heading h2{margin-top:1rem}.editorial-heading>p:last-child{justify-self:start;max-width:none;margin-top:1.25rem;padding-bottom:0}.case-study{padding:2.5rem 0}.case-flow{grid-template-columns:1fr}.archive ol li{grid-template-columns:28px 1fr}.archive li small,.archive li em{grid-column:2}.impact-top{display:block}.impact-signal{margin-top:2rem}.impact-grid{grid-template-columns:1fr}.impact-grid>div:not(:first-child) .impact-metric{padding-left:0}.impact-metric{min-height:auto;padding-bottom:2rem;border-right:0}.capability-layout{grid-template-columns:1fr}.capability-intro{position:static}.capability-list article{grid-template-columns:38px 1fr;gap:1rem;padding:1.75rem 0}.capability-list h3{font-size:1.15rem}.toolkit{grid-template-columns:1fr;gap:2.5rem;margin-top:4rem}.fallback-data{display:none}.project-fallback p{max-width:70%}}
+@media(max-width:1023px){.hero-layout{grid-template-columns:minmax(0,1fr);gap:2.5rem}.hero-copy h1{width:100%}.hero-figure{justify-self:center;width:min(100%,400px)}.hero-code{position:static;width:100%;margin-top:1.5rem}.hero-stats{grid-template-columns:repeat(2,1fr);gap:1.75rem}.editorial-heading{grid-template-columns:1fr}.case-study{grid-template-columns:1fr;gap:2.25rem}.research-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:2rem}.impact-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:767px){.text-outline{-webkit-text-stroke:1px var(--ink)}.impact-band{padding:2.5rem 1.4rem;border-radius:10px}.contact-inner{padding:2.75rem 1.4rem 2.5rem;border-radius:10px}.impact-section{padding:3rem 0}.contact-section{padding:1rem 0 3.5rem}.hero-copy h1 .text-outline{font-size:1.45em}.hero-portrait{min-height:0;height:auto;width:min(100%,300px)}.hero-stats{gap:1.25rem}.hero-stats dd{font-size:9px}.editorial-heading{display:block;padding-bottom:2.5rem}.editorial-heading h2{margin-top:1rem}.editorial-heading>p:last-child{justify-self:start;max-width:none;margin-top:1.25rem;padding-bottom:0}.case-study{padding:2.5rem 0}.case-flow{grid-template-columns:1fr}.research-grid{grid-template-columns:minmax(0,1fr);gap:2.5rem;margin-top:2.5rem}.research-plate img{padding:.9rem .9rem 1.6rem}.archive ol li{grid-template-columns:28px 1fr}.archive li small,.archive li em{grid-column:2}.impact-top{display:block}.impact-signal{margin-top:2rem}.impact-grid{grid-template-columns:1fr}.impact-grid>div:not(:first-child) .impact-metric{padding-left:0}.impact-metric{min-height:auto;padding-bottom:2rem;border-right:0}.capability-layout{grid-template-columns:1fr}.capability-intro{position:static}.capability-list article{grid-template-columns:38px 1fr;gap:1rem;padding:1.75rem 0}.capability-list h3{font-size:1.15rem}.toolkit{grid-template-columns:1fr;gap:2.5rem;margin-top:4rem}.fallback-data{display:none}.project-fallback p{max-width:70%}}
 @media(max-width:420px){.code-session__body{font-size:.58rem;grid-template-columns:28px 1fr}.code-session__code{padding:.7rem}.case-metrics{grid-template-columns:repeat(2,1fr)}}
 @media(prefers-reduced-motion:no-preference){.case-media,.btn-primary,.btn-secondary{transition:transform .3s ease,box-shadow .3s ease}.case-media:hover{box-shadow:0 28px 70px rgba(11,20,32,.16)}.btn-primary:hover,.btn-secondary:hover{transform:translateY(-2px)}}
 
@@ -537,7 +560,13 @@
   .metric-rule i{transition:width .9s cubic-bezier(.22,1,.36,1)}
   .archive ol li{transition:padding-left .4s ease,border-color .4s ease}
   .archive ol li:hover{padding-left:.5rem}
+  .research-plate figcaption{transition:transform .45s cubic-bezier(.22,1,.36,1)}
+  .research-card:hover .research-plate figcaption{transform:translateY(-3px)}
 }
+.research-plate{transition:border-color .45s ease,box-shadow .45s ease}
+.research-card:hover .research-plate{border-color:var(--line-strong);box-shadow:0 18px 45px rgba(11,20,32,.09)}
+.research-tags li{transition:border-color .35s ease,color .35s ease}
+.research-card:hover .research-tags li{border-color:var(--line-strong);color:var(--muted)}
 .archive ol li:hover{border-color:var(--line-strong)}
 .archive li span,.archive li strong{transition:color .35s ease}
 .archive ol li:hover span{color:var(--blue)}
