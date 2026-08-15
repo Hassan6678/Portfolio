@@ -13,7 +13,13 @@ export default function ProjectMedia({ project, priority = false }: ProjectMedia
   const [failed, setFailed] = useState(false)
 
   return (
-    <div className="project-media relative aspect-[16/10] w-full overflow-hidden">
+    // The frame takes the artwork's own ratio so object-cover crops nothing.
+    // One shared ratio meant either the 4:3 covers lost their top and bottom
+    // or the 3:2 screenshot lost the left edge of its own title.
+    <div
+      className="project-media relative w-full overflow-hidden"
+      style={{ aspectRatio: project.mediaAspect ?? '4 / 3' }}
+    >
       <div
         className="project-fallback absolute inset-0"
         aria-hidden={failed ? undefined : true}

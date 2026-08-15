@@ -27,6 +27,9 @@ export interface Project {
   subtitle?: string
   description: string
   image: string
+  /** Frame aspect for the case-study media, e.g. '3 / 2'. Defaults to 4/3.
+   *  Set it to the artwork's own ratio so cover-cropping takes nothing. */
+  mediaAspect?: string
   tags: string[]
   metrics?: ProjectMetric[]
   github: string | null
@@ -49,7 +52,7 @@ export const projects: Project[] = [
     subtitle: 'Multi-Tenant FMCG Intelligence Platform',
     description:
       'Architected and deployed a production-grade, multi-tenant analytics platform serving field operations across 5 FMCG markets (PAK, IND, BGD, LKA, NPL). Built on FastAPI + HTMX with 20+ geospatial tools — HDBSCAN, Voronoi tessellation, BFS region-growing, LandScan raster analysis — backed by async jobs on SQLite WAL-mode for reliability under concurrent enterprise load.',
-    image: '/images/projects/rtm-platform.png',
+    image: '/images/projects/rtm-platform.jpg',
     tags: [
       'FastAPI',
       'HTMX',
@@ -82,7 +85,7 @@ export const projects: Project[] = [
     title: 'Territory Planning & Route Optimization',
     description:
       'Built a geospatial territory planning system for BAT UK to support retail field operations at scale. The solution combined weighted clustering, route logic, and visit-frequency constraints to produce practical territory maps and more consistent field coverage. 131 territories · 12-week quarter scheduling · 8–14 daily call constraints · multi-constraint route optimization across 506+ outlet locations.',
-    image: '/images/projects/bat-territory.png',
+    image: '/images/projects/bat-territory.jpg',
     tags: [
       'Spatial Clustering',
       'Weighted K-Means',
@@ -111,6 +114,7 @@ export const projects: Project[] = [
     description:
       'Developed a sales intelligence platform that combined forecasting, spatial analysis, and computer vision signals to support regional planning. It helped business teams identify market opportunities, monitor changing demand patterns, and make better territory-level decisions.',
     image: '/images/projects/ebm-dashboard.png',
+    mediaAspect: '3 / 2',
     tags: [
       'Computer Vision',
       'Deep Learning',
