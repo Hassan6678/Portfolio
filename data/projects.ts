@@ -210,7 +210,7 @@ export const projects: Project[] = [
     title: 'Large-Scale Time Series Classification (Hydra + MultiRocket)',
     description:
       'Implemented and optimized state-of-the-art time series classification pipelines using the ROCKET family, including Hydra and MultiRocket, for large benchmark datasets such as UCR109. The work focused on improving classification accuracy while maintaining computational efficiency through feature transformations, kernel-level optimizations, and hybrid modeling strategies.',
-    image: '/images/projects/hydra-multirocket.png',
+    image: '/images/projects/hydra-multirocket.webp',
     tags: [
       'Python',
       'Hydra',
