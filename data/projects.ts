@@ -113,8 +113,7 @@ export const projects: Project[] = [
     title: 'Retail Sales Intelligence Platform',
     description:
       'Developed a sales intelligence platform that combined forecasting, spatial analysis, and computer vision signals to support regional planning. It helped business teams identify market opportunities, monitor changing demand patterns, and make better territory-level decisions.',
-    image: '/images/projects/ebm-dashboard.png',
-    mediaAspect: '3 / 2',
+    image: '/images/projects/ebm-dashboard.jpg',
     tags: [
       'Computer Vision',
       'Deep Learning',
