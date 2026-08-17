@@ -3,8 +3,6 @@ import Reveal from '@/components/ui/Reveal'
 import { commercialProjects } from '@/data/projects'
 
 export default function Work() {
-  // Commercial only — the research engagements get their own band below, so
-  // sourcing the archive from the full list listed them twice.
   const stories = commercialProjects.slice(0, 3)
   const archive = commercialProjects.slice(3)
 
@@ -21,7 +19,7 @@ export default function Work() {
           </div>
         </Reveal>
 
-        <div className="case-stack">
+        <div>
           {stories.map((project, i) => (
             <Reveal key={project.id} delayMs={i * 60}>
               <article className="case-study">

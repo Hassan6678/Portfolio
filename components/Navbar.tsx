@@ -18,24 +18,20 @@ export default function Navbar() {
       const y = window.scrollY
       setScrolled(y > 12)
 
-      // Near the top the bar always shows, and the baseline tracks the page so
-      // the first real scroll down is measured from here.
       if (y < 140) {
         setVisible(true)
         lastY.current = y
         return
       }
 
-      // Only react once movement clears a threshold. Updating the baseline on
-      // every event meant one sub-pixel or momentum-bounce frame where y dipped
-      // read as "scrolling up" and snapped the bar back mid-scroll.
+      // Threshold before reacting, so a momentum bounce does not read as an
+      // upward scroll and snap the bar back mid-scroll.
       const delta = y - lastY.current
       if (Math.abs(delta) < 12) return
       setVisible(delta < 0)
       lastY.current = y
     }
 
-    // Coalesce to one update per frame rather than one per scroll event.
     const onScroll = () => {
       if (ticking.current) return
       ticking.current = true
@@ -138,9 +134,7 @@ export default function Navbar() {
       <div
         id="mobile-nav"
         // `invisible`, not the hidden attribute: the `flex` class outranks the UA
-        // sheet's [hidden]{display:none}, so the panel stayed laid out and its
-        // links stayed in the tab order while invisible. visibility:hidden drops
-        // them from it and still allows the fade.
+        // sheet's [hidden]{display:none}, which would leave the links focusable.
         className={`fixed inset-0 z-40 flex flex-col bg-[var(--bg)] px-6 pb-10 pt-24 transition-opacity duration-300 md:hidden ${
           menuOpen
             ? 'visible pointer-events-auto opacity-100'

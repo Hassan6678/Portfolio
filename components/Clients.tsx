@@ -5,8 +5,6 @@ import { clients } from '@/data/clients'
 export default function Clients() {
   return (
     <section id="clients" className="clients-section py-20 sm:py-24">
-      {/* Dotted equirectangular map, generated into public/images/. It sits
-          behind the cards at low opacity and is purely decorative. */}
       <div className="clients-map" aria-hidden="true" />
 
       <div className="container-page relative">
@@ -18,10 +16,6 @@ export default function Clients() {
               <br />
               <em>these shelves.</em>
             </h2>
-            {/* Regions, not a market count: the band shows global brands, so a
-                number shrinks the claim. All three are named because the work
-                spans South Asian RTM, UK field planning, and North American
-                clients — "Europe" alone would drop the last of those. */}
             <p>
               Route-to-market, territory design, and retail analytics built for FMCG
               field operations across South Asia, Europe, and North America.
@@ -30,9 +24,8 @@ export default function Clients() {
         </Reveal>
 
         <Reveal delayMs={80}>
-          {/* Two passes of the same list: the track scrolls exactly one pass to
-              the left and restarts, so the loop has no seam. The second pass is
-              hidden from assistive tech — it is the same thirteen brands. */}
+          {/* Two passes of the same list: the track scrolls exactly one pass
+              left and restarts, so the loop has no seam. */}
           <div className="clients-marquee">
             <ul className="clients-track">
               {clients.map((client) => (

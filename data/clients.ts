@@ -1,24 +1,12 @@
 export interface Client {
-  /** Filename stem under public/images/clients/ */
   slug: string
-  /** Accessible name, and the alt text when a logo file is present. */
   name: string
-  /** Wordmark shown until a logo file is dropped in. Set as the brand writes it. */
+  /** Wordmark shown when no logo file is present, or when it fails to load. */
   mark: string
-  /** Brand colour, used for the wordmark. */
   color: string
-  /**
-   * Path to a logo file. Drop the artwork into public/images/clients/ and set
-   * this — the card swaps from the wordmark to the image with no other change.
-   */
   logo?: string
 }
 
-/**
- * Brands whose route-to-market, territory, and retail analytics work I've built
- * systems for — mostly through AiSight.ai engagements rather than direct
- * contracts, so the section is labelled as brands reached, not clients billed.
- */
 export const clients: Client[] = [
   { slug: 'pepsico', name: 'PepsiCo', mark: 'PepsiCo', color: '#005CB4', logo: '/images/clients/pepsico.png' },
   { slug: 'packages', name: 'Packages Limited', mark: 'Packages', color: '#0091D2', logo: '/images/clients/packages.png' },

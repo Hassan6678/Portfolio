@@ -6,10 +6,7 @@ export const alt = 'Hassan Raza — ML Engineer & Data Scientist'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
-/**
- * Social card. Uses system fonts only — remote font fetches are the usual cause of
- * OG generation failing at request time, and the editorial look survives without them.
- */
+/** System fonts only — remote font fetches are the usual cause of OG failures. */
 export default function OpengraphImage() {
   return new ImageResponse(
     (

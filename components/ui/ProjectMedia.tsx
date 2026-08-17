@@ -14,10 +14,8 @@ export default function ProjectMedia({ project, priority = false }: ProjectMedia
 
   return (
     // The frame takes the artwork's own ratio so object-cover crops nothing.
-    // One shared ratio meant either the 4:3 covers lost their top and bottom
-    // or the 3:2 screenshot lost the left edge of its own title.
     <div
-      className="project-media relative w-full overflow-hidden"
+      className="relative w-full overflow-hidden"
       style={{ aspectRatio: project.mediaAspect ?? '4 / 3' }}
     >
       <div

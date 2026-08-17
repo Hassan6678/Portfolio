@@ -14,8 +14,6 @@
   --accent-ink: #0b1420;
   --accent-soft: rgba(200, 241, 53, 0.22);
   --blue: #4b9cd3;
-  --shadow-soft: 0 20px 60px rgba(11, 20, 32, 0.12);
-  --radius: 4px;
 }
 
 @layer base {
@@ -203,91 +201,70 @@
   background: rgba(11, 20, 32, 0.3);
 }
 
-/* Premium data-intelligence system */
+/* ---------- Hero ---------- */
 .hero-field { background: var(--bg); }
 .hero-grid { position:absolute; inset:0; pointer-events:none; opacity:.35; background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px); background-size:64px 64px; mask-image:linear-gradient(to bottom,black,transparent 78%); }
 .status-line,.proof-label,.proof-link { font:500 10px/1 var(--font-mono); text-transform:uppercase; letter-spacing:.08em; color:var(--muted); }
 .status-line { display:flex; align-items:center; gap:8px; }
 .status-line span { width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px rgba(200,241,53,.2); }
 .text-outline { color:transparent; -webkit-text-stroke:1.5px var(--ink); }
-/* inline-flex so the brand mark sits on the label's line; the divider rule stays
-   on the left edge, which is why the gap is padding rather than a flex gap. */
 .proof-link { display:inline-flex; align-items:center; gap:.45rem; border-left:1px solid var(--line-strong); padding-left:1.5rem; transition:color .2s; }
 .proof-link svg { flex-shrink:0; }
 .proof-link:hover { color:var(--ink); }
 .hero-stage { position:relative; overflow:hidden; }
 /* minmax(0,…) so the oversized headline cannot force the track past the viewport. */
 .hero-layout { position:relative; display:grid; grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr); gap:2rem; }
-/* start/end rather than align-items:end on the row -- otherwise the shorter
-   column sinks and opens a dead gap under the navbar. */
 .hero-copy { position:relative; z-index:1; align-self:start; min-width:0; }
-/* The headline deliberately overruns its grid track so the figure, which sits a
-   layer above it, crops the outlined word the way the reference comp does. */
+/* The headline deliberately overruns its track so the figure above it crops the
+   outlined word. */
 .hero-copy h1 { width:min(158%,1120px); font:800 clamp(2rem,6.1vw,5rem)/.98 var(--font-display); letter-spacing:-.03em; color:var(--ink); }
-/* The outlined word is the display element; oversizing it is what carries it far
-   enough right to pass behind the figure. */
 .hero-copy h1 .text-outline { display:inline-block; font-size:2.18em; line-height:.9; letter-spacing:-.045em; }
 .hero-lead { margin-top:1.5rem; max-width:34rem; font-size:1.125rem; font-weight:500; line-height:1.45; letter-spacing:-.01em; color:rgba(11,20,32,.8); }
 .hero-support { margin-top:.875rem; max-width:30rem; font-size:.9375rem; line-height:1.65; color:var(--muted); }
-/* Top-aligned and capped rather than stretched to the copy column. Stretching
-   scaled the figure to whatever the copy happened to measure, which ran to
-   ~920px — and a 761/1339 source at that height is a third of the page wide.
-   Capped, he reads as a portrait beside the headline. */
+/* Capped, not stretched to the copy column — stretching scaled the portrait to
+   whatever the copy measured. */
 .hero-figure { position:relative; z-index:2; align-self:start; justify-self:end; display:flex; min-width:0; }
-/* Bounding-box-cropped source, so this ratio is the subject himself. */
 .hero-portrait { position:relative; height:clamp(380px,44vw,600px); aspect-ratio:761/1339; margin-left:auto; }
 .hero-portrait img { object-fit:contain; object-position:bottom center; filter:contrast(1.03) saturate(.96); }
-/* Fade the base so the figure dissolves into the page instead of ending on the
-   hard horizontal edge of the source photograph. Later than the old 74% because
-   a shorter frame would otherwise start dissolving him at the chest. */
+/* Fade the base so the figure dissolves into the page rather than ending on the
+   photograph's hard edge. */
 .hero-portrait { -webkit-mask-image:linear-gradient(to bottom,#000 84%,transparent 100%); mask-image:linear-gradient(to bottom,#000 84%,transparent 100%); }
 .hero-stats { position:relative; z-index:3; display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; margin-top:3rem; padding-top:1.5rem; border-top:1px solid var(--line-strong); }
 .hero-stats dt { font:700 clamp(1.65rem,2.7vw,2.4rem)/1 var(--font-display); letter-spacing:-.035em; color:var(--ink); }
 .hero-stats dd { margin-top:.45rem; font:500 10px var(--font-mono); letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
 
-/* Clients band. The map is a background layer rather than an <img> so it can be
-   masked to fade at the edges without a wrapper for the mask. */
+/* ---------- Clients band ---------- */
 .clients-section { position:relative; overflow:hidden; background:var(--panel); }
-/* Whole map in frame — at 150% the Americas fell outside the section and the
-   remaining blob stopped reading as Earth. */
 .clients-map { position:absolute; inset:0; pointer-events:none; opacity:.34; background:url('/images/world-dots.svg') center 46% / min(1240px,96%) no-repeat; -webkit-mask-image:radial-gradient(ellipse 78% 72% at 50% 46%,#000 55%,transparent 100%); mask-image:radial-gradient(ellipse 78% 72% at 50% 46%,#000 55%,transparent 100%); }
 .clients-head { max-width:44rem; }
 .clients-head h2 { margin-top:1rem; font:700 clamp(1.9rem,3.6vw,2.9rem)/1.06 var(--font-display); letter-spacing:-.035em; color:var(--ink); }
 .clients-head h2 em { font-family:var(--font-serif); font-weight:400; font-style:italic; }
 .clients-head>p:last-child { margin-top:1.125rem; max-width:34rem; font-size:.9375rem; line-height:1.7; color:var(--muted); }
-/* Marquee. The end fades are overlay gradients rather than a mask on this
-   element: a mask forms a backdrop root, which would leave the cards' backdrop
-   empty and their backdrop-filter with nothing to blur. Vertical padding gives
-   the card shadows room inside overflow:hidden. */
+/* The end fades are overlay gradients, not a mask: a mask forms a backdrop root
+   and would leave the cards' backdrop-filter with nothing to blur. */
 .clients-marquee { position:relative; margin-top:2.1rem; padding:1rem 0 1.35rem; overflow:hidden; }
 .clients-marquee::before, .clients-marquee::after { content:''; position:absolute; top:0; bottom:0; width:8%; z-index:3; pointer-events:none; }
 .clients-marquee::before { left:0; background:linear-gradient(90deg,var(--panel) 14%,rgba(250,249,244,0)); }
 .clients-marquee::after { right:0; background:linear-gradient(270deg,var(--panel) 14%,rgba(250,249,244,0)); }
 .clients-track { display:flex; width:max-content; }
 /* The gutter is margin, not a flex gap: with a gap the track measures
-   2N*w + (2N-1)*g, so translating -50% lands half a gutter off the second pass
-   and the loop visibly jumps. As margin every item advances by w+g exactly. */
+   2N*w + (2N-1)*g, so translating -50% lands half a gutter off and the loop jumps. */
 .client-card { flex:0 0 208px; margin-right:.85rem; position:relative; isolation:isolate; display:flex; align-items:center; justify-content:center; min-height:136px; padding:1.15rem 1.4rem; border-radius:20px; border:1px solid rgba(255,255,255,.75); background:linear-gradient(150deg,rgba(255,255,255,.82) 0%,rgba(255,255,255,.46) 54%,rgba(255,255,255,.64) 100%); -webkit-backdrop-filter:blur(16px) saturate(1.7); backdrop-filter:blur(16px) saturate(1.7); box-shadow:inset 0 1px 0 rgba(255,255,255,.95), inset 0 -1px 0 rgba(255,255,255,.4), 0 10px 26px rgba(11,20,32,.09), 0 2px 5px rgba(11,20,32,.05); }
-/* Specular sheen across the top-left, the thing that makes it read as glass
-   rather than as a translucent rectangle. */
+/* Specular sheen — what makes the card read as glass, not a translucent box. */
 .client-card::after { content:''; position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:2; background:linear-gradient(158deg,rgba(255,255,255,.6) 0%,rgba(255,255,255,.14) 33%,rgba(255,255,255,0) 52%); }
 .client-logo { position:relative; display:block; width:100%; height:80px; }
 .client-mark { font:700 1.0625rem/1.15 var(--font-display); letter-spacing:-.025em; text-align:center; }
 
 @keyframes clients-scroll { from { transform:translate3d(0,0,0); } to { transform:translate3d(-50%,0,0); } }
 
+/* ---------- Work ---------- */
 .work-section { background:var(--panel); border-top:1px solid var(--line); }
-/* Label and heading travel together in column one; the support line sits bottom
-   right against the rule. Three loose children in a two-column grid put the
-   heading in column two and wrapped the support line onto a second row, which
-   left the whole masthead hanging off-centre with dead space above the label. */
+/* Label and heading share column one; the support line sits bottom right. */
 .editorial-heading { display:grid; grid-template-columns:1.45fr .55fr; gap:2.5rem; align-items:end; padding-bottom:3.5rem; border-bottom:1px solid var(--line-strong); }
 .editorial-heading h2 { margin-top:1.125rem; }
 .editorial-heading h2,.capability-intro h2,.impact-top h2 { font:700 clamp(2.2rem,4.6vw,3.6rem)/1 var(--font-display); letter-spacing:-.035em; }
 .editorial-heading h2 em,.capability-intro h2 em,.impact-top h2 em { font-family:var(--font-serif); font-weight:400; }
 .editorial-heading>p:last-child { justify-self:end; max-width:320px; padding-bottom:.4rem; font-size:.9rem; line-height:1.7; color:var(--muted); }
-/* Narrower media column than the old 1.2/.8: a 4:3 frame at the old width made
-   the row far taller than the copy beside it. */
 .case-study { display:grid; grid-template-columns:1.02fr .98fr; border-bottom:1px solid var(--line); padding:3.5rem 0; gap:2.25rem; align-items:center; }
 .case-media { position:relative; border:1px solid var(--line); box-shadow:0 20px 55px rgba(11,20,32,.1); overflow:hidden; }
 .case-media:hover img { transform:scale(1.025); }
@@ -306,19 +283,14 @@
 .fallback-kicker { position:relative;font:600 9px var(--font-mono);letter-spacing:.1em;color:var(--blue); }.project-fallback p{position:absolute;left:2rem;bottom:2rem;max-width:45%;font:700 clamp(1.2rem,2.5vw,2.2rem)/1.05 var(--font-display);letter-spacing:-.04em}.fallback-data{position:absolute;right:2rem;bottom:2rem;display:flex;gap:1.5rem}.fallback-data span{font:700 1.25rem var(--font-display)}.fallback-data small{display:block;font:500 7px var(--font-mono);text-transform:uppercase;color:var(--muted)}
 .archive { margin-top:4rem; border-top:2px solid var(--ink); padding-top:1.75rem; display:grid;grid-template-columns:1fr;gap:2rem; }.archive-heading>p:last-child{margin-top:.625rem;max-width:260px;font-size:.845rem;color:var(--muted)}.archive ol li{display:grid;grid-template-columns:32px 1.6fr .8fr 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);align-items:center}.archive li span,.archive li em{font:500 9px var(--font-mono);color:var(--dimmed);text-transform:uppercase}.archive li strong{font:650 .9rem var(--font-display)}.archive li small{color:var(--muted)}
 
-/* Research band. Sits on --bg so it separates from the Work panel above without
-   another border, and the cards read as figure plates rather than case studies. */
-/* No border-top: the ground changes tone here, which separates it already. */
+/* ---------- Research ---------- */
+/* No border-top anywhere below: the ground tone changes at each seam, which
+   separates the sections already. */
 .research-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2.5rem;margin-top:3.5rem}
 .research-grid>.reveal{display:flex}
 .research-card{flex:1;display:flex;flex-direction:column;min-width:0}
-/* Contained, not cropped: these are method diagrams on white grounds, so the
-   plate supplies the ground and the padding keeps them off the hairline.
-   The padding lives on the image, not the plate: `fill` resolves inset:0 against
-   the plate's padding box, so padding there would push the caption off the corner
-   as well. */
-/* White, not --panel: the diagrams carry their own white ground, and any other
-   plate colour shows it as a lighter rectangle floating inside the frame. */
+/* White, not --panel: the diagrams carry their own white ground. The padding is
+   on the image, not the plate — `fill` resolves inset:0 against the padding box. */
 .research-plate{position:relative;aspect-ratio:16/10;background:#fff;border:1px solid var(--line)}
 .research-plate img{padding:1.25rem 1.25rem 1.9rem}
 .research-plate figcaption{position:absolute;left:0;bottom:0;padding:.45rem .7rem;background:var(--ink);color:var(--accent);font:600 9px var(--font-mono);letter-spacing:.1em}
@@ -354,14 +326,12 @@
   .client-card:hover{border-color:var(--line-strong);box-shadow:0 14px 32px rgba(11,20,32,.08)}
 .case-media,.btn-primary,.btn-secondary{transition:transform .3s ease,box-shadow .3s ease}.case-media:hover{box-shadow:0 28px 70px rgba(11,20,32,.16)}.btn-primary:hover,.btn-secondary:hover{transform:translateY(-2px)}}
 
-/* --panel, not its own #e8e7df: this was the only band that went darker than the
-   page, and across a 1200px section it read as the site changing colour. */
+/* ---------- Experience / About / Contact ---------- */
 .experience-section{background:var(--panel)}.experience-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem}.experience-intro h2{margin-top:1rem;font:700 clamp(2.1rem,4vw,3rem)/1.05 var(--font-display);letter-spacing:-.035em}.experience-intro h2 em{font-family:var(--font-serif);font-weight:400}.experience-intro>p:last-child{margin-top:1.25rem;max-width:380px;color:var(--muted);line-height:1.65}.experience-list>li>div{border-top:1px solid var(--line-strong);padding-top:1.75rem}.experience-bullets li{position:relative;padding-left:1rem}.experience-bullets li::before{content:"";position:absolute;left:0;top:.65rem;width:4px;height:4px;background:var(--blue)}
-/* No border-top: --panel above steps down to --bg here, which separates it. */.about-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem}.about-intro{align-self:start}.about-intro h2{margin-top:1rem;font:700 clamp(2.1rem,4vw,3rem)/1.05 var(--font-display);letter-spacing:-.035em}.about-intro h2 em{font-family:var(--font-serif);font-weight:400}.about-body>p{font-size:.95rem;line-height:1.75;color:var(--muted)}.about-body>p+p{margin-top:1.25rem}.about-scope{margin-top:2.75rem;border-top:2px solid var(--ink);padding-top:1.5rem}.about-scope>span{font:500 10px var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:var(--blue)}.about-scope h3{margin-top:.875rem;max-width:34rem;font:600 1.15rem/1.5 var(--font-display);letter-spacing:-.02em;color:var(--ink)}.about-scope>p{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--line);max-width:34rem;font-size:.845rem;line-height:1.7;color:var(--muted)}
+.about-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem}.about-intro{align-self:start}.about-intro h2{margin-top:1rem;font:700 clamp(2.1rem,4vw,3rem)/1.05 var(--font-display);letter-spacing:-.035em}.about-intro h2 em{font-family:var(--font-serif);font-weight:400}.about-body>p{font-size:.95rem;line-height:1.75;color:var(--muted)}.about-body>p+p{margin-top:1.25rem}.about-scope{margin-top:2.75rem;border-top:2px solid var(--ink);padding-top:1.5rem}.about-scope>span{font:500 10px var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:var(--blue)}.about-scope h3{margin-top:.875rem;max-width:34rem;font:600 1.15rem/1.5 var(--font-display);letter-spacing:-.02em;color:var(--ink)}.about-scope>p{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--line);max-width:34rem;font-size:.845rem;line-height:1.7;color:var(--muted)}
 .contact-section{padding:2rem 0 6rem}.contact-inner{position:relative;color:white;padding:4.5rem 3rem 4rem;overflow:hidden}.contact-inner h2{position:relative;z-index:1;margin-top:1.125rem;max-width:900px;font:700 clamp(2.6rem,7vw,5.2rem)/.98 var(--font-display);letter-spacing:-.04em}.contact-inner h2 em{display:block;color:var(--accent);font-family:var(--font-serif);font-weight:400}.contact-links{position:relative;z-index:1;margin-top:3.5rem;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1.25rem;border-top:1px solid rgba(255,255,255,.14);padding-top:1.5rem}
-/* Dark panels read as raised cards: a lit top-left face falling to a darker
-   bottom-right, an inset hairline for the lit edge, and two shadows -- a tight
-   contact shadow plus a wide soft one -- so they sit above the page. */
+/* Dark panels read as raised cards: a lit top-left face, an inset hairline, and
+   a tight contact shadow plus a wide soft one. */
 .impact-band,
 .contact-inner {
   border-radius: 14px;
@@ -376,8 +346,6 @@
     0 34px 70px -24px rgba(11,20,32,.50);
 }
 
-/* Cards settle up into place rather than just fading, which is what gives the
-   raised look somewhere to arrive from. */
 .reveal.card-rise {
   opacity: 0;
   transform: translateY(2.25rem) scale(.985);
@@ -419,12 +387,11 @@
   }
 }
 
-/* Contact CTAs carry a 5rem headline, so they need more weight than the navbar pair. */
 .contact-cta .btn-accent{padding:.95rem 1.75rem;font-size:.9rem;letter-spacing:-.005em}
 .contact-cta__ghost{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.6rem;border:1px solid rgba(255,255,255,.22);font-size:.9rem;font-weight:500;color:rgba(255,255,255,.85);transition:border-color .35s ease,color .35s ease,background .35s ease}
 .contact-cta__ghost:hover{border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.04);color:#fff}
 
-/* Interaction polish — slow easing, hairline emphasis, accent used sparingly. */
+/* ---------- Interaction polish ---------- */
 @media(prefers-reduced-motion:no-preference){
   .btn-primary span,.btn-accent span{display:inline-block;transition:transform .35s cubic-bezier(.22,1,.36,1)}
   .btn-primary:hover span,.btn-accent:hover span{transform:translate(3px,-3px)}
@@ -452,25 +419,16 @@
 
 @media(max-width:767px){.experience-layout,.about-layout{grid-template-columns:1fr}.about-intro{position:static}.about-body{margin-top:.5rem}.experience-list{margin-top:1rem}.contact-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
-/* Stacked, the portrait is alone in its row, so `margin-left:auto` parked it off
-   to the right of a centred column — and the desktop cap makes it eat most of the
-   fold. These keep it a portrait rather than a billboard. */
+/* Stacked, the portrait is alone in its row, so margin-left:auto would park it
+   off to the right of a centred column. */
 @media(max-width:1023px){.hero-portrait{margin:0 auto}}
-@media(min-width:768px) and (max-width:1023px){.hero-portrait{width:min(100%,340px);height:auto}.hero-figure{width:100%}
-  /* 692px of usable width had the four figures doubled up two to a row. */
-  .hero-stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.25rem}}
+@media(min-width:768px) and (max-width:1023px){.hero-portrait{width:min(100%,340px);height:auto}.hero-figure{width:100%}.hero-stats{grid-template-columns:repeat(4,minmax(0,1fr));gap:1.25rem}}
 @media(max-width:767px){.hero-portrait{width:min(100%,230px)}}
 @media(max-width:767px){.clients-marquee{margin-top:2.25rem}.client-card{flex-basis:168px;min-height:112px;padding:.9rem 1.1rem;border-radius:16px}.client-logo{height:62px}.client-mark{font-size:.9375rem}}
 
-/* Declared last so it beats .clients-track{width:max-content} above: without
-   motion the row cannot scroll, so it wraps into a static grid instead of
-   clipping ten of the thirteen brands. */
-@media(prefers-reduced-motion:reduce){.clients-track{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.85rem;width:auto}.client-card{flex-basis:auto;margin:0}.client-card.is-echo{display:none}
-  /* The end fades exist to hide cards sliding out. A wrapped grid has no such
-     edge, so they would just wash out the first and last card of every row. */
-  .clients-marquee::before,.clients-marquee::after{display:none}}
+/* MUST stay last: it beats .clients-track{width:max-content} above, so without
+   motion the row wraps into a static grid instead of clipping most of the brands. */
+@media(prefers-reduced-motion:reduce){.clients-track{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.85rem;width:auto}.client-card{flex-basis:auto;margin:0}.client-card.is-echo{display:none}.clients-marquee::before,.clients-marquee::after{display:none}}
 
-/* Four columns of a 650px panel gave each address ~160px. Two at tablet, one on
-   a phone, so the values have room to read rather than ellipsis. */
 @media(min-width:768px) and (max-width:1023px){.contact-links{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.contact-links{grid-template-columns:minmax(0,1fr);gap:1rem}}

@@ -31,10 +31,7 @@ const mono = JetBrains_Mono({
   display: 'swap',
 })
 
-/**
- * Resolve the canonical origin. NEXT_PUBLIC_SITE_URL wins when set; otherwise fall
- * back to the deployment Vercel builds against, then to localhost for `next dev`.
- */
+/** NEXT_PUBLIC_SITE_URL wins; then the Vercel deployment host; then localhost. */
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
   (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000')

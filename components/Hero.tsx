@@ -60,14 +60,12 @@ export default function Hero() {
                 </a>
               ))}
             </div>
-
           </Reveal>
 
           <Reveal delayMs={120} className="hero-figure">
             <figure className="hero-portrait">
-              {/* `sizes` carries the real rendered widths, not viewport fractions:
-                  the CSS caps the portrait well below 70vw, so that hint had
-                  phones fetching the 640w file for a 230px box. */}
+              {/* Real rendered widths, not viewport fractions — the CSS caps the
+                  portrait far below any vw hint. */}
               <Image
                 src={hero.portrait.src}
                 alt={hero.portrait.alt}

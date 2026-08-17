@@ -3,7 +3,7 @@ import { aboutContent } from '@/data/site'
 
 export default function About() {
   return (
-    <section id="about" className="about-section py-24 sm:py-32">
+    <section id="about" className="py-24 sm:py-32">
       <div className="container-page">
         <div className="about-layout">
           <Reveal className="about-intro">

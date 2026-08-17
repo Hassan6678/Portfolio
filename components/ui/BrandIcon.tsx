@@ -1,7 +1,4 @@
-/**
- * Brand marks in their own colours. Paths are the official 24x24 logos, so they
- * stay recognisable at the 13-14px the link rows render them at.
- */
+/** Official 24x24 brand paths, in each brand's own colour. */
 const BRANDS = {
   GitHub: {
     color: '#181717',
@@ -28,20 +25,13 @@ interface BrandIconProps {
   size?: number
   /** Set on dark grounds, where GitHub's near-black mark disappears. */
   onDark?: boolean
-  className?: string
 }
 
-export default function BrandIcon({
-  name,
-  size = 14,
-  onDark = false,
-  className = '',
-}: BrandIconProps) {
+export default function BrandIcon({ name, size = 14, onDark = false }: BrandIconProps) {
   const brand = BRANDS[name]
 
   return (
     <svg
-      className={className}
       viewBox="0 0 24 24"
       width={size}
       height={size}

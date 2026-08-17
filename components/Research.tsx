@@ -7,7 +7,7 @@ export default function Research() {
   if (studies.length === 0) return null
 
   return (
-    <section id="research" className="research-section py-24 sm:py-28">
+    <section id="research" className="py-24 sm:py-28">
       <div className="container-page">
         <Reveal>
           <div className="editorial-heading">
@@ -23,8 +23,6 @@ export default function Research() {
           {studies.map((project, i) => (
             <Reveal key={project.id} delayMs={i * 80}>
               <article className="research-card">
-                {/* The imagery here is method diagrams, not product screenshots, so
-                    they sit contained on a plate rather than cropped edge-to-edge. */}
                 <figure className="research-plate">
                   <Image
                     src={project.image}

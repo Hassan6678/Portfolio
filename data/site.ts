@@ -6,7 +6,6 @@ export interface NavLink {
 export interface SocialLink {
   label: string
   href: string
-  short?: string
 }
 
 export interface CredibilityItem {
@@ -33,7 +32,6 @@ export interface ProfileLink {
 
 export const profile = {
   name: 'Hassan Raza',
-  shortName: 'Hassan',
   mark: 'HR',
   role: 'Machine Learning Engineer & Data Scientist',
   location: 'Lahore, Pakistan',
@@ -52,13 +50,9 @@ export const navLinks: NavLink[] = [
 ]
 
 export const socialLinks: SocialLink[] = [
-  { label: 'GitHub', href: 'https://github.com/Hassan6678', short: 'GitHub' },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/hassan-raza-cs', short: 'LinkedIn' },
-  {
-    label: 'Upwork',
-    href: 'https://www.upwork.com/freelancers/hassanraza535',
-    short: 'Upwork',
-  },
+  { label: 'GitHub', href: 'https://github.com/Hassan6678' },
+  { label: 'LinkedIn', href: 'https://linkedin.com/in/hassan-raza-cs' },
+  { label: 'Upwork', href: 'https://www.upwork.com/freelancers/hassanraza535' },
 ]
 
 export const hero = {
