@@ -1,11 +1,11 @@
 import Image from 'next/image'
-import CodeSession from '@/components/ui/CodeSession'
+import SystemPanel from '@/components/ui/SystemPanel'
 import Reveal from '@/components/ui/Reveal'
-import { getSession } from '@/data/sessions'
+import { getSystemPanel } from '@/data/systems'
 import { hero, impactMetrics, profile, socialLinks } from '@/data/site'
 
 export default function Hero() {
-  const session = getSession('territory-plan')
+  const panel = getSystemPanel('territory-engine')
 
   return (
     <section className="hero-field hero-stage pb-14 pt-28 sm:pt-32">
@@ -63,29 +63,38 @@ export default function Hero() {
               ))}
             </div>
 
-            {session ? (
-              <div className="hero-code">
-                <p className="hero-code__label">
-                  <span>{hero.artifact.kicker}</span>
-                  {hero.artifact.caption}
-                </p>
-                <CodeSession session={session} />
-              </div>
-            ) : null}
           </Reveal>
 
           <Reveal delayMs={120} className="hero-figure">
             <figure className="hero-portrait">
+              {/* `sizes` carries the real rendered widths, not viewport fractions:
+                  the CSS caps the portrait well below 70vw, so that hint had
+                  phones fetching the 640w file for a 230px box. */}
               <Image
                 src={hero.portrait.src}
                 alt={hero.portrait.alt}
                 fill
-                sizes="(max-width: 767px) 70vw, (max-width: 1023px) 45vw, 460px"
+                sizes="(max-width: 767px) 230px, (max-width: 1023px) 250px, 341px"
                 priority
               />
             </figure>
           </Reveal>
         </div>
+
+        {/* Full width, under both columns. Inside either one it left a ~350px
+            void beside it, because the capped portrait no longer runs to the
+            fold and the copy ends level with it. */}
+        {panel ? (
+          <Reveal delayMs={160}>
+            <div className="hero-code">
+              <p className="hero-code__label">
+                <span>{hero.artifact.kicker}</span>
+                {hero.artifact.caption}
+              </p>
+              <SystemPanel panel={panel} />
+            </div>
+          </Reveal>
+        ) : null}
 
         <Reveal delayMs={200}>
           <dl className="hero-stats">

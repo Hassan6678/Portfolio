@@ -79,7 +79,9 @@ export const hero = {
   },
   artifact: {
     kicker: 'Live artifact / 01',
-    caption: 'Territory planning — BAT UK',
+    // The panel header already names the system and client, so the caption says
+    // what the reader is looking at instead of repeating it.
+    caption: 'A production run, as the system reports it.',
   },
 } as const
 
