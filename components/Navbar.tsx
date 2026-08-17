@@ -137,10 +137,15 @@ export default function Navbar() {
 
       <div
         id="mobile-nav"
+        // `invisible`, not the hidden attribute: the `flex` class outranks the UA
+        // sheet's [hidden]{display:none}, so the panel stayed laid out and its
+        // links stayed in the tab order while invisible. visibility:hidden drops
+        // them from it and still allows the fade.
         className={`fixed inset-0 z-40 flex flex-col bg-[var(--bg)] px-6 pb-10 pt-24 transition-opacity duration-300 md:hidden ${
-          menuOpen ? 'pointer-events-auto opacity-100' : 'pointer-events-none opacity-0'
+          menuOpen
+            ? 'visible pointer-events-auto opacity-100'
+            : 'invisible pointer-events-none opacity-0'
         }`}
-        hidden={!menuOpen}
         aria-hidden={!menuOpen}
       >
         <ul className="flex flex-col gap-5">

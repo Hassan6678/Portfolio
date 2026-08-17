@@ -72,7 +72,7 @@ export default function Hero() {
                 src={hero.portrait.src}
                 alt={hero.portrait.alt}
                 fill
-                sizes="(max-width: 767px) 230px, (max-width: 1023px) 250px, 341px"
+                sizes="(max-width: 767px) 230px, (max-width: 1023px) 340px, 341px"
                 priority
               />
             </figure>
