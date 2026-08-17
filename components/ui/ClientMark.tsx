@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import type { Client } from '@/data/clients'
 
 /**
@@ -13,16 +14,18 @@ export default function ClientMark({ client }: { client: Client }) {
 
   if (client.logo && !failed) {
     return (
-      // Plain <img>: these are small, already-optimised brand assets, and the
-      // optimiser cannot help a file whose intrinsic size we don't know.
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src={client.logo}
-        alt={client.name}
-        loading="lazy"
-        decoding="async"
-        onError={() => setFailed(true)}
-      />
+      // Optimised rather than a plain <img>: the source PNGs run to ~350KB each
+      // and render into a 46px-tall box.
+      <span className="client-logo">
+        <Image
+          src={client.logo}
+          alt={client.name}
+          fill
+          sizes="180px"
+          className="object-contain"
+          onError={() => setFailed(true)}
+        />
+      </span>
     )
   }
 

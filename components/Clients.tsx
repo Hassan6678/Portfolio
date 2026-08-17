@@ -30,13 +30,27 @@ export default function Clients() {
         </Reveal>
 
         <Reveal delayMs={80}>
-          <ul className="clients-grid">
-            {clients.map((client) => (
-              <li key={client.slug} className="client-card" title={client.name}>
-                <ClientMark client={client} />
-              </li>
-            ))}
-          </ul>
+          {/* Two passes of the same list: the track scrolls exactly one pass to
+              the left and restarts, so the loop has no seam. The second pass is
+              hidden from assistive tech — it is the same thirteen brands. */}
+          <div className="clients-marquee">
+            <ul className="clients-track">
+              {clients.map((client) => (
+                <li key={client.slug} className="client-card" title={client.name}>
+                  <ClientMark client={client} />
+                </li>
+              ))}
+              {clients.map((client) => (
+                <li
+                  key={`${client.slug}-echo`}
+                  className="client-card is-echo"
+                  aria-hidden="true"
+                >
+                  <ClientMark client={client} />
+                </li>
+              ))}
+            </ul>
+          </div>
         </Reveal>
       </div>
     </section>

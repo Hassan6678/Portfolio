@@ -258,12 +258,18 @@
 .clients-head h2 { margin-top:1rem; font:700 clamp(1.9rem,3.6vw,2.9rem)/1.06 var(--font-display); letter-spacing:-.035em; color:var(--ink); }
 .clients-head h2 em { font-family:var(--font-serif); font-weight:400; font-style:italic; }
 .clients-head>p:last-child { margin-top:1.125rem; max-width:34rem; font-size:.9375rem; line-height:1.7; color:var(--muted); }
-.clients-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(158px,1fr)); gap:.75rem; margin-top:3rem; }
-/* White, not --panel: brand artwork is drawn for a white ground, and every logo
-   the user drops in will carry one. */
-.client-card { display:flex; align-items:center; justify-content:center; min-height:92px; padding:1rem 1.1rem; background:#fff; border:1px solid var(--line); border-radius:4px; }
-.client-card img { max-height:46px; max-width:100%; width:auto; object-fit:contain; }
+/* Marquee. Faded at both ends so cards enter and leave rather than being cut by
+   a hard edge. */
+.clients-marquee { position:relative; margin-top:3rem; overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent); mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent); }
+.clients-track { display:flex; width:max-content; }
+/* The gutter is margin, not a flex `gap`: with a gap the track measures
+   2N*w + (2N-1)*g, so translating -50% lands half a gutter off the second pass
+   and the loop visibly jumps. As margin every item advances by w+g exactly. */
+.client-card { flex:0 0 192px; margin-right:.75rem; display:flex; align-items:center; justify-content:center; min-height:118px; padding:1.1rem 1.35rem; background:#fff; border:1px solid var(--line); border-radius:4px; }
+.client-logo { position:relative; display:block; width:100%; height:72px; }
 .client-mark { font:700 1.0625rem/1.15 var(--font-display); letter-spacing:-.025em; text-align:center; }
+
+@keyframes clients-scroll { from { transform:translate3d(0,0,0); } to { transform:translate3d(-50%,0,0); } }
 
 .work-section { background:var(--panel); border-top:1px solid var(--line); }
 /* Label and heading travel together in column one; the support line sits bottom
@@ -337,8 +343,10 @@
 @media(max-width:767px){.text-outline{-webkit-text-stroke:1px var(--ink)}.impact-band{padding:2.5rem 1.4rem;border-radius:10px}.contact-inner{padding:2.75rem 1.4rem 2.5rem;border-radius:10px}.impact-section{padding:3rem 0}.contact-section{padding:1rem 0 3.5rem}.hero-copy h1 .text-outline{font-size:1.45em}.hero-portrait{min-height:0;height:auto;width:min(100%,300px)}.hero-stats{gap:1.25rem}.hero-stats dd{font-size:9px}.editorial-heading{display:block;padding-bottom:2.5rem}.editorial-heading h2{margin-top:1rem}.editorial-heading>p:last-child{justify-self:start;max-width:none;margin-top:1.25rem;padding-bottom:0}.case-study{padding:2.5rem 0}.case-flow{grid-template-columns:1fr}.research-grid{grid-template-columns:minmax(0,1fr);gap:2.5rem;margin-top:2.5rem}.research-plate img{padding:.9rem .9rem 1.6rem}.archive ol li{grid-template-columns:28px 1fr}.archive li small,.archive li em{grid-column:2}.impact-top{display:block}.impact-signal{margin-top:2rem}.impact-grid{grid-template-columns:1fr}.impact-grid>div:not(:first-child) .impact-metric{padding-left:0}.impact-metric{min-height:auto;padding-bottom:2rem;border-right:0}.capability-layout{grid-template-columns:1fr}.capability-intro{position:static}.capability-list article{grid-template-columns:38px 1fr;gap:1rem;padding:1.75rem 0}.capability-list h3{font-size:1.15rem}.toolkit{grid-template-columns:1fr;gap:2.5rem;margin-top:4rem}.fallback-data{display:none}.project-fallback p{max-width:70%}}
 @media(max-width:420px){.case-metrics{grid-template-columns:repeat(2,1fr)}}
 @media(prefers-reduced-motion:no-preference){
-  .client-card{transition:border-color .4s ease,box-shadow .4s ease,transform .4s cubic-bezier(.22,1,.36,1)}
-  .client-card:hover{border-color:var(--line-strong);box-shadow:0 14px 32px rgba(11,20,32,.08);transform:translateY(-3px)}
+  .clients-track{animation:clients-scroll 46s linear infinite}
+  .clients-marquee:hover .clients-track{animation-play-state:paused}
+  .client-card{transition:border-color .4s ease,box-shadow .4s ease}
+  .client-card:hover{border-color:var(--line-strong);box-shadow:0 14px 32px rgba(11,20,32,.08)}
 .case-media,.btn-primary,.btn-secondary{transition:transform .3s ease,box-shadow .3s ease}.case-media:hover{box-shadow:0 28px 70px rgba(11,20,32,.16)}.btn-primary:hover,.btn-secondary:hover{transform:translateY(-2px)}}
 
 .experience-section{background:#e8e7df;border-top:1px solid var(--line)}.experience-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem}.experience-intro h2{margin-top:1rem;font:700 clamp(2.1rem,4vw,3rem)/1.05 var(--font-display);letter-spacing:-.035em}.experience-intro h2 em{font-family:var(--font-serif);font-weight:400}.experience-intro>p:last-child{margin-top:1.25rem;max-width:380px;color:var(--muted);line-height:1.65}.experience-list>li>div{border-top:1px solid var(--line-strong);padding-top:1.75rem}.experience-bullets li{position:relative;padding-left:1rem}.experience-bullets li::before{content:"";position:absolute;left:0;top:.65rem;width:4px;height:4px;background:var(--blue)}
@@ -443,4 +451,9 @@
 @media(max-width:1023px){.hero-portrait{margin:0 auto}}
 @media(min-width:768px) and (max-width:1023px){.hero-portrait{width:min(100%,250px);height:auto}}
 @media(max-width:767px){.hero-portrait{width:min(100%,230px)}}
-@media(max-width:767px){.clients-grid{grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:.5rem;margin-top:2.25rem}.client-card{min-height:76px;padding:.75rem}.client-mark{font-size:.875rem}}
+@media(max-width:767px){.clients-marquee{margin-top:2.25rem}.client-card{flex-basis:152px;min-height:96px;padding:.85rem 1rem}.client-logo{height:56px}.client-mark{font-size:.9375rem}}
+
+/* Declared last so it beats .clients-track{width:max-content} above: without
+   motion the row cannot scroll, so it wraps into a static grid instead of
+   clipping ten of the thirteen brands. */
+@media(prefers-reduced-motion:reduce){.clients-track{flex-wrap:wrap;width:auto}.client-card.is-echo{display:none}}
