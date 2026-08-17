@@ -5,9 +5,6 @@
 :root {
   --bg: #f1efe7;
   --panel: #faf9f4;
-  /* Pre-mixed panel tints: Tailwind v3 cannot apply `/opacity` to a var() value. */
-  --panel-soft: rgba(250, 249, 244, 0.6);
-  --panel-strong: rgba(250, 249, 244, 0.7);
   --ink: #0b1420;
   --muted: #5e6871;
   --dimmed: #7c858c;
@@ -159,7 +156,7 @@
     font-weight: 500;
     border: 1px solid var(--line);
     color: var(--muted);
-    background: var(--panel-strong);
+    background: #fff;
   }
 
   .reveal {
@@ -357,7 +354,9 @@
   .client-card:hover{border-color:var(--line-strong);box-shadow:0 14px 32px rgba(11,20,32,.08)}
 .case-media,.btn-primary,.btn-secondary{transition:transform .3s ease,box-shadow .3s ease}.case-media:hover{box-shadow:0 28px 70px rgba(11,20,32,.16)}.btn-primary:hover,.btn-secondary:hover{transform:translateY(-2px)}}
 
-.experience-section{background:#e8e7df;border-top:1px solid var(--line)}.experience-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem}.experience-intro h2{margin-top:1rem;font:700 clamp(2.1rem,4vw,3rem)/1.05 var(--font-display);letter-spacing:-.035em}.experience-intro h2 em{font-family:var(--font-serif);font-weight:400}.experience-intro>p:last-child{margin-top:1.25rem;max-width:380px;color:var(--muted);line-height:1.65}.experience-list>li>div{border-top:1px solid var(--line-strong);padding-top:1.75rem}.experience-bullets li{position:relative;padding-left:1rem}.experience-bullets li::before{content:"";position:absolute;left:0;top:.65rem;width:4px;height:4px;background:var(--blue)}
+/* --panel, not its own #e8e7df: this was the only band that went darker than the
+   page, and across a 1200px section it read as the site changing colour. */
+.experience-section{background:var(--panel);border-top:1px solid var(--line)}.experience-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem}.experience-intro h2{margin-top:1rem;font:700 clamp(2.1rem,4vw,3rem)/1.05 var(--font-display);letter-spacing:-.035em}.experience-intro h2 em{font-family:var(--font-serif);font-weight:400}.experience-intro>p:last-child{margin-top:1.25rem;max-width:380px;color:var(--muted);line-height:1.65}.experience-list>li>div{border-top:1px solid var(--line-strong);padding-top:1.75rem}.experience-bullets li{position:relative;padding-left:1rem}.experience-bullets li::before{content:"";position:absolute;left:0;top:.65rem;width:4px;height:4px;background:var(--blue)}
 .about-section{border-top:1px solid var(--line)}.about-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:3rem}.about-intro{align-self:start}.about-intro h2{margin-top:1rem;font:700 clamp(2.1rem,4vw,3rem)/1.05 var(--font-display);letter-spacing:-.035em}.about-intro h2 em{font-family:var(--font-serif);font-weight:400}.about-body>p{font-size:.95rem;line-height:1.75;color:var(--muted)}.about-body>p+p{margin-top:1.25rem}.about-scope{margin-top:2.75rem;border-top:2px solid var(--ink);padding-top:1.5rem}.about-scope>span{font:500 10px var(--font-mono);text-transform:uppercase;letter-spacing:.1em;color:var(--blue)}.about-scope h3{margin-top:.875rem;max-width:34rem;font:600 1.15rem/1.5 var(--font-display);letter-spacing:-.02em;color:var(--ink)}.about-scope>p{margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--line);max-width:34rem;font-size:.845rem;line-height:1.7;color:var(--muted)}
 .contact-section{padding:2rem 0 6rem}.contact-inner{position:relative;color:white;padding:4.5rem 3rem 4rem;overflow:hidden}.contact-inner h2{position:relative;z-index:1;margin-top:1.125rem;max-width:900px;font:700 clamp(2.6rem,7vw,5.2rem)/.98 var(--font-display);letter-spacing:-.04em}.contact-inner h2 em{display:block;color:var(--accent);font-family:var(--font-serif);font-weight:400}.contact-links{position:relative;z-index:1;margin-top:3.5rem;display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;border-top:1px solid rgba(255,255,255,.14);padding-top:1.5rem}
 /* Dark panels read as raised cards: a lit top-left face falling to a darker
