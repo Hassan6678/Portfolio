@@ -1,12 +1,8 @@
 import Image from 'next/image'
-import SystemPanel from '@/components/ui/SystemPanel'
 import Reveal from '@/components/ui/Reveal'
-import { getSystemPanel } from '@/data/systems'
 import { hero, impactMetrics, profile, socialLinks } from '@/data/site'
 
 export default function Hero() {
-  const panel = getSystemPanel('territory-engine')
-
   return (
     <section className="hero-field hero-stage pb-14 pt-28 sm:pt-32">
       <div className="hero-grid" aria-hidden="true" />
@@ -80,21 +76,6 @@ export default function Hero() {
             </figure>
           </Reveal>
         </div>
-
-        {/* Full width, under both columns. Inside either one it left a ~350px
-            void beside it, because the capped portrait no longer runs to the
-            fold and the copy ends level with it. */}
-        {panel ? (
-          <Reveal delayMs={160}>
-            <div className="hero-code">
-              <p className="hero-code__label">
-                <span>{hero.artifact.kicker}</span>
-                {hero.artifact.caption}
-              </p>
-              <SystemPanel panel={panel} />
-            </div>
-          </Reveal>
-        ) : null}
 
         <Reveal delayMs={200}>
           <dl className="hero-stats">

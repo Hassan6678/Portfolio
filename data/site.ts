@@ -77,12 +77,6 @@ export const hero = {
     src: '/images/hassan-portrait.png',
     alt: 'Hassan Raza',
   },
-  artifact: {
-    kicker: 'Live artifact / 01',
-    // The panel header already names the system and client, so the caption says
-    // what the reader is looking at instead of repeating it.
-    caption: 'A production run, as the system reports it.',
-  },
 } as const
 
 export const credibility: CredibilityItem[] = [
@@ -164,7 +158,7 @@ export const aboutContent = {
   ],
   scopeLabel: 'Worked across projects involving',
   scope:
-    'retail intelligence, market analytics, territory planning, forecasting systems, NLP tools, and production data pipelines.',
+    'Retail Intelligence, Market Analytics, Territory Planning, Forecasting Systems, NLP Tools, and Production Data Pipelines.',
   basis:
     'Based in Pakistan. Collaborating with international clients across retail, FMCG, research contracts, and analytics products.',
 } as const
