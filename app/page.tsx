@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import Credibility from '@/components/Credibility'
+import Clients from '@/components/Clients'
 import Work from '@/components/Work'
 import Research from '@/components/Research'
 import Impact from '@/components/Impact'
@@ -16,6 +17,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Credibility />
+      <Clients />
       <Work />
       <Research />
       <Impact />

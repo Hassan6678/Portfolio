@@ -90,14 +90,14 @@ export const credibility: CredibilityItem[] = [
 
 export const impactMetrics: ImpactMetric[] = [
   {
-    value: '5',
-    label: 'FMCG markets',
-    detail: 'Live RTM analytics across PAK, IND, BGD, LKA, and NPL.',
+    value: '50+',
+    label: 'FMCG brands',
+    detail: 'Route-to-market and retail analytics across five South Asian markets.',
   },
   {
-    value: '131',
+    value: '500+',
     label: 'Territories planned',
-    detail: 'BAT UK field-force coverage with multi-constraint route logic.',
+    detail: 'Field-force coverage designed with multi-constraint route logic.',
   },
   {
     value: '55k+',
