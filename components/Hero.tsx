@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import BrandIcon, { isBrand } from '@/components/ui/BrandIcon'
 import Reveal from '@/components/ui/Reveal'
 import { hero, impactMetrics, profile, socialLinks } from '@/data/site'
 
@@ -54,6 +55,7 @@ export default function Hero() {
                   rel="noopener noreferrer"
                   className="proof-link"
                 >
+                  {isBrand(l.label) ? <BrandIcon name={l.label} /> : null}
                   {l.label}
                 </a>
               ))}

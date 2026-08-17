@@ -64,8 +64,8 @@ export const socialLinks: SocialLink[] = [
 export const hero = {
   eyebrow: 'ML systems · geospatial · NLP',
   headline: {
-    lead: 'ML systems built to move',
-    outlined: 'operations.',
+    lead: 'ML Systems Built to Move',
+    outlined: 'Operations.',
   },
   lead: 'Senior machine learning engineer building geospatial, forecasting, and language systems for enterprise teams.',
   support:

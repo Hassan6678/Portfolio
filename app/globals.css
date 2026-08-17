@@ -213,7 +213,10 @@
 .status-line { display:flex; align-items:center; gap:8px; }
 .status-line span { width:7px; height:7px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 4px rgba(200,241,53,.2); }
 .text-outline { color:transparent; -webkit-text-stroke:1.5px var(--ink); }
-.proof-link { border-left:1px solid var(--line-strong); padding-left:1.5rem; transition:color .2s; }
+/* inline-flex so the brand mark sits on the label's line; the divider rule stays
+   on the left edge, which is why the gap is padding rather than a flex gap. */
+.proof-link { display:inline-flex; align-items:center; gap:.45rem; border-left:1px solid var(--line-strong); padding-left:1.5rem; transition:color .2s; }
+.proof-link svg { flex-shrink:0; }
 .proof-link:hover { color:var(--ink); }
 .hero-stage { position:relative; overflow:hidden; }
 /* minmax(0,…) so the oversized headline cannot force the track past the viewport. */
@@ -383,7 +386,7 @@
 
 /* Contact CTAs carry a 5rem headline, so they need more weight than the navbar pair. */
 .contact-cta .btn-accent{padding:.95rem 1.75rem;font-size:.9rem;letter-spacing:-.005em}
-.contact-cta__ghost{display:inline-flex;align-items:center;padding:.95rem 1.6rem;border:1px solid rgba(255,255,255,.22);font-size:.9rem;font-weight:500;color:rgba(255,255,255,.85);transition:border-color .35s ease,color .35s ease,background .35s ease}
+.contact-cta__ghost{display:inline-flex;align-items:center;gap:.6rem;padding:.95rem 1.6rem;border:1px solid rgba(255,255,255,.22);font-size:.9rem;font-weight:500;color:rgba(255,255,255,.85);transition:border-color .35s ease,color .35s ease,background .35s ease}
 .contact-cta__ghost:hover{border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.04);color:#fff}
 
 /* Interaction polish — slow easing, hairline emphasis, accent used sparingly. */

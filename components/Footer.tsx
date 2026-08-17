@@ -1,3 +1,4 @@
+import BrandIcon, { isBrand } from '@/components/ui/BrandIcon'
 import { footerContent, navLinks, profile, socialLinks } from '@/data/site'
 
 export default function Footer() {
@@ -44,8 +45,9 @@ export default function Footer() {
                     href={l.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-muted transition-colors hover:text-ink"
+                    className="flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
                   >
+                    {isBrand(l.label) ? <BrandIcon name={l.label} /> : null}
                     {l.label}
                   </a>
                 </li>

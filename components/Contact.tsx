@@ -1,3 +1,4 @@
+import BrandIcon, { isBrand } from '@/components/ui/BrandIcon'
 import Reveal from '@/components/ui/Reveal'
 import { contactContent, socialLinks } from '@/data/site'
 
@@ -30,6 +31,7 @@ export default function Contact() {
                   rel="noopener noreferrer"
                   className="contact-cta__ghost"
                 >
+                  {isBrand(s.label) ? <BrandIcon name={s.label} size={16} onDark /> : null}
                   {s.label}
                 </a>
               ))}
@@ -44,7 +46,10 @@ export default function Contact() {
                     rel="noopener noreferrer"
                     className="group block"
                   >
-                    <span className="font-mono text-[10px] uppercase tracking-[0.12em] text-white/45">
+                    <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-white/45">
+                      {isBrand(link.label) ? (
+                        <BrandIcon name={link.label} size={12} onDark />
+                      ) : null}
                       {link.label}
                     </span>
                     <span className="mt-1 block truncate text-sm text-white/85 transition-colors group-hover:text-[var(--accent)]">
