@@ -2,7 +2,7 @@ import { credibility } from '@/data/site'
 
 export default function Credibility() {
   return (
-    <section aria-label="Clients and credentials" className="border-y border-[var(--line)] bg-[var(--panel)]">
+    <section aria-label="Clients and credentials" className="border-b border-[var(--line)] bg-[var(--panel)]">
       <div className="container-page py-8 sm:py-10">
         <p className="mb-5 font-mono text-[10px] uppercase tracking-[0.14em] text-dimmed">
           Trusted across markets
