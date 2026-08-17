@@ -18,9 +18,12 @@ export default function Clients() {
               <br />
               <em>these shelves.</em>
             </h2>
+            {/* No market count here: the band shows global brands, and naming a
+                number shrinks the claim rather than sharpening it. The BAT work
+                was UK, so "South Asia" alone was wrong as well. */}
             <p>
-              Route-to-market, territory design, and retail analytics delivered across
-              FMCG field operations in five South Asian markets.
+              Route-to-market, territory design, and retail analytics built for FMCG
+              field operations across South Asia and the UK.
             </p>
           </div>
         </Reveal>
