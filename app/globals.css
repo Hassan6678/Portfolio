@@ -258,15 +258,23 @@
 .clients-head h2 { margin-top:1rem; font:700 clamp(1.9rem,3.6vw,2.9rem)/1.06 var(--font-display); letter-spacing:-.035em; color:var(--ink); }
 .clients-head h2 em { font-family:var(--font-serif); font-weight:400; font-style:italic; }
 .clients-head>p:last-child { margin-top:1.125rem; max-width:34rem; font-size:.9375rem; line-height:1.7; color:var(--muted); }
-/* Marquee. Faded at both ends so cards enter and leave rather than being cut by
-   a hard edge. */
-.clients-marquee { position:relative; margin-top:3rem; overflow:hidden; -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent); mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent); }
+/* Marquee. The end fades are overlay gradients rather than a mask on this
+   element: a mask forms a backdrop root, which would leave the cards' backdrop
+   empty and their backdrop-filter with nothing to blur. Vertical padding gives
+   the card shadows room inside overflow:hidden. */
+.clients-marquee { position:relative; margin-top:2.1rem; padding:1rem 0 1.35rem; overflow:hidden; }
+.clients-marquee::before, .clients-marquee::after { content:''; position:absolute; top:0; bottom:0; width:8%; z-index:3; pointer-events:none; }
+.clients-marquee::before { left:0; background:linear-gradient(90deg,var(--panel) 14%,rgba(250,249,244,0)); }
+.clients-marquee::after { right:0; background:linear-gradient(270deg,var(--panel) 14%,rgba(250,249,244,0)); }
 .clients-track { display:flex; width:max-content; }
-/* The gutter is margin, not a flex `gap`: with a gap the track measures
+/* The gutter is margin, not a flex gap: with a gap the track measures
    2N*w + (2N-1)*g, so translating -50% lands half a gutter off the second pass
    and the loop visibly jumps. As margin every item advances by w+g exactly. */
-.client-card { flex:0 0 192px; margin-right:.75rem; display:flex; align-items:center; justify-content:center; min-height:118px; padding:1.1rem 1.35rem; background:#fff; border:1px solid var(--line); border-radius:4px; }
-.client-logo { position:relative; display:block; width:100%; height:72px; }
+.client-card { flex:0 0 208px; margin-right:.85rem; position:relative; isolation:isolate; display:flex; align-items:center; justify-content:center; min-height:136px; padding:1.15rem 1.4rem; border-radius:20px; border:1px solid rgba(255,255,255,.75); background:linear-gradient(150deg,rgba(255,255,255,.82) 0%,rgba(255,255,255,.46) 54%,rgba(255,255,255,.64) 100%); -webkit-backdrop-filter:blur(16px) saturate(1.7); backdrop-filter:blur(16px) saturate(1.7); box-shadow:inset 0 1px 0 rgba(255,255,255,.95), inset 0 -1px 0 rgba(255,255,255,.4), 0 10px 26px rgba(11,20,32,.09), 0 2px 5px rgba(11,20,32,.05); }
+/* Specular sheen across the top-left, the thing that makes it read as glass
+   rather than as a translucent rectangle. */
+.client-card::after { content:''; position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:2; background:linear-gradient(158deg,rgba(255,255,255,.6) 0%,rgba(255,255,255,.14) 33%,rgba(255,255,255,0) 52%); }
+.client-logo { position:relative; display:block; width:100%; height:80px; }
 .client-mark { font:700 1.0625rem/1.15 var(--font-display); letter-spacing:-.025em; text-align:center; }
 
 @keyframes clients-scroll { from { transform:translate3d(0,0,0); } to { transform:translate3d(-50%,0,0); } }
@@ -451,9 +459,12 @@
 @media(max-width:1023px){.hero-portrait{margin:0 auto}}
 @media(min-width:768px) and (max-width:1023px){.hero-portrait{width:min(100%,250px);height:auto}}
 @media(max-width:767px){.hero-portrait{width:min(100%,230px)}}
-@media(max-width:767px){.clients-marquee{margin-top:2.25rem}.client-card{flex-basis:152px;min-height:96px;padding:.85rem 1rem}.client-logo{height:56px}.client-mark{font-size:.9375rem}}
+@media(max-width:767px){.clients-marquee{margin-top:2.25rem}.client-card{flex-basis:168px;min-height:112px;padding:.9rem 1.1rem;border-radius:16px}.client-logo{height:62px}.client-mark{font-size:.9375rem}}
 
 /* Declared last so it beats .clients-track{width:max-content} above: without
    motion the row cannot scroll, so it wraps into a static grid instead of
    clipping ten of the thirteen brands. */
-@media(prefers-reduced-motion:reduce){.clients-track{flex-wrap:wrap;width:auto}.client-card.is-echo{display:none}}
+@media(prefers-reduced-motion:reduce){.clients-track{flex-wrap:wrap;width:auto}.client-card.is-echo{display:none}.client-card{margin-bottom:.85rem}
+  /* The end fades exist to hide cards sliding out. A wrapped grid has no such
+     edge, so they would just wash out the first and last card of every row. */
+  .clients-marquee::before,.clients-marquee::after{display:none}}
